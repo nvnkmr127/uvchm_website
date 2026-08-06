@@ -1,12 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   GraduationCap, 
   MapPin, 
   Phone, 
   Mail, 
-  ArrowRight, 
   ShieldCheck, 
   Award, 
   Heart,
@@ -21,7 +20,9 @@ import {
   Building2,
   Globe,
   CheckCircle2,
-  ArrowUp
+  ArrowUp,
+  Plus,
+  Minus
 } from 'lucide-react';
 import { COLLEGE_INFO } from '@/data/collegeData';
 
@@ -77,58 +78,68 @@ function XTwitterIcon({ className = 'w-4 h-4' }: { className?: string }) {
 }
 
 export default function Footer() {
+  const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
+    programs: false,
+    explore: false,
+    contact: false,
+  });
+
+  const toggleSection = (section: string) => {
+    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-slate-950 text-white relative overflow-hidden border-t border-pink-500/30">
+    <footer className="bg-black text-white relative overflow-hidden border-t border-pink-500/30">
       
       {/* Background Ambient Glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[250px] bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 relative z-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 space-y-8 sm:space-y-12">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-10">
           
           {/* Brand & Accreditation Column (4 Columns) */}
-          <div className="lg:col-span-4 space-y-5 text-left">
+          <div className="lg:col-span-4 space-y-4 sm:space-y-5 text-left border-b border-zinc-800 md:border-none pb-6 md:pb-0">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-r from-pink-600 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-pink-600/30 shrink-0">
-                <GraduationCap className="w-6 h-6" />
+              <div className="w-11 h-11 rounded-2xl bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-pink-600/30 shrink-0">
+                <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-black text-white leading-tight">
+                <h3 className="text-base sm:text-lg font-black text-white leading-tight tracking-wide">
                   UV COLLEGE OF HOTEL MANAGEMENT
                 </h3>
                 <span className="text-[10px] font-black tracking-widest text-pink-400 uppercase flex items-center gap-1 mt-0.5">
-                  <Sparkles className="w-3 h-3 text-pink-400" />
+                  <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
                   NIZAMABAD&apos;S NO.1 HOTEL MANAGEMENT COLLEGE
                 </span>
               </div>
             </div>
 
-            <p className="text-slate-300 text-xs font-medium leading-relaxed">
+            <p className="text-zinc-300 text-xs sm:text-sm font-normal leading-relaxed">
               Empowering students with world-class hospitality education, 5-star practical training, paid overseas internships, and 100% guaranteed job placements worldwide.
             </p>
 
             {/* Accreditation Box */}
-            <div className="p-4 bg-[#131527] border border-pink-500/30 rounded-2xl space-y-2">
-              <div className="flex items-center gap-2 text-xs font-black text-pink-300">
-                <ShieldCheck className="w-4 h-4 text-pink-400 shrink-0" />
+            <div className="p-3.5 sm:p-4 bg-zinc-950 border border-pink-500/30 rounded-2xl space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-pink-400">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>AICTE Approved & Govt Recognized</span>
               </div>
-              <div className="flex items-start gap-2 text-[11px] text-slate-300 font-medium">
-                <Building2 className="w-3.5 h-3.5 text-pink-400 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2 text-[11px] sm:text-xs text-zinc-300 font-normal">
+                <Building2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
                 <span>Backed by UV Consultancy — Overseas Foreign Employment Agency (Ministry of External Affairs Approved).</span>
               </div>
             </div>
 
-            {/* Social Media Links with Custom Crisp Icons */}
-            <div className="space-y-2 pt-1">
-              <div className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+            {/* Social Media Links with Icons */}
+            <div className="space-y-2.5 pt-1">
+              <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
                 <Globe className="w-3.5 h-3.5 text-pink-400" />
                 <span>Connect With Us</span>
               </div>
@@ -139,7 +150,7 @@ export default function Footer() {
                   { name: 'Facebook', icon: FacebookIcon, href: 'https://facebook.com', color: 'hover:bg-blue-600 hover:text-white' },
                   { name: 'YouTube', icon: YouTubeIcon, href: 'https://youtube.com', color: 'hover:bg-red-600 hover:text-white' },
                   { name: 'LinkedIn', icon: LinkedInIcon, href: 'https://linkedin.com', color: 'hover:bg-sky-600 hover:text-white' },
-                  { name: 'Twitter/X', icon: XTwitterIcon, href: 'https://twitter.com', color: 'hover:bg-slate-700 hover:text-white' },
+                  { name: 'Twitter/X', icon: XTwitterIcon, href: 'https://twitter.com', color: 'hover:bg-zinc-700 hover:text-white' },
                 ].map((s) => {
                   const Icon = s.icon;
                   return (
@@ -148,7 +159,7 @@ export default function Footer() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 flex items-center justify-center transition-all ${s.color} hover:scale-110 active:scale-95`}
+                      className={`w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center transition-all ${s.color} hover:scale-110 active:scale-95`}
                       title={s.name}
                     >
                       <Icon className="w-4 h-4" />
@@ -159,149 +170,190 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Academic Programs Column (3 Columns) */}
-          <div className="lg:col-span-3 space-y-4 text-left">
-            <h4 className="text-xs font-black uppercase tracking-widest text-pink-400 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-pink-500" />
-              <span>ACADEMIC PROGRAMS</span>
-            </h4>
-            <ul className="space-y-2.5 text-xs font-bold text-slate-300">
-              <li>
-                <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Award className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Diploma in Hotel Mgmt (1 Yr)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <GraduationCap className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Advance Diploma in HM (1.5 Yrs)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>PG Diploma in Hotel Mgmt (1 Yr)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Trophy className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Masters Diploma in HM (2 Yrs)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Sparkles className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Bartending & Mixology (1 Yr)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <BookOpen className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Food Production Craft Course</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Academic Programs Column (3 Columns) with Accordion on Mobile */}
+          <div className="lg:col-span-3 text-left border-b border-zinc-800 md:border-none pb-4 md:pb-0">
+            {/* Header: Clickable on Mobile to Toggle */}
+            <button
+              onClick={() => toggleSection('programs')}
+              className="w-full flex items-center justify-between md:cursor-default focus:outline-none py-1 md:py-0"
+            >
+              <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-pink-400 flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-pink-500 shrink-0" />
+                <span>ACADEMIC PROGRAMS</span>
+              </h4>
+              {/* Plus/Minus Icon Button for Mobile */}
+              <div className="md:hidden w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-pink-400">
+                {openSections.programs ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+              </div>
+            </button>
 
-          {/* Navigation Links Column (2 Columns) */}
-          <div className="lg:col-span-2 space-y-4 text-left">
-            <h4 className="text-xs font-black uppercase tracking-widest text-pink-400 flex items-center gap-2">
-              <Compass className="w-4 h-4 text-pink-500" />
-              <span>EXPLORE</span>
-            </h4>
-            <ul className="space-y-2.5 text-xs font-bold text-slate-300">
-              <li>
-                <a href="#" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Home className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Home</span>
-                </a>
-              </li>
-              <li>
-                <a href="#facilities" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Building2 className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Training Labs</span>
-                </a>
-              </li>
-              <li>
-                <a href="#placements" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Trophy className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>100% Placements</span>
-                </a>
-              </li>
-              <li>
-                <a href="#faculty" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <UserCheck className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Faculty</span>
-                </a>
-              </li>
-              <li>
-                <a href="#admissions" className="hover:text-pink-400 transition-colors flex items-center gap-2 group">
-                  <Calendar className="w-3.5 h-3.5 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                  <span>Admissions</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact & Hours Column (3 Columns) */}
-          <div className="lg:col-span-3 space-y-4 text-left">
-            <h4 className="text-xs font-black uppercase tracking-widest text-pink-400 flex items-center gap-2">
-              <Phone className="w-4 h-4 text-pink-500" />
-              <span>CAMPUS CONTACT</span>
-            </h4>
-            
-            <div className="space-y-3 text-xs font-medium text-slate-300">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
-                <span>{COLLEGE_INFO.contact.address}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-pink-500 shrink-0" />
-                <a href={`tel:${COLLEGE_INFO.contact.phone}`} className="hover:text-pink-400 font-bold transition-colors">
-                  {COLLEGE_INFO.contact.phone}
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-pink-500 shrink-0" />
-                <a href={`mailto:${COLLEGE_INFO.contact.email}`} className="hover:text-pink-400 font-bold transition-colors">
-                  {COLLEGE_INFO.contact.email}
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5 text-slate-400">
-                <Clock className="w-4 h-4 text-pink-500 shrink-0" />
-                <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
-              </div>
+            {/* Content: Collapsible on Mobile, Visible on Desktop */}
+            <div className={`mt-3 md:mt-4 space-y-3 ${openSections.programs ? 'block' : 'hidden md:block'}`}>
+              <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-zinc-300">
+                <li>
+                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Award className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Diploma in Hotel Mgmt (1 Yr)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <GraduationCap className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Advance Diploma in HM (1.5 Yrs)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <CheckCircle2 className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>PG Diploma in Hotel Mgmt (1 Yr)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Trophy className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Masters Diploma in HM (2 Yrs)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Sparkles className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Bartending & Mixology (1 Yr)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <BookOpen className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Food Production Craft Course</span>
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
 
-            <div className="p-3 bg-pink-950/50 border border-pink-500/40 rounded-xl space-y-1">
-              <div className="text-[11px] font-black text-pink-300 uppercase flex items-center gap-1.5">
-                <Heart className="w-3.5 h-3.5 text-pink-400 fill-pink-400" />
-                <span>Women Scholarship</span>
+          {/* Navigation Links Column (2 Columns) with Accordion on Mobile */}
+          <div className="lg:col-span-2 text-left border-b border-zinc-800 md:border-none pb-4 md:pb-0">
+            {/* Header: Clickable on Mobile to Toggle */}
+            <button
+              onClick={() => toggleSection('explore')}
+              className="w-full flex items-center justify-between md:cursor-default focus:outline-none py-1 md:py-0"
+            >
+              <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-pink-400 flex items-center gap-2">
+                <Compass className="w-4 h-4 text-pink-500 shrink-0" />
+                <span>EXPLORE</span>
+              </h4>
+              {/* Plus/Minus Icon Button for Mobile */}
+              <div className="md:hidden w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-pink-400">
+                {openSections.explore ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
               </div>
-              <div className="text-xs text-white font-bold">Exclusive 30% Fee Discount for Female Candidates</div>
+            </button>
+
+            {/* Content: Collapsible on Mobile, Visible on Desktop */}
+            <div className={`mt-3 md:mt-4 space-y-3 ${openSections.explore ? 'block' : 'hidden md:block'}`}>
+              <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-zinc-300">
+                <li>
+                  <a href="#" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Home className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Home</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#facilities" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Building2 className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Training Labs</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#placements" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Trophy className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>100% Placements</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#faculty" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <UserCheck className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Faculty</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#admissions" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Calendar className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>Admissions</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Contact & Hours Column (3 Columns) with Accordion on Mobile */}
+          <div className="lg:col-span-3 text-left pb-2 md:pb-0">
+            {/* Header: Clickable on Mobile to Toggle */}
+            <button
+              onClick={() => toggleSection('contact')}
+              className="w-full flex items-center justify-between md:cursor-default focus:outline-none py-1 md:py-0"
+            >
+              <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-pink-400 flex items-center gap-2">
+                <Phone className="w-4 h-4 text-pink-500 shrink-0" />
+                <span>CAMPUS CONTACT</span>
+              </h4>
+              {/* Plus/Minus Icon Button for Mobile */}
+              <div className="md:hidden w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-pink-400">
+                {openSections.contact ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+              </div>
+            </button>
+
+            {/* Content: Collapsible on Mobile, Visible on Desktop */}
+            <div className={`mt-3 md:mt-4 space-y-3.5 ${openSections.contact ? 'block' : 'hidden md:block'}`}>
+              <div className="space-y-3 text-xs sm:text-sm font-medium text-zinc-300">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
+                  <span>{COLLEGE_INFO.contact.address}</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="w-4 h-4 text-pink-500 shrink-0" />
+                  <a href={`tel:${COLLEGE_INFO.contact.phone}`} className="hover:text-pink-400 font-bold transition-colors">
+                    {COLLEGE_INFO.contact.phone}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Mail className="w-4 h-4 text-pink-500 shrink-0" />
+                  <a href={`mailto:${COLLEGE_INFO.contact.email}`} className="hover:text-pink-400 font-bold transition-colors">
+                    {COLLEGE_INFO.contact.email}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5 text-zinc-400">
+                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+                </div>
+              </div>
+
+              <div className="p-3 bg-pink-950/60 border border-pink-500/40 rounded-xl space-y-1">
+                <div className="text-[11px] font-black text-pink-300 uppercase flex items-center gap-1.5">
+                  <Heart className="w-3.5 h-3.5 text-pink-400 fill-pink-400" />
+                  <span>Women Scholarship</span>
+                </div>
+                <div className="text-xs text-white font-bold">Exclusive 30% Fee Discount for Female Candidates</div>
+              </div>
             </div>
           </div>
 
         </div>
 
         {/* Bottom Copyright & Back To Top Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-400">
+        <div className="pt-6 sm:pt-8 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-zinc-400">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>© 2026 {COLLEGE_INFO.name}. All Rights Reserved.</span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <Sparkles className="w-3.5 h-3.5 text-pink-400" />
+            <span className="flex items-center gap-1.5 text-zinc-300">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               Nizamabad&apos;s #1 Hospitality Education Campus
             </span>
 
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500 text-slate-300 hover:text-white flex items-center gap-1 transition-all active:scale-95"
+              className="p-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-pink-500 text-zinc-300 hover:text-white flex items-center gap-1 transition-all active:scale-95"
               title="Back to top"
             >
               <ArrowUp className="w-4 h-4 text-pink-500" />
