@@ -311,21 +311,26 @@ export default function InstagramReels() {
 
       {/* Video Modal Player */}
       {activeReel && (
-        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="relative w-full max-w-sm aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border-2 border-pink-500/40">
+        <div
+          onClick={(e) => e.target === e.currentTarget && setActiveReel(null)}
+          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
+        >
+          <div className="relative w-full max-w-[320px] sm:max-w-sm aspect-[9/16] max-h-[85vh] sm:max-h-[90vh] bg-black rounded-3xl overflow-hidden shadow-2xl border-2 border-pink-500/40 my-auto flex flex-col justify-between">
             
             <button
               onClick={() => setActiveReel(null)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-pink-600 transition-colors"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-pink-600 transition-colors active:scale-95"
+              aria-label="Close video player"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className="absolute top-4 left-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-pink-600 transition-colors"
+              className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-pink-600 transition-colors active:scale-95"
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
             >
-              {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              {isMuted ? <VolumeX className="w-4 h-4 sm:w-5 sm:h-5" /> : <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />}
             </button>
 
             <video
@@ -337,15 +342,15 @@ export default function InstagramReels() {
               className="w-full h-full object-cover"
             />
 
-            <div className="absolute bottom-4 left-4 right-4 p-4 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent text-white space-y-2 rounded-2xl border border-white/10">
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 p-3 sm:p-4 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent text-white space-y-1.5 sm:space-y-2 rounded-2xl border border-white/10 z-10">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-0.5 bg-pink-600 text-white text-[9px] font-black uppercase rounded-full">
+                <span className="px-2 py-0.5 sm:px-2.5 bg-pink-600 text-white text-[8px] sm:text-[9px] font-black uppercase rounded-full">
                   {activeReel.category}
                 </span>
-                <span className="text-[10px] font-bold text-pink-400">@uvchm_official</span>
+                <span className="text-[9px] sm:text-[10px] font-bold text-pink-400">@uvchm_official</span>
               </div>
-              <h4 className="text-xs font-black leading-snug">{activeReel.title}</h4>
-              <div className="flex items-center justify-between text-[10px] font-bold text-slate-300 pt-1">
+              <h4 className="text-[11px] sm:text-xs font-black leading-snug line-clamp-2">{activeReel.title}</h4>
+              <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-bold text-slate-300 pt-0.5">
                 <span>👁️ {activeReel.views} Views</span>
                 <span className="text-pink-400">❤️ {activeReel.likes} Likes</span>
               </div>

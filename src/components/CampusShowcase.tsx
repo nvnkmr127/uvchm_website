@@ -94,48 +94,52 @@ export default function CampusShowcase() {
 
       {/* Facility Detail Modal */}
       {selectedFacility && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-2xl space-y-4">
+        <div
+          onClick={(e) => e.target === e.currentTarget && setSelectedFacility(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-fadeIn overflow-y-auto"
+        >
+          <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl space-y-3 sm:space-y-4 max-h-[90vh] sm:max-h-[85vh] overflow-y-auto my-auto">
             <button
               onClick={() => setSelectedFacility(null)}
-              className="absolute top-4 right-4 z-10 p-2 bg-white/80 text-slate-600 hover:text-slate-900 rounded-full shadow-md"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2 bg-slate-900/60 hover:bg-slate-900 text-white rounded-full shadow-md backdrop-blur-xs transition-transform active:scale-95"
+              aria-label="Close showcase modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
-            <div className="relative h-72">
+            <div className="relative h-48 sm:h-64 md:h-72">
               <img
                 src={selectedFacility.image}
                 alt={selectedFacility.name}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-              <div className="absolute bottom-4 left-6 right-6">
-                <span className="text-xs font-bold text-pink-400 uppercase tracking-widest">
+              <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 right-4 sm:right-6">
+                <span className="text-[10px] sm:text-xs font-bold text-pink-400 uppercase tracking-widest">
                   {selectedFacility.category} Lab Overview
                 </span>
-                <h3 className="text-2xl font-black text-white mt-1">{selectedFacility.name}</h3>
+                <h3 className="text-xl sm:text-2xl font-black text-white mt-0.5 sm:mt-1">{selectedFacility.name}</h3>
               </div>
             </div>
 
-            <div className="p-6 space-y-4">
-              <p className="text-slate-600 text-sm">{selectedFacility.description}</p>
+            <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{selectedFacility.description}</p>
               <div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Practical Specifications</h4>
+                <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Practical Specifications</h4>
                 <div className="space-y-1.5">
                   {selectedFacility.features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2 text-xs text-slate-800 font-medium">
-                      <Sparkles className="w-3.5 h-3.5 text-pink-600" />
+                      <Sparkles className="w-3.5 h-3.5 text-pink-600 shrink-0" />
                       <span>{f}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 flex justify-end">
+              <div className="pt-2 sm:pt-4 flex justify-end">
                 <button
                   onClick={() => setSelectedFacility(null)}
-                  className="px-6 py-2 bg-pink-600 text-white font-bold text-xs rounded-xl shadow-md shadow-pink-600/25"
+                  className="w-full sm:w-auto px-6 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs rounded-xl shadow-md shadow-pink-600/25 active:scale-95 transition-transform"
                 >
                   Close Showcase
                 </button>

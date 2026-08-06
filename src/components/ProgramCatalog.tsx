@@ -283,57 +283,61 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
 
       {/* Interactive Modal */}
       {activeModalProgram && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200">
+        <div
+          onClick={(e) => e.target === e.currentTarget && setActiveModalProgram(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn overflow-y-auto"
+        >
+          <div className="relative w-full max-w-2xl bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6 shadow-2xl border border-slate-200 max-h-[90vh] sm:max-h-[85vh] overflow-y-auto my-auto">
             <button
               onClick={() => setActiveModalProgram(null)}
-              className="absolute top-5 right-5 p-1.5 text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full transition-colors"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full transition-transform active:scale-95 z-10"
+              aria-label="Close details modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-[11px] font-black uppercase">
+            <div className="space-y-2 pr-6 sm:pr-0">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-[10px] sm:text-[11px] font-black uppercase">
                 {activeModalProgram.duration} Course
               </div>
-              <h3 className="text-2xl font-black text-slate-900">{activeModalProgram.title}</h3>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-snug">{activeModalProgram.title}</h3>
               <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
                 {activeModalProgram.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-3.5 sm:p-4 bg-slate-50 border border-slate-200 rounded-2xl">
               <div>
-                <div className="text-xs text-slate-500 font-bold">Course Duration</div>
-                <div className="text-sm font-black text-slate-900 mt-0.5">{activeModalProgram.duration}</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-bold">Course Duration</div>
+                <div className="text-xs sm:text-sm font-black text-slate-900 mt-0.5">{activeModalProgram.duration}</div>
               </div>
               <div>
-                <div className="text-xs text-slate-500 font-bold">Tuition Estimate</div>
-                <div className="text-sm font-black text-emerald-700 mt-0.5">{activeModalProgram.tuition}</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-bold">Tuition Estimate</div>
+                <div className="text-xs sm:text-sm font-black text-emerald-700 mt-0.5">{activeModalProgram.tuition}</div>
               </div>
             </div>
 
             <div>
-              <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
+              <h4 className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
                 Career Pathways
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {activeModalProgram.careers.map((c, i) => (
-                  <span key={i} className="px-3 py-1 bg-pink-50 border border-pink-200 text-pink-800 text-xs font-bold rounded-xl">
+                  <span key={i} className="px-2.5 py-1 bg-pink-50 border border-pink-200 text-pink-800 text-[11px] sm:text-xs font-bold rounded-xl">
                     ✓ {c}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <button
                 onClick={() => {
                   const pId = activeModalProgram.id;
                   setActiveModalProgram(null);
                   onSelectProgramToApply(pId);
                 }}
-                className="w-full py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-pink-600/30 text-center"
+                className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-pink-600/30 text-center active:scale-95 transition-transform"
               >
                 APPLY FOR THIS COURSE NOW
               </button>
