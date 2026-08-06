@@ -58,8 +58,9 @@ export interface Recruiter {
 export const COLLEGE_INFO = {
   name: 'UV College of Hotel Management',
   shortName: 'UV College',
-  motto: 'Building Careers. Bringing Excellence.',
-  rankTag: "NIZAMABAD'S NO.1 HOTEL MANAGEMENT COLLEGE",
+  motto: 'Shaping hospitality aspirants into creators, entrepreneurs & achievers.',
+  rankTag: "NORTHERN TELANGANA'S BIGGEST HOTEL MANAGEMENT COLLEGE",
+  subtitle: '2 Own Campus Buildings with 5★ Star Infrastructure and International Experienced Faculty',
   established: '2010',
   accreditation: 'Govt Recognized • 100% Guaranteed 5-Star Placements',
   location: 'Nizamabad Campus, Hospitality Avenue, City Center',
@@ -69,21 +70,128 @@ export const COLLEGE_INFO = {
     address: '2nd floor, Never Give Up Building, 1, Gangastan, Nizamabad, Telangana 503003',
   },
   stats: [
-    { label: 'COURSES', value: '8+', subtext: 'Diploma & Professional' },
-    { label: 'TRAINING LABS', value: '5+', subtext: 'State-of-the-Art' },
-    { label: 'YEARS OF EXCELLENCE', value: '16+', subtext: 'Industry Leadership' },
-    { label: 'STUDENTS TRUST US', value: '5000+', subtext: 'Successful Careers' },
+    { label: 'OWN CAMPUS BUILDINGS', value: '2', subtext: 'Spacious Infrastructure' },
+    { label: 'PRACTICAL LABS', value: '8+', subtext: '5★ Star Standard' },
+    { label: 'LIVE SHOW KITCHEN', value: '1', subtext: 'Advanced Culinary Setup' },
+    { label: 'DIGITAL CLASSROOMS', value: '4', subtext: 'Computer & Software Lab' },
   ],
 };
 
+export const CAREER_ROADMAP = [
+  {
+    step: '01',
+    title: 'Get Admission to UVCHM',
+    description: 'Apply, qualify, and complete admission to start your hospitality career.',
+  },
+  {
+    step: '02',
+    title: 'Choose Your Course',
+    description: 'Pick a specialization based on your skills and interests.',
+  },
+  {
+    step: '03',
+    title: 'Learn & Grow',
+    description: 'Gain practical skills, industry knowledge, and soft skills for hospitality success.',
+  },
+  {
+    step: '04',
+    title: 'Train in a 5-Star Hotel',
+    description: 'Get real-world experience through internships at top luxury hotels.',
+  },
+  {
+    step: '05',
+    title: 'Get Certified & Graduate',
+    description: 'Pass exams, earn your diploma, and prepare for job interviews.',
+  },
+  {
+    step: '06',
+    title: 'Start Your Global Career',
+    description: 'Secure global job placements with UV Overseas Consultancy. Get expert interview and visa support!',
+  },
+];
+
+export const BROCHURE_FACILITIES = [
+  {
+    title: '2 Advanced Training Kitchens & Bakery + 1 Live Show Kitchen',
+    description: 'Hands-on culinary training in well-equipped kitchens with commercial cooking ranges.',
+    category: 'Culinary Arts',
+  },
+  {
+    title: '2 F&B Service Practical Labs',
+    description: 'Fine dining, buffet, bar setup, cocktail mixology & barista coffee training.',
+    category: 'Food & Beverage',
+  },
+  {
+    title: '2 Housekeeping Practical Labs',
+    description: 'Mock hotel guest rooms for real-time housekeeping, suite care & linen training.',
+    category: 'Accommodation',
+  },
+  {
+    title: '2 Front Office Labs',
+    description: 'Simulated hotel reception desk & Opera PMS concierge administration training.',
+    category: 'Administration',
+  },
+  {
+    title: '4 Digital Classrooms & Computer Lab',
+    description: 'Hospitality software, e-resources, audio-visual study materials & digital learning.',
+    category: 'Academics',
+  },
+  {
+    title: 'Full time Expert Faculty',
+    description: 'Highly experienced in international hospitality industry, 5-star hotel chains & cruise liners.',
+    category: 'Faculty',
+  },
+  {
+    title: 'Internship & Placement Cell',
+    description: 'Global & domestic placements through authorized UV Overseas Consultancy.',
+    category: 'Placements',
+  },
+  {
+    title: 'Seminar Hall',
+    description: 'Industry expert talks, masterclasses, workshops & executive conferences.',
+    category: 'Campus',
+  },
+  {
+    title: 'Hostel & Transport',
+    description: 'Separate hostel facilities for boys & girls with round-the-clock security & bus pass facility.',
+    category: 'Amenities',
+  },
+  {
+    title: 'Recreational & Sports Facilities',
+    description: 'Student activities, indoor/outdoor sports, events & cultural programs.',
+    category: 'Life on Campus',
+  },
+  {
+    title: 'Own Campus & Parking',
+    description: 'Spacious 2 own campus buildings with convenient student and visitor parking.',
+    category: 'Infrastructure',
+  },
+  {
+    title: 'Soft Skills Training',
+    description: 'Interview preparation, personality development, English communication & skill-based courses.',
+    category: 'Career Growth',
+  },
+];
+
 export const RECRUITERS: Recruiter[] = [
-  { name: 'Taj Hotels & Palaces', logoText: 'TAJ HOTELS', tier: 'Heritage Luxury' },
-  { name: 'The Oberoi Group', logoText: 'OBEROI', tier: '5-Star Deluxe' },
-  { name: 'Marriott International', logoText: 'MARRIOTT', tier: 'Global Recruiter' },
-  { name: 'ITC Hotels', logoText: 'ITC HOTELS', tier: 'Luxury Collection' },
-  { name: 'Hyatt Regency', logoText: 'HYATT', tier: 'Premium Partner' },
-  { name: 'The Leela Palaces', logoText: 'THE LEELA', tier: 'Ultra Luxury' },
+  { name: 'Marriott Hotels & Resorts', logoText: 'MARRIOTT', tier: 'Global Recruiter' },
+  { name: 'Hyatt Hotels & Resorts', logoText: 'HYATT', tier: 'Premium Partner' },
+  { name: 'Hilton Hotels & Resorts', logoText: 'HILTON', tier: 'Global Partner' },
+  { name: 'Accor Hotels', logoText: 'ACCOR', tier: 'Luxury Collection' },
+  { name: 'Kempinski Hotels', logoText: 'KEMPINSKI', tier: '5-Star Deluxe' },
+  { name: 'InterContinental Hotels Group', logoText: 'INTERCONTINENTAL', tier: 'International Partner' },
+  { name: 'Jumeirah Hotels & Resorts', logoText: 'JUMEIRAH', tier: 'Dubai Luxury' },
+  { name: 'Rotana Hotels & Resorts', logoText: 'ROTANA', tier: 'Middle East Partner' },
+  { name: 'Six Senses Resorts', logoText: 'SIX SENSES', tier: 'Eco Luxury' },
+  { name: 'Four Seasons Hotels', logoText: 'FOUR SEASONS', tier: 'Ultra Luxury' },
   { name: 'Radisson Hotel Group', logoText: 'RADISSON', tier: 'International Partner' },
+  { name: 'JA Resorts & Hotels', logoText: 'JA RESORTS', tier: 'Resort Partner' },
+  { name: 'Anantara Hotels & Spas', logoText: 'ANANTARA', tier: 'Luxury Spas' },
+  { name: 'The Leela Palaces', logoText: 'THE LEELA', tier: 'Ultra Luxury' },
+  { name: 'Oberoi Hotels & Resorts', logoText: 'OBEROI', tier: '5-Star Deluxe' },
+  { name: 'Taj Hotels & Palaces', logoText: 'TAJ HOTELS', tier: 'Heritage Luxury' },
+  { name: 'ITC Hotels', logoText: 'ITC HOTELS', tier: 'Luxury Collection' },
+  { name: 'The LaLiT Hotels', logoText: 'THE LALIT', tier: '5-Star Partner' },
 ];
 
 export const PROGRAMS: Program[] = [

@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PartnersCarousel from '@/components/PartnersCarousel';
 import AboutUs from '@/components/AboutUs';
+import BrochureRoadmap from '@/components/BrochureRoadmap';
 import UvConsultancy from '@/components/UvConsultancy';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import ProgramCatalog from '@/components/ProgramCatalog';
@@ -40,6 +41,9 @@ export default function Home() {
 
       {/* Official About Us Section */}
       <AboutUs onOpenApply={() => handleOpenApplyWithProgram()} />
+
+      {/* Official College Brochure Career Roadmap & Campus Facilities */}
+      <BrochureRoadmap onOpenApply={() => handleOpenApplyWithProgram()} />
 
       {/* Backed by UV Consultancy Section */}
       <UvConsultancy onOpenApply={() => handleOpenApplyWithProgram()} />
