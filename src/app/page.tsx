@@ -11,6 +11,7 @@ import ProgramCatalog from '@/components/ProgramCatalog';
 import StudentPlacements from '@/components/StudentPlacements';
 import CampusShowcase from '@/components/CampusShowcase';
 import InstagramReels from '@/components/InstagramReels';
+import GoogleReviews from '@/components/GoogleReviews';
 import ResearchFaculty from '@/components/ResearchFaculty';
 import Footer from '@/components/Footer';
 import ApplyModal from '@/components/ApplyModal';
@@ -60,6 +61,9 @@ export default function Home() {
 
       {/* Leadership & Faculty Stacked Slider */}
       <ResearchFaculty onOpenApply={() => handleOpenApplyWithProgram()} />
+
+      {/* Verified Google Reviews */}
+      <GoogleReviews />
 
       {/* Footer */}
       <Footer />

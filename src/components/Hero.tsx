@@ -115,7 +115,7 @@ export default function Hero({ onOpenApply }: { onOpenApply: () => void }) {
             100% GUARANTEED PLACEMENTS
           </span>
           <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-slate-200">
-            AICTE APPROVED
+            GOVT RECOGNIZED
           </span>
         </div>
 

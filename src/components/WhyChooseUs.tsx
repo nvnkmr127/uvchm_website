@@ -38,7 +38,7 @@ export default function WhyChooseUs({ onOpenApply }: { onOpenApply: () => void }
     {
       icon: <ShieldCheck className="w-6 h-6 text-pink-600" />,
       title: '16+ Years of Excellence',
-      description: "Nizamabad's #1 hotel management college with AICTE approved curriculum and personality grooming.",
+      description: "Nizamabad's #1 hotel management college with government recognized curriculum and personality grooming.",
       badge: "NIZAMABAD'S #1",
     },
   ];

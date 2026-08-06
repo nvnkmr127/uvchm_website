@@ -4,7 +4,6 @@ export interface Program {
   department: string;
   level: 'Undergraduate' | 'Diploma' | 'Postgraduate' | 'Certification';
   duration: string;
-  tuition: string;
   description: string;
   careers: string[];
   image?: string;
@@ -62,12 +61,12 @@ export const COLLEGE_INFO = {
   motto: 'Building Careers. Bringing Excellence.',
   rankTag: "NIZAMABAD'S NO.1 HOTEL MANAGEMENT COLLEGE",
   established: '2010',
-  accreditation: 'AICTE Approved • Affiliated University • 100% Guaranteed 5-Star Placements',
+  accreditation: 'Govt Recognized • 100% Guaranteed 5-Star Placements',
   location: 'Nizamabad Campus, Hospitality Avenue, City Center',
   contact: {
-    phone: '+91 98765 43210 / +91 83329 99999',
-    email: 'admissions@uvhotelmgmt.edu',
-    address: 'UV College Campus, Near Collectorate Road, Nizamabad, Telangana',
+    phone: '+91 84639 95959 / +91 84659 95959',
+    email: 'Info@uvchm.com',
+    address: '2nd floor, Never Give Up Building, 1, Gangastan, Nizamabad, Telangana 503003',
   },
   stats: [
     { label: 'COURSES', value: '8+', subtext: 'Diploma & Professional' },
@@ -94,7 +93,6 @@ export const PROGRAMS: Program[] = [
     department: 'Hotel Administration',
     level: 'Diploma',
     duration: '1 Year',
-    tuition: '₹65,000 / Year',
     description: 'Foundational course covering front office operations, housekeeping management, basic food production, and 5-star hotel guest relations.',
     careers: ['Front Office Assistant', 'Housekeeping Supervisor', 'Guest Service Associate'],
     image: '/images/frontoffice_dept.png',
@@ -106,7 +104,6 @@ export const PROGRAMS: Program[] = [
     department: 'Hotel Administration',
     level: 'Diploma',
     duration: '1.5 Years',
-    tuition: '₹75,000 / Course',
     description: 'Advanced hospitality training including Opera PMS software, banquet management, commercial kitchen operations, and paid internship.',
     careers: ['Assistant Front Office Manager', 'F&B Executive', 'Banquets Lead'],
     image: '/images/frontoffice_dept.png',
@@ -118,7 +115,6 @@ export const PROGRAMS: Program[] = [
     department: 'Postgraduate',
     level: 'Postgraduate',
     duration: '1 Year',
-    tuition: '₹85,000 / Year',
     description: 'Postgraduate specialization for graduates focusing on luxury resort administration, yield management, and revenue optimization.',
     careers: ['Assistant Resort Manager', 'Revenue Analyst', 'Hospitality Operations Lead'],
     image: '/images/frontoffice_dept.png',
@@ -130,7 +126,6 @@ export const PROGRAMS: Program[] = [
     department: 'Postgraduate',
     level: 'Postgraduate',
     duration: '2 Years',
-    tuition: '₹95,000 / Year',
     description: 'Master level professional diploma preparing executive directors for international hotel chains, cruise liners, and aviation hospitality.',
     careers: ['General Manager', 'Director of Food & Beverage', 'International Resort Lead'],
     image: '/images/frontoffice_dept.png',
@@ -142,7 +137,6 @@ export const PROGRAMS: Program[] = [
     department: 'Food & Beverage',
     level: 'Certification',
     duration: '1 Year',
-    tuition: '₹45,000 / Course',
     description: 'Master flair bartending, classic & molecular cocktail mixology, wine service etiquette, bar cost control, and beverage inventory.',
     careers: ['Head Bartender', 'Mixologist', 'Beverage Manager', 'Cruise Bar Lead'],
     image: '/images/bartending_dept.png',
@@ -154,7 +148,6 @@ export const PROGRAMS: Program[] = [
     department: 'Culinary Arts',
     level: 'Diploma',
     duration: '1 Year',
-    tuition: '₹55,000 / Year',
     description: 'Practical culinary training in Indian, Continental, Chinese cuisines, butchery, cold kitchen, stocks, sauces, and kitchen hygiene.',
     careers: ['Chef de Partie', 'Commis Chef', 'Cloud Kitchen Specialist'],
     image: '/images/culinary_dept.png',
@@ -166,7 +159,6 @@ export const PROGRAMS: Program[] = [
     department: 'Food & Beverage',
     level: 'Diploma',
     duration: '1 Year',
-    tuition: '₹50,000 / Year',
     description: 'Hands-on fine dining service, table layout aesthetics, Gueridon flambé service, banquet setup, and customer relations excellence.',
     careers: ['Restaurant Captain', 'F&B Steward', 'Banquet Supervisor'],
     image: '/images/bartending_dept.png',
@@ -177,7 +169,6 @@ export const PROGRAMS: Program[] = [
     department: 'Hotel Administration',
     level: 'Diploma',
     duration: '1 Year',
-    tuition: '₹45,000 / Year',
     description: 'Specialized training in luxury room cleaning standards, flower arrangements, linen management, laundry operations, and suite inspection.',
     careers: ['Housekeeping Executive', 'Linen Room Supervisor', 'Floor Controller'],
     image: '/images/housekeeping_dept.png',

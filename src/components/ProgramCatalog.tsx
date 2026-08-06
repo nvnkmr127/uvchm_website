@@ -175,7 +175,7 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-pink-400" />
-                    <span>AICTE & Affiliated University Certification</span>
+                    <span>Government Recognized Certification</span>
                   </div>
                 </div>
               </div>
@@ -312,8 +312,8 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
                 <div className="text-xs sm:text-sm font-black text-slate-900 mt-0.5">{activeModalProgram.duration}</div>
               </div>
               <div>
-                <div className="text-[11px] sm:text-xs text-slate-500 font-bold">Tuition Estimate</div>
-                <div className="text-xs sm:text-sm font-black text-emerald-700 mt-0.5">{activeModalProgram.tuition}</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-bold">Job Placement</div>
+                <div className="text-xs sm:text-sm font-black text-emerald-700 mt-0.5">100% Guaranteed</div>
               </div>
             </div>
 

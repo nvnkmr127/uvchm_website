@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   GraduationCap, 
   MapPin, 
@@ -93,11 +94,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white relative overflow-hidden border-t border-pink-500/30">
+    <footer className="bg-[#0D0D0D] text-white relative overflow-hidden border-t border-[#E80088]/30">
       
       {/* Background Ambient Glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[250px] bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-[#E80088]/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[250px] bg-[#90268B]/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 space-y-8 sm:space-y-12">
         
@@ -107,15 +108,15 @@ export default function Footer() {
           {/* Brand & Accreditation Column (4 Columns) */}
           <div className="lg:col-span-4 space-y-4 sm:space-y-5 text-left border-b border-zinc-800 md:border-none pb-6 md:pb-0">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-pink-600/30 shrink-0">
+              <div className="w-11 h-11 rounded-2xl bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] flex items-center justify-center text-white shadow-lg shadow-[#E80088]/30 shrink-0">
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h3 className="text-base sm:text-lg font-black text-white leading-tight tracking-wide">
                   UV COLLEGE OF HOTEL MANAGEMENT
                 </h3>
-                <span className="text-[10px] font-black tracking-widest text-pink-400 uppercase flex items-center gap-1 mt-0.5">
-                  <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
+                <span className="text-[10px] font-black tracking-widest text-[#E80088] uppercase flex items-center gap-1 mt-0.5">
+                  <Sparkles className="w-3 h-3 text-[#E80088] shrink-0" />
                   NIZAMABAD&apos;S NO.1 HOTEL MANAGEMENT COLLEGE
                 </span>
               </div>
@@ -126,13 +127,13 @@ export default function Footer() {
             </p>
 
             {/* Accreditation Box */}
-            <div className="p-3.5 sm:p-4 bg-zinc-950 border border-pink-500/30 rounded-2xl space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-pink-400">
+            <div className="p-3.5 sm:p-4 bg-[#0D0D0D] border border-[#E80088]/30 rounded-2xl space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#E80088]">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>AICTE Approved & Govt Recognized</span>
+                <span>Govt Recognized Institution</span>
               </div>
               <div className="flex items-start gap-2 text-[11px] sm:text-xs text-zinc-300 font-normal">
-                <Building2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                <Building2 className="w-3.5 h-3.5 text-[#E80088] shrink-0 mt-0.5" />
                 <span>Backed by UV Consultancy — Overseas Foreign Employment Agency (Ministry of External Affairs Approved).</span>
               </div>
             </div>
@@ -146,7 +147,7 @@ export default function Footer() {
               <div className="flex items-center gap-2 flex-wrap">
                 {[
                   { name: 'Instagram', icon: InstagramIcon, href: 'https://instagram.com', color: 'hover:bg-pink-600 hover:text-white' },
-                  { name: 'WhatsApp', icon: WhatsAppIcon, href: 'https://wa.me/919876543210', color: 'hover:bg-emerald-600 hover:text-white' },
+                  { name: 'WhatsApp', icon: WhatsAppIcon, href: 'https://wa.me/918463995959', color: 'hover:bg-emerald-600 hover:text-white' },
                   { name: 'Facebook', icon: FacebookIcon, href: 'https://facebook.com', color: 'hover:bg-blue-600 hover:text-white' },
                   { name: 'YouTube', icon: YouTubeIcon, href: 'https://youtube.com', color: 'hover:bg-red-600 hover:text-white' },
                   { name: 'LinkedIn', icon: LinkedInIcon, href: 'https://linkedin.com', color: 'hover:bg-sky-600 hover:text-white' },
@@ -191,40 +192,40 @@ export default function Footer() {
             <div className={`mt-3 md:mt-4 space-y-3 ${openSections.programs ? 'block' : 'hidden md:block'}`}>
               <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-zinc-300">
                 <li>
-                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/courses/diploma-hotel-mgmt" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Award className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Diploma in Hotel Mgmt (1 Yr)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/courses/advance-diploma-hotel-mgmt" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <GraduationCap className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Advance Diploma in HM (1.5 Yrs)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/courses/pg-diploma-hotel-mgmt" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <CheckCircle2 className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>PG Diploma in Hotel Mgmt (1 Yr)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/courses/masters-diploma-hotel-mgmt" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Trophy className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Masters Diploma in HM (2 Yrs)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/courses/bartending-mixology" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Sparkles className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Bartending & Mixology (1 Yr)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#academics" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/courses/craft-course-food-production" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <BookOpen className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Food Production Craft Course</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -251,34 +252,40 @@ export default function Footer() {
             <div className={`mt-3 md:mt-4 space-y-3 ${openSections.explore ? 'block' : 'hidden md:block'}`}>
               <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-zinc-300">
                 <li>
-                  <a href="#" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Home className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Home</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#facilities" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/about" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                    <Compass className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    <span>About College</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/facilities" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Building2 className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Training Labs</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#placements" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/placements" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Trophy className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>100% Placements</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#faculty" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/faculty" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <UserCheck className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     <span>Faculty</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#admissions" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
+                  <Link href="/contact" className="hover:text-pink-400 transition-colors flex items-center gap-2.5 group py-1">
                     <Calendar className="w-4 h-4 text-pink-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
-                    <span>Admissions</span>
-                  </a>
+                    <span>Contact Us</span>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -305,8 +312,15 @@ export default function Footer() {
             <div className={`mt-3 md:mt-4 space-y-3.5 ${openSections.contact ? 'block' : 'hidden md:block'}`}>
               <div className="space-y-3 text-xs sm:text-sm font-medium text-zinc-300">
                 <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
-                  <span>{COLLEGE_INFO.contact.address}</span>
+                  <MapPin className="w-4 h-4 text-[#E80088] shrink-0 mt-0.5" />
+                  <a
+                    href="https://maps.app.goo.gl/Gjjy6hVGmfGcuz3g7"
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="hover:text-[#E80088] transition-colors"
+                  >
+                    {COLLEGE_INFO.contact.address}
+                  </a>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-pink-500 shrink-0" />

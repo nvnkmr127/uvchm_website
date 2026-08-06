@@ -27,7 +27,7 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
                 {/* Floating Women Scholarship Highlight Badge */}
-                <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-white/20">
+                <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-[#E80088] to-[#90268B] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-white/20">
                   <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0">
                     <Heart className="w-5 h-5 fill-current" />
                   </div>
@@ -45,14 +45,14 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
             
             {/* Header Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-300 text-pink-700 text-xs font-black uppercase tracking-wider shadow-xs">
-              <Star className="w-3.5 h-3.5 fill-current text-pink-600" />
+              <Star className="w-3.5 h-3.5 fill-current text-[#E80088]" />
               <span>ABOUT UV COLLEGE OF HOTEL MANAGEMENT</span>
             </div>
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.12]">
               More Than Just a College — <br />
-              <span className="text-pink-600">A Launchpad for Global Careers</span>
+              <span className="text-[#E80088]">A Launchpad for Global Careers</span>
             </h2>
 
             {/* Paragraph 1 */}
@@ -73,15 +73,15 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
             {/* Highlights Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
               <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                <div className="text-lg font-black text-pink-600">100%</div>
+                <div className="text-lg font-black text-[#E80088]">100%</div>
                 <div className="text-[10px] font-bold text-slate-700 uppercase">Job Placements</div>
               </div>
               <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                <div className="text-lg font-black text-pink-600">10+</div>
+                <div className="text-lg font-black text-[#E80088]">10+</div>
                 <div className="text-[10px] font-bold text-slate-700 uppercase">Countries Worldwide</div>
               </div>
               <div className="p-3 bg-pink-50 border border-pink-200 rounded-xl text-center">
-                <div className="text-lg font-black text-pink-700">30% OFF</div>
+                <div className="text-lg font-black text-[#90268B]">30% OFF</div>
                 <div className="text-[10px] font-bold text-pink-800 uppercase">Discount for Women</div>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
             <div className="pt-2">
               <button
                 onClick={onOpenApply}
-                className="px-8 py-3.5 bg-gradient-to-r from-pink-600 via-pink-500 to-rose-600 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/30 flex items-center gap-2 hover:scale-105 transition-all"
+                className="px-8 py-3.5 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#E80088]/30 flex items-center gap-2 hover:scale-105 transition-all"
               >
                 <span>APPLY FOR ADMISSION TODAY</span>
                 <ArrowRight className="w-4 h-4" />

@@ -1,30 +1,75 @@
 @import "tailwindcss";
 
+@theme {
+  --color-pink-500: #E80088;
+  --color-pink-600: #E80088;
+  --color-pink-700: #90268B;
+  --color-purple-600: #90268B;
+  --color-purple-700: #90268B;
+  --color-purple-900: #443C87;
+  --color-purple-950: #0D0D0D;
+  --color-indigo-600: #443C87;
+  --color-indigo-700: #443C87;
+  --color-indigo-800: #443C87;
+  --color-indigo-900: #0D0D0D;
+  --color-slate-900: #0D0D0D;
+  --color-slate-950: #0D0D0D;
+  --color-black: #0D0D0D;
+
+  --color-palette-purple: #90268B;
+  --color-palette-pink: #E80088;
+  --color-palette-indigo: #443C87;
+  --color-palette-dark: #0D0D0D;
+}
+
 @layer base {
   :root {
-    --bg-white: #ffffff;
-    --card-white: #ffffff;
-    --uv-purple-900: #2e1f7a;
-    --uv-purple-800: #3b2c85;
-    --uv-pink-500: #e91e63;
-    --uv-pink-600: #d81b60;
+    --palette-purple: #90268B;
+    --palette-pink: #E80088;
+    --palette-indigo: #443C87;
+    --palette-dark: #0D0D0D;
   }
 
   body {
     background-color: #ffffff;
-    color: #0f172a;
+    color: #0D0D0D;
     font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Floating Capsule Glassmorphism Utility for Pure White Background */
+/* Custom Palette Utility Classes */
+.bg-palette-purple { background-color: #90268B; }
+.bg-palette-pink { background-color: #E80088; }
+.bg-palette-indigo { background-color: #443C87; }
+.bg-palette-dark { background-color: #0D0D0D; }
+
+.text-palette-purple { color: #90268B; }
+.text-palette-pink { color: #E80088; }
+.text-palette-indigo { color: #443C87; }
+.text-palette-dark { color: #0D0D0D; }
+
+.border-palette-purple { border-color: #90268B; }
+.border-palette-pink { border-color: #E80088; }
+.border-palette-indigo { border-color: #443C87; }
+.border-palette-dark { border-color: #0D0D0D; }
+
+/* Palette Gradients */
+.gradient-brand {
+  background: linear-gradient(135deg, #E80088 0%, #90268B 50%, #443C87 100%);
+}
+
+.gradient-dark-banner {
+  background: linear-gradient(180deg, #0D0D0D 0%, #443C87 50%, #90268B 100%);
+}
+
+/* Floating Capsule Glassmorphism Utility */
 .glass-capsule {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(233, 30, 99, 0.2);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(232, 0, 136, 0.25);
+  box-shadow: 0 10px 30px -5px rgba(13, 13, 13, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   border-radius: 9999px;
 }
 
@@ -32,35 +77,35 @@
   background: #ffffff;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(13, 13, 13, 0.08);
+  box-shadow: 0 10px 30px -5px rgba(13, 13, 13, 0.05);
 }
 
 .glass-card {
   background: #ffffff;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px -3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(13, 13, 13, 0.08);
+  box-shadow: 0 4px 20px -3px rgba(13, 13, 13, 0.05);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 20px;
 }
 
 .glass-card:hover {
   background: #ffffff;
-  border-color: rgba(233, 30, 99, 0.4);
+  border-color: rgba(232, 0, 136, 0.4);
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px -10px rgba(233, 30, 99, 0.15);
+  box-shadow: 0 20px 40px -10px rgba(232, 0, 136, 0.15);
 }
 
-.text-gradient-amber {
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #b45309 100%);
+.text-gradient-brand {
+  background: linear-gradient(135deg, #E80088 0%, #90268B 50%, #443C87 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-pink {
-  background: linear-gradient(135deg, #e91e63 0%, #c2185b 50%, #d81b60 100%);
+  background: linear-gradient(135deg, #E80088 0%, #90268B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -69,7 +114,7 @@
   position: absolute;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(233, 30, 99, 0.08) 0%, rgba(59, 44, 133, 0.04) 40%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(232, 0, 136, 0.12) 0%, rgba(68, 60, 135, 0.08) 40%, rgba(255, 255, 255, 0) 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -95,6 +140,15 @@
   animation-play-state: paused;
 }
 
+@keyframes slide-progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.animate-progress {
+  animation: slide-progress 4500ms linear forwards;
+}
+
 .animate-marquee-reverse {
   display: flex;
   width: max-content;
@@ -113,9 +167,9 @@
   background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #443C87;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e91e63;
+  background: #E80088;
 }

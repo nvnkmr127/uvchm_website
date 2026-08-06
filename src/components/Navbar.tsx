@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-gradient-to-r from-pink-600 via-purple-700 to-pink-600 text-white text-xs font-black py-1.5 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
+      <div className="bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white text-xs font-black py-1.5 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
         <Sparkles className="w-3.5 h-3.5 animate-pulse" />
         <span>UV College of Hotel Management — 100% Placements in Taj, Oberoi, Marriott & Overseas Hotels!</span>
         <button
@@ -54,26 +54,26 @@ export default function Navbar() {
             </Link>
 
             {/* Center Navigation Links - Crisp Dark Text for White BG */}
-            <nav className="hidden lg:flex items-center space-x-7 text-xs font-extrabold text-slate-800 uppercase tracking-wide">
-              <Link href="/" className="text-pink-600 hover:text-pink-700 transition-colors">
+            <nav className="hidden lg:flex items-center space-x-6 text-xs font-extrabold text-slate-800 uppercase tracking-wide">
+              <Link href="/" className="hover:text-pink-600 transition-colors">
                 Home
               </Link>
-              <Link href="#academics" className="hover:text-pink-600 transition-colors flex items-center gap-1">
+              <Link href="/about" className="hover:text-pink-600 transition-colors">
+                About
+              </Link>
+              <Link href="/courses" className="hover:text-pink-600 transition-colors flex items-center gap-1">
                 Courses <Sparkles className="w-3 h-3 text-pink-600 animate-pulse" />
               </Link>
-              <Link href="#placements" className="hover:text-pink-600 transition-colors">
+              <Link href="/placements" className="hover:text-pink-600 transition-colors">
                 Placements
               </Link>
-              <Link href="#facilities" className="hover:text-pink-600 transition-colors">
+              <Link href="/facilities" className="hover:text-pink-600 transition-colors">
                 Training Labs
               </Link>
-              <Link href="#events" className="hover:text-pink-600 transition-colors">
-                Events
-              </Link>
-              <Link href="#faculty" className="hover:text-pink-600 transition-colors">
+              <Link href="/faculty" className="hover:text-pink-600 transition-colors">
                 Faculty
               </Link>
-              <Link href="#admissions" className="hover:text-pink-600 transition-colors">
+              <Link href="/contact" className="hover:text-pink-600 transition-colors">
                 Contact
               </Link>
             </nav>
@@ -114,23 +114,26 @@ export default function Navbar() {
             </div>
 
             <nav className="flex flex-col space-y-3 font-extrabold text-slate-800 text-sm uppercase tracking-wide">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-pink-600 py-1">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
                 Home
               </Link>
-              <Link href="#academics" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1 flex items-center gap-1">
+              <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
+                About Us
+              </Link>
+              <Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1 flex items-center gap-1">
                 Courses ✨
               </Link>
-              <Link href="#placements" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
+              <Link href="/placements" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
                 Placements
               </Link>
-              <Link href="#facilities" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
+              <Link href="/facilities" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
                 Training Labs
               </Link>
-              <Link href="#events" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
-                Events
-              </Link>
-              <Link href="#faculty" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
+              <Link href="/faculty" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
                 Faculty
+              </Link>
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
+                Contact
               </Link>
             </nav>
 

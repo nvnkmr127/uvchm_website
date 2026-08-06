@@ -199,7 +199,7 @@ export default function StudentPlacements({ onOpenApply }: { onOpenApply: () => 
 
               <button
                 onClick={onOpenApply}
-                className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold uppercase rounded-full shadow-xs flex items-center gap-1.5 transition-all"
+                className="px-6 py-2.5 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] hover:opacity-90 text-white text-xs font-bold uppercase rounded-full shadow-md flex items-center gap-1.5 transition-all hover:scale-105"
               >
                 <span>APPLY NOW</span>
                 <ArrowRight className="w-4 h-4" />

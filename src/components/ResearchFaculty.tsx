@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Quote, ArrowLeft, ArrowRight, Star, ShieldCheck, Sparkles, CheckCircle2, Award } from 'lucide-react';
 import { FACULTY } from '@/data/collegeData';
 
 export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => void }) {
   const [activeFacultyIndex, setActiveFacultyIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const triggerAnimation = (newIndex: number) => {
     setIsAnimating(true);
@@ -23,6 +24,15 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
     const newIndex = (activeFacultyIndex + 1) % FACULTY.length;
     triggerAnimation(newIndex);
   };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      const newIndex = (activeFacultyIndex + 1) % FACULTY.length;
+      triggerAnimation(newIndex);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [activeFacultyIndex, isPaused]);
 
   const currentFaculty = FACULTY[activeFacultyIndex];
   const secondFaculty = FACULTY[(activeFacultyIndex + 1) % FACULTY.length];
@@ -146,7 +156,11 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
         </div>
 
         {/* 2. Animated Stacked Card Faculty Slider */}
-        <div className="space-y-8 pt-8 border-t border-slate-200">
+        <div 
+          className="space-y-8 pt-8 border-t border-slate-200"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -184,52 +198,10 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                 </div>
               </div>
 
-              {/* Animated Author Profile */}
-              <div
-                className={`flex items-center space-x-4 pt-1 transition-all duration-500 transform ${
-                  isAnimating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'
-                }`}
-              >
-                <img
-                  src={currentFaculty.image}
-                  alt={currentFaculty.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-pink-500 shadow-sm transition-transform hover:scale-110"
-                />
-                <div>
-                  <div className="text-base font-black text-slate-950">
-                    — {currentFaculty.name}
-                  </div>
-                  <div className="text-xs font-bold text-slate-500">
-                    {currentFaculty.position} • {currentFaculty.qualifications}
-                  </div>
-                </div>
-              </div>
-
-              {/* Navigation Controls */}
-              <div className="flex items-center space-x-3 pt-2">
-                <button
-                  onClick={prevFaculty}
-                  disabled={isAnimating}
-                  className="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition-all hover:scale-110 active:scale-95 shadow-xs disabled:opacity-50"
-                  title="Previous Faculty"
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                </button>
-
-                <button
-                  onClick={nextFaculty}
-                  disabled={isAnimating}
-                  className="w-11 h-11 rounded-full bg-slate-950 hover:bg-pink-600 text-white flex items-center justify-center transition-all hover:scale-110 active:scale-95 shadow-md disabled:opacity-50"
-                  title="Next Faculty"
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-
             </div>
 
             {/* Right Column: 3D Animated Stacked Card Deck */}
-            <div className="lg:col-span-5 relative py-6">
+            <div className="lg:col-span-5 relative py-6 flex flex-col items-center">
               <div className="relative w-full max-w-md mx-auto aspect-[4/5] max-h-[420px]">
                 
                 {/* Back Card 3 (Tilted -rotate-6) */}
@@ -274,9 +246,28 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
+                  {/* Navigation Buttons directly ON the Image */}
+                  <button
+                    onClick={prevFaculty}
+                    disabled={isAnimating}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-slate-950/70 hover:bg-[#E80088] text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-lg disabled:opacity-50"
+                    title="Previous Faculty"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                  </button>
+
+                  <button
+                    onClick={nextFaculty}
+                    disabled={isAnimating}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-slate-950/70 hover:bg-[#E80088] text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-lg disabled:opacity-50"
+                    title="Next Faculty"
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+
                   {/* Badge Tag Overlay */}
                   <div className="absolute bottom-4 left-4 right-4 p-3 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200">
-                    <div className="text-[10px] font-black uppercase text-pink-600 tracking-wider">
+                    <div className="text-[10px] font-black uppercase text-[#E80088] tracking-wider">
                       {currentFaculty.position}
                     </div>
                     <div className="text-xs font-black text-slate-950 mt-0.5">
@@ -288,6 +279,33 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                   </div>
                 </div>
 
+              </div>
+
+              {/* Custom Slide Progress Countdown Bar & Step Indicators */}
+              <div className="mt-5 flex flex-col items-center gap-2 z-20">
+                <div className="w-44 h-1.5 bg-slate-200 rounded-full overflow-hidden relative">
+                  <div
+                    key={`${activeFacultyIndex}-${isPaused}`}
+                    className={`h-full bg-gradient-to-r from-[#90268B] to-[#E80088] rounded-full ${
+                      isPaused ? 'w-0' : 'animate-progress'
+                    }`}
+                  />
+                </div>
+
+                <div className="flex items-center gap-1.5 pt-0.5">
+                  {FACULTY.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => triggerAnimation(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        activeFacultyIndex === idx
+                          ? 'w-6 bg-[#E80088]'
+                          : 'w-1.5 bg-slate-300 hover:bg-slate-400'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
