@@ -97,13 +97,20 @@ export default function PlacementsPage() {
               key={idx}
               className="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-pink-500/30 transition-all flex flex-col items-center justify-center text-center space-y-2 group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-900 group-hover:bg-pink-600 group-hover:text-white transition-all font-black text-lg">
-                {r.logoText.charAt(0)}
+              <div className="w-full h-16 flex items-center justify-center mb-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src={`/logos/${idx + 1}.png`} 
+                  alt={r.name} 
+                  className="max-h-full max-w-[80%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                />
               </div>
-              <h3 className="font-black text-slate-900 text-sm">{r.name}</h3>
-              <span className="text-[10px] font-bold text-pink-600 bg-pink-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                {r.tier}
-              </span>
+              <div className="space-y-1">
+                <h3 className="font-black text-slate-900 text-sm">{r.name}</h3>
+                <span className="text-[10px] font-bold text-pink-600 bg-pink-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block">
+                  {r.tier}
+                </span>
+              </div>
             </div>
           ))}
         </div>

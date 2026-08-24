@@ -181,6 +181,7 @@ export const BROCHURE_FACILITIES = [
 export const RECRUITERS: Recruiter[] = [
   { name: 'Marriott Hotels & Resorts', logoText: 'MARRIOTT', tier: 'Global Recruiter' },
   { name: 'Hyatt Hotels & Resorts', logoText: 'HYATT', tier: 'Premium Partner' },
+  { name: 'Radisson Hotel Group', logoText: 'RADISSON', tier: 'International Partner' },
   { name: 'Hilton Hotels & Resorts', logoText: 'HILTON', tier: 'Global Partner' },
   { name: 'Accor Hotels', logoText: 'ACCOR', tier: 'Luxury Collection' },
   { name: 'Kempinski Hotels', logoText: 'KEMPINSKI', tier: '5-Star Deluxe' },
@@ -189,14 +190,13 @@ export const RECRUITERS: Recruiter[] = [
   { name: 'Rotana Hotels & Resorts', logoText: 'ROTANA', tier: 'Middle East Partner' },
   { name: 'Six Senses Resorts', logoText: 'SIX SENSES', tier: 'Eco Luxury' },
   { name: 'Four Seasons Hotels', logoText: 'FOUR SEASONS', tier: 'Ultra Luxury' },
-  { name: 'Radisson Hotel Group', logoText: 'RADISSON', tier: 'International Partner' },
-  { name: 'JA Resorts & Hotels', logoText: 'JA RESORTS', tier: 'Resort Partner' },
-  { name: 'Anantara Hotels & Spas', logoText: 'ANANTARA', tier: 'Luxury Spas' },
   { name: 'The Leela Palaces', logoText: 'THE LEELA', tier: 'Ultra Luxury' },
   { name: 'Oberoi Hotels & Resorts', logoText: 'OBEROI', tier: '5-Star Deluxe' },
-  { name: 'Taj Hotels & Palaces', logoText: 'TAJ HOTELS', tier: 'Heritage Luxury' },
   { name: 'ITC Hotels', logoText: 'ITC HOTELS', tier: 'Luxury Collection' },
-  { name: 'The LaLiT Hotels', logoText: 'THE LALIT', tier: '5-Star Partner' },
+  { name: 'Taj Hotels & Palaces', logoText: 'TAJ HOTELS', tier: 'Heritage Luxury' },
+  { name: 'Vijan Mahal', logoText: 'VIJAN MAHAL', tier: 'Luxury Partner' },
+  { name: 'Sheraton Hotels & Resorts', logoText: 'SHERATON', tier: 'Global Partner' },
+  { name: 'Anantara Hotels & Spas', logoText: 'ANANTARA', tier: 'Luxury Spas' },
 ];
 
 export const PROGRAMS: Program[] = [
@@ -238,7 +238,7 @@ export const PROGRAMS: Program[] = [
       'Paid 6-Month Internship in Taj, Oberoi & Marriott',
     ],
     careers: ['Front Office Executive', 'F&B Associate', 'Housekeeping Supervisor', 'Guest Relations Officer'],
-    image: '/images/bartending_training_new.jpg',
+    image: '/images/bhm_premium.jpg',
     featured: true,
   },
   {
@@ -271,7 +271,7 @@ export const PROGRAMS: Program[] = [
       'Paid 6-Month Executive Internship',
     ],
     careers: ['Assistant Front Office Manager', 'F&B Executive', 'Banquets Lead'],
-    image: '/images/fnb_training_new.jpg',
+    image: '/images/culinary_training_new.jpg',
     featured: true,
   },
   {
@@ -336,8 +336,8 @@ export const PROGRAMS: Program[] = [
       'Global Hospitality Trends & Analysis',
       'Direct Managerial Placement Pathway',
     ],
-    careers: ['General Manager', 'Director of Food & Beverage', 'International Resort Lead'],
-    image: '/images/housekeeping_training_new.jpg',
+    careers: ['General Manager', 'Corporate Director', 'Regional Operations Manager'],
+    image: '/images/front_office_real.jpg',
     featured: true,
   },
   {
@@ -509,7 +509,7 @@ export const NEWS: NewsItem[] = [
     date: 'August 04, 2026',
     category: 'Placements',
     summary: 'All final-year students of UV College of Hotel Management secured job offers at top 5-star hotel chains across India and abroad.',
-    image: '/images/culinary_sushi.jpg',
+    image: '/images/slider/1.jpeg',
   },
   {
     id: 'news-2',
@@ -517,7 +517,7 @@ export const NEWS: NewsItem[] = [
     date: 'July 28, 2026',
     category: 'Campus Expansion',
     summary: 'UV College upgrades practical infrastructure with real-time hotel PMS terminals and luxury mock guest rooms.',
-    image: '/images/frontoffice_dept.png',
+    image: '/images/slider/2.jpeg',
   },
 ];
 
@@ -536,7 +536,7 @@ export const FACILITIES: Facility[] = [
     category: 'Hospitality',
     description: 'Real-time Opera PMS check-in terminals, mock concierge desk, keycard encoders, and 5-star housekeeping guest room.',
     features: ['Opera PMS Software', 'Check-In/Out Counter', 'Housekeeping Suite'],
-    image: '/images/frontoffice_dept.png',
+    image: '/images/front_office_real.jpg',
   },
   {
     id: 'fac-3',
@@ -544,7 +544,7 @@ export const FACILITIES: Facility[] = [
     category: 'Beverage & F&B',
     description: 'Operational 60-seat fine dining training restaurant with flair bar, cocktail shakers, wine glass racks, and flambé trolleys.',
     features: ['60-Seat Restaurant', 'Flair Bartending Bar', 'Flambé Service Trolleys'],
-    image: '/images/bartending_training_new.jpg',
+    image: '/images/model_bar_real.jpg',
   },
 ];
 

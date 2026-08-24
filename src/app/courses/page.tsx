@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ApplyModal from '@/components/ApplyModal';
@@ -8,11 +8,26 @@ import { PROGRAMS, Program } from '@/data/collegeData';
 import { BookOpen, Search, Sparkles, Clock, Award, ArrowRight, CheckCircle2, Filter } from 'lucide-react';
 import Link from 'next/link';
 
+const BACKGROUND_IMAGES = [
+  '/images/bhm_premium.jpg',
+  '/images/culinary_flambe.jpg',
+  '/images/model_bar_real.jpg',
+  '/images/front_office_real.jpg'
+];
+
 export default function CoursesPage() {
   const [applyModalOpen, setApplyModalOpen] = useState(false);
   const [selectedProgramId, setSelectedProgramId] = useState<string | undefined>(undefined);
   const [selectedLevel, setSelectedLevel] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [currentBg, setCurrentBg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % BACKGROUND_IMAGES.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const levels = ['All', 'Diploma', 'Postgraduate', 'Certification'];
 
@@ -36,7 +51,24 @@ export default function CoursesPage() {
 
       {/* Header Banner */}
       <section className="relative pt-32 pb-20 bg-[#0D0D0D] text-white overflow-hidden border-b border-[#E80088]/20">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#443C87]/30 to-[#0D0D0D] backdrop-blur-3xl" />
+        {BACKGROUND_IMAGES.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentBg ? 'opacity-30' : 'opacity-0'
+            }`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={src} 
+              alt="Background" 
+              className={`w-full h-full object-cover transition-transform duration-[4000ms] ease-out ${
+                index === currentBg ? 'scale-110' : 'scale-100'
+              }`} 
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 via-[#443C87]/80 to-[#0D0D0D]/90" />
         <div className="absolute top-0 right-1/4 w-[500px] h-[300px] bg-[#E80088]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-wider backdrop-blur-md shadow-sm">

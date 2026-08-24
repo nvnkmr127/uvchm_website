@@ -2,20 +2,13 @@
 
 import React from 'react';
 
+import { RECRUITERS } from '@/data/collegeData';
+
 export default function PartnersCarousel() {
-  const partnerLogos = [
-    { name: 'Taj Hotels & Palaces', src: '/partners/taj.svg' },
-    { name: 'The Oberoi Group', src: '/partners/oberoi.svg' },
-    { name: 'Marriott International', src: '/partners/marriott.svg' },
-    { name: 'Radisson Hotel Group', src: '/partners/radisson.svg' },
-    { name: 'Park Inn by Radisson', src: '/partners/parkinn.svg' },
-    { name: 'IHCL Hotels', src: '/partners/ihcl.svg' },
-    { name: 'Hyatt Regency', src: '/partners/hyatt.svg' },
-    { name: 'ITC Hotels', src: '/partners/itc.svg' },
-    { name: 'The Leela Palaces', src: '/partners/leela.svg' },
-    { name: 'Vivanta by Taj', src: '/partners/vivanta.svg' },
-    { name: 'Emirates First Class', src: '/partners/emirates.svg' },
-  ];
+  const partnerLogos = RECRUITERS.map((r, idx) => ({
+    name: r.name,
+    src: `/logos/${idx + 1}.png`
+  }));
 
   return (
     <section id="placements" className="py-8 bg-white relative overflow-hidden border-t border-b border-slate-200">

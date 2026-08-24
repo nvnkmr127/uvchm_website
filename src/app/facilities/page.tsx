@@ -15,7 +15,7 @@ export default function FacilitiesPage() {
       name: 'Advanced Culinary Arts & Quantity Kitchen',
       category: 'Food Production',
       icon: Utensils,
-      image: '/images/culinary_dept.png',
+      image: '/images/culinary_basic.jpg',
       description: 'Commercial 5-star standard culinary lab equipped with heavy-duty gas ranges, tandoors, cold storage, butchery stations, and convection ovens.',
       features: [
         'Individual cooking stations for 30+ students',
@@ -29,7 +29,7 @@ export default function FacilitiesPage() {
       name: 'Model Hotel Guest Suite & Front Desk',
       category: 'Hotel Operations',
       icon: BedDouble,
-      image: '/images/frontoffice_dept.png',
+      image: '/images/front_office_real.jpg',
       description: 'Fully simulated 5-star hotel lobby, reception desk, and guest suite designed to train students in guest check-in, key card allocation, and concierge etiquette.',
       features: [
         'Opera PMS hotel reservation software training',
@@ -43,7 +43,7 @@ export default function FacilitiesPage() {
       name: 'Flair Bartending & Mixology Lounge',
       category: 'Beverage Management',
       icon: GlassWater,
-      image: '/images/bartending_dept.png',
+      image: '/images/model_bar_real.jpg',
       description: 'Dedicated training bar featuring professional shakers, flair equipment, speed rails, mocktail syrups, and fine glassware sets.',
       features: [
         'Classic & molecular cocktail preparation',
@@ -57,7 +57,7 @@ export default function FacilitiesPage() {
       name: 'Housekeeping & Linen Management Lab',
       category: 'Hospitality Operations',
       icon: ShieldCheck,
-      image: '/images/housekeeping_dept.png',
+      image: '/images/housekeeping_training_new.jpg',
       description: 'Specialized lab designed for room making, turn-down service, flower arrangements, floor scrubbing machinery, and linen care.',
       features: [
         '5-star bed-making techniques & turn-down service',
