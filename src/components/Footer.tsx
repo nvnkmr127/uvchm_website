@@ -146,12 +146,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 {[
-                  { name: 'Instagram', icon: InstagramIcon, href: 'https://instagram.com', color: 'hover:bg-pink-600 hover:text-white' },
+                  { name: 'Instagram', icon: InstagramIcon, href: 'https://www.instagram.com/uv_chm?igsh=MW5rODhmNDQ3cm51ag%3D%3D&utm_source=qr', color: 'hover:bg-pink-600 hover:text-white' },
                   { name: 'WhatsApp', icon: WhatsAppIcon, href: 'https://wa.me/918463995959', color: 'hover:bg-emerald-600 hover:text-white' },
-                  { name: 'Facebook', icon: FacebookIcon, href: 'https://facebook.com', color: 'hover:bg-blue-600 hover:text-white' },
-                  { name: 'YouTube', icon: YouTubeIcon, href: 'https://youtube.com', color: 'hover:bg-red-600 hover:text-white' },
-                  { name: 'LinkedIn', icon: LinkedInIcon, href: 'https://linkedin.com', color: 'hover:bg-sky-600 hover:text-white' },
-                  { name: 'Twitter/X', icon: XTwitterIcon, href: 'https://twitter.com', color: 'hover:bg-zinc-700 hover:text-white' },
+                  { name: 'Facebook', icon: FacebookIcon, href: 'https://www.facebook.com/UVCHM/', color: 'hover:bg-blue-600 hover:text-white' },
+                  { name: 'YouTube', icon: YouTubeIcon, href: 'https://www.youtube.com/@uvchm', color: 'hover:bg-red-600 hover:text-white' },
+                  { name: 'LinkedIn', icon: LinkedInIcon, href: 'https://www.linkedin.com/company/uv-college-of-hotel-managements/about/?viewAsMember=true', color: 'hover:bg-sky-600 hover:text-white' },
                 ].map((s) => {
                   const Icon = s.icon;
                   return (

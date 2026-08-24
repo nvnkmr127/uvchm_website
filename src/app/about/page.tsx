@@ -8,6 +8,7 @@ import ApplyModal from '@/components/ApplyModal';
 import { COLLEGE_INFO } from '@/data/collegeData';
 import { GraduationCap, Award, ShieldCheck, Building2, Sparkles, CheckCircle2, Globe, Users, ArrowRight, Compass } from 'lucide-react';
 import Link from 'next/link';
+import YoutubePromo from '@/components/YoutubePromo';
 
 export default function AboutPage() {
   const [applyModalOpen, setApplyModalOpen] = useState(false);
@@ -48,6 +49,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Experience UVCHM Video */}
+      <YoutubePromo />
 
       {/* Core Mission & Leadership */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">

@@ -46,7 +46,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center space-x-3 group shrink-0">
               <div className="bg-white p-1.5 rounded-full shadow-xs border border-slate-200 group-hover:scale-105 transition-transform flex items-center">
                 <img
-                  src="/uv-logo.svg"
+                  src="/new-logo.png"
                   alt="UV College of Hotel Management Logo"
                   className="h-9 sm:h-11 w-auto object-contain"
                 />

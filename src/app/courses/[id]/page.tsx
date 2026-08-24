@@ -101,7 +101,7 @@ export default function SingleCoursePage() {
                 <span>Program Overview</span>
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                This comprehensive program at UV College of Hotel Management combines intensive theoretical knowledge with over 500 hours of hands-on practical training inside our 5-star standard campus training labs.
+                {program.overviewExtended || 'This comprehensive program at UV College of Hotel Management combines intensive theoretical knowledge with over 500 hours of hands-on practical training inside our 5-star standard campus training labs.'}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
                 <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">
@@ -121,28 +121,41 @@ export default function SingleCoursePage() {
               </div>
             </div>
 
-            {/* Curriculum Highlights */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-              <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 text-pink-600" />
-                <span>Key Modules & Practical Training</span>
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  '5-Star Luxury Hotel Standard Operating Procedures',
-                  'Opera PMS & Hotel Front Desk Administration',
-                  'Advanced Culinary Arts & International Cuisines',
-                  'Mixology, Flair Bartending & Wine Etiquette',
-                  'Banquet Management & High-Profile Catering Operations',
-                  'Paid 6-Month Internship in Taj, Oberoi & Marriott',
-                ].map((highlight, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 p-3 bg-slate-50 rounded-xl text-xs font-bold text-slate-800">
-                    <CheckCircle2 className="w-4 h-4 text-pink-600 shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
-                  </div>
-                ))}
+            {/* Why Choose Section (Conditionally Rendered) */}
+            {program.whyChoose && program.whyChoose.length > 0 && (
+              <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-pink-600" />
+                  <span>Why Choose This Course?</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {program.whyChoose.map((item, idx) => (
+                    <div key={idx} className="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex flex-col gap-2">
+                      <div className="font-bold text-sm text-slate-900">{item.title}</div>
+                      <div className="text-xs text-slate-600 leading-relaxed">{item.description}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* Curriculum Highlights */}
+            {program.modules && program.modules.length > 0 && (
+              <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                  <GraduationCap className="w-5 h-5 text-pink-600" />
+                  <span>Key Modules & Practical Training</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {program.modules.map((highlight, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 p-3 bg-slate-50 rounded-xl text-xs font-bold text-slate-800">
+                      <CheckCircle2 className="w-4 h-4 text-pink-600 shrink-0 mt-0.5" />
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Careers */}
             <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
@@ -159,6 +172,25 @@ export default function SingleCoursePage() {
                 ))}
               </div>
             </div>
+
+            {/* FAQ Section (Conditionally Rendered) */}
+            {program.faq && program.faq.length > 0 && (
+              <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-black text-sm">?</div>
+                  <span>Frequently Asked Questions</span>
+                </h2>
+                <div className="space-y-4">
+                  {program.faq.map((faq, idx) => (
+                    <div key={idx} className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-100 space-y-2">
+                      <h4 className="font-bold text-sm text-slate-900">{faq.question}</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
 
           </div>
 

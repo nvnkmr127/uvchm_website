@@ -12,7 +12,7 @@ export default function Logo({ className = 'h-12', variant = 'full' }: LogoProps
     return (
       <div className={`relative flex items-center justify-center ${className}`}>
         <img
-          src="/uv-logo.svg"
+          src="/new-logo.png"
           alt="UV College of Hotel Management Logo Badge"
           className="h-full w-auto object-contain"
         />
@@ -23,7 +23,7 @@ export default function Logo({ className = 'h-12', variant = 'full' }: LogoProps
   return (
     <div className={`flex items-center space-x-3 ${className}`}>
       <img
-        src="/uv-logo.svg"
+        src="/new-logo.png"
         alt="UV College of Hotel Management Logo - Building Careers Bringing Excellence"
         className="h-full w-auto object-contain max-h-14"
       />

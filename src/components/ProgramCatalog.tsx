@@ -211,7 +211,9 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
               categoryName: 'Hotel Management',
             };
 
-            const colSpan = idx % 3 === 0 ? 'md:col-span-7' : idx % 3 === 1 ? 'md:col-span-5' : 'md:col-span-4';
+            const pattern = [7, 5, 4, 4, 4, 5, 7];
+            const span = pattern[idx % pattern.length];
+            const colSpan = `md:col-span-${span}`;
 
             return (
               <div

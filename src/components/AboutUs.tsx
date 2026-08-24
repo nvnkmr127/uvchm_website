@@ -18,11 +18,11 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Main Campus Image */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-100 bg-slate-900 group">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-200 bg-slate-900 group">
                 <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80"
+                  src="/college.png"
                   alt="UV College 5-Star Campus"
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-auto max-h-[600px] object-contain group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 

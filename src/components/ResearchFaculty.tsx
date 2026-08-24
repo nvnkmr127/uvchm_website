@@ -68,9 +68,9 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
               <div className="absolute top-0 left-0 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
               <div className="relative z-10 space-y-6">
-                <div className="relative mx-auto w-56 h-56 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border-4 border-pink-500/40 shadow-2xl group">
+                <div className="relative mx-auto w-72 h-72 sm:w-96 sm:h-96 rounded-3xl overflow-hidden border-4 border-pink-500/40 shadow-2xl group">
                   <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+                    src="/images/ssa-1.png"
                     alt="Sujan Kumar Doddi - Founder & Principal"
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />
@@ -242,7 +242,9 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                   <img
                     src={currentFaculty.image}
                     alt={currentFaculty.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05] ${
+                      currentFaculty.imageStyle || 'object-top'
+                    }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
