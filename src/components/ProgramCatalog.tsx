@@ -72,24 +72,12 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
     },
   };
 
-  const courseImages: Record<string, string> = {
-    'diploma-hotel-mgmt': 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
-    'advance-diploma-hotel-mgmt': 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-    'pg-diploma-hotel-mgmt': 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
-    'masters-diploma-hotel-mgmt': 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
-    'bartending-mixology': 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80',
-    'craft-course-food-production': 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80',
-    'craft-course-fb-service': 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    'craft-course-housekeeping': 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
-  };
+  // Images are now pulled directly from collegeData.ts
 
   const filteredPrograms = PROGRAMS.filter((prog) => {
     const theme = categoryThemes[prog.id] || { categoryName: 'Hotel Management' };
     return selectedCategory === 'All' || theme.categoryName === selectedCategory;
   });
-
-  const featuredCourse = filteredPrograms[0] || PROGRAMS[0];
-  const remainingCourses = filteredPrograms.slice(1);
 
   return (
     <section id="academics" className="py-16 bg-white relative border-b border-slate-200">
@@ -131,149 +119,77 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
           </div>
         </div>
 
-        {/* 1. Featured Premium Full-Width Card */}
-        {featuredCourse && (
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 grid grid-cols-1 lg:grid-cols-12 min-h-[420px]">
-            {/* Left Image Section */}
-            <div className="lg:col-span-7 relative min-h-[280px] lg:min-h-full overflow-hidden">
-              <img
-                src={courseImages[featuredCourse.id] || courseImages['diploma-hotel-mgmt']}
-                alt={featuredCourse.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900 hidden lg:block"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent lg:hidden"></div>
-
-              {/* Floating "100% Placement" Badge */}
-              <div className="absolute top-4 left-4 px-3 py-1 bg-pink-600 text-white text-[10px] font-black uppercase rounded-full shadow-lg tracking-wider flex items-center gap-1.5 z-20">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>100% Guaranteed Placement</span>
-              </div>
-            </div>
-
-            {/* Right Info Section */}
-            <div className="lg:col-span-5 p-6 sm:p-8 text-white flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-black uppercase rounded-full">
-                    FEATURED PROGRAM • {featuredCourse.duration}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-black leading-tight text-white">
-                  {featuredCourse.title}
-                </h3>
-
-                <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
-                  {featuredCourse.description}
-                </p>
-
-                <div className="pt-2 space-y-1.5 text-xs font-bold text-slate-200">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-pink-400" />
-                    <span>6-Month 5-Star Hotel Internship (Taj, Oberoi, Marriott)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-pink-400" />
-                    <span>Government Recognized Certification</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
-                <button
-                  onClick={() => onSelectProgramToApply(featuredCourse.id)}
-                  className="px-6 py-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/35 flex items-center gap-2 hover:scale-105 transition-all"
-                >
-                  <span>APPLY NOW</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => setActiveModalProgram(featuredCourse)}
-                  className="text-xs font-black text-slate-300 hover:text-white underline"
-                >
-                  Syllabus Details
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* 2. Asymmetrical Masonry Layout Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
-          {remainingCourses.map((prog, idx) => {
-            const theme = categoryThemes[prog.id] || {
-              bg: 'from-pink-600 to-rose-600',
-              text: 'text-pink-600',
-              badge: 'bg-pink-50 text-pink-700 border-pink-200',
-              border: 'border-pink-500',
-              categoryName: 'Hotel Management',
-            };
-
-            const pattern = [7, 5, 4, 4, 4, 5, 7];
-            const span = pattern[idx % pattern.length];
-            const colSpan = `md:col-span-${span}`;
-
+        {/* Premium Stacked Layout with Sticky Cascading Effect */}
+        <div className="flex flex-col gap-16 sm:gap-24 pt-8 pb-32">
+          {filteredPrograms.map((prog, index) => {
+            const isEven = index % 2 === 0;
             return (
-              <div
-                key={prog.id}
-                className={`${colSpan} relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group border border-slate-200 min-h-[350px] flex flex-col justify-end`}
+              <div 
+                key={prog.id} 
+                className="relative lg:sticky z-10 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 grid grid-cols-1 lg:grid-cols-12 min-h-[420px] group transition-all duration-700"
+                style={{
+                  top: `calc(6rem + ${index * 1.5}rem)`, // Creates the overlapping stack effect on desktop
+                }}
               >
-                {/* Full Image Background */}
-                <img
-                  src={courseImages[prog.id] || courseImages['diploma-hotel-mgmt']}
-                  alt={prog.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                {/* Image Section */}
+                <div className={`relative h-72 lg:h-full min-h-[350px] overflow-hidden transition-all duration-500 lg:col-span-7 ${!isEven ? 'lg:order-last' : ''}`}>
+                  <img
+                    src={prog.image || '/images/bhm_premium.jpg'}
+                    alt={prog.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-${!isEven ? 'l' : 'r'} from-transparent via-transparent to-slate-900 hidden lg:block`}></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent lg:hidden"></div>
 
-                {/* Floating "100% Placement" Badge */}
-                <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-black uppercase rounded-full shadow-md tracking-wider flex items-center gap-1 z-20">
-                  <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                  <span>100% Placement</span>
+                  <div className={`absolute top-4 ${!isEven ? 'right-4' : 'left-4'} px-4 py-1.5 bg-pink-600 text-white text-[10px] font-black uppercase rounded-full shadow-lg tracking-wider flex items-center gap-1.5 z-20`}>
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>100% Guaranteed Placement</span>
+                  </div>
                 </div>
 
-                {/* Duration Badge Top Left */}
-                <div className="absolute top-4 left-4 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-black uppercase rounded-full shadow-md tracking-wider flex items-center gap-1 z-20">
-                  <Clock className="w-3 h-3 text-pink-400" />
-                  <span>{prog.duration}</span>
-                </div>
+                {/* Info Section */}
+                <div className="lg:col-span-5 p-8 sm:p-12 text-white flex flex-col justify-center space-y-6">
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-black uppercase rounded-full">
+                        {prog.department} • {prog.duration}
+                      </span>
+                    </div>
 
-                {/* White Glass Information Panel Overlay */}
-                <div className="relative z-10 m-4 bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-white/50 shadow-xl space-y-2.5 transition-all duration-300 transform group-hover:-translate-y-1">
-                  
-                  <div className="flex items-center justify-between">
-                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase border ${theme.badge}`}>
-                      {theme.categoryName}
-                    </span>
-                    <span className="text-[10px] font-extrabold text-slate-500">
-                      {prog.duration}
-                    </span>
+                    <h3 className="text-3xl sm:text-4xl font-black leading-tight text-white group-hover:text-pink-400 transition-colors duration-300">
+                      {prog.title}
+                    </h3>
+
+                    <p className="text-slate-300 text-sm font-medium leading-relaxed">
+                      {prog.description}
+                    </p>
+
+                    <div className="pt-4 space-y-3 text-xs font-bold text-slate-200">
+                      <div className="flex items-center gap-2.5 bg-white/5 p-3 rounded-xl border border-white/10">
+                        <CheckCircle2 className="w-4 h-4 text-pink-400 shrink-0" />
+                        <span>6-Month 5-Star Hotel Internship (Taj, Oberoi, Marriott)</span>
+                      </div>
+                      <div className="flex items-center gap-2.5 bg-white/5 p-3 rounded-xl border border-white/10">
+                        <CheckCircle2 className="w-4 h-4 text-pink-400 shrink-0" />
+                        <span>Government Recognized Certification</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-black text-slate-950 leading-snug group-hover:text-pink-600 transition-colors">
-                    {prog.title}
-                  </h3>
-
-                  <p className="text-slate-600 text-xs font-medium leading-relaxed line-clamp-2">
-                    {prog.description}
-                  </p>
-
-                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4">
                     <button
                       onClick={() => onSelectProgramToApply(prog.id)}
-                      className={`px-4 py-2 bg-gradient-to-r ${theme.bg} text-white font-black text-[11px] uppercase tracking-wider rounded-full shadow-md flex items-center gap-1.5 hover:scale-105 transition-all`}
+                      className="px-8 py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/35 flex items-center gap-2 hover:scale-105 transition-all"
                     >
                       <span>APPLY NOW</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <ArrowRight className="w-4 h-4" />
                     </button>
 
                     <button
                       onClick={() => setActiveModalProgram(prog)}
-                      className="text-[11px] font-bold text-slate-600 hover:text-slate-900"
+                      className="text-xs font-black text-slate-300 hover:text-white underline px-4 py-2"
                     >
-                      Details
+                      Syllabus Details
                     </button>
                   </div>
                 </div>
