@@ -17,10 +17,14 @@ export async function POST(req: Request) {
     }
 
     // Insert into Neon Postgres
-    await sql`
-      INSERT INTO inquiries (name, phone, email, course, city, message, source)
-      VALUES (${name}, ${phone}, ${email || null}, ${course || null}, ${city || null}, ${message || null}, ${source || 'Website Form'})
-    `;
+    if (process.env.DATABASE_URL) {
+      await sql`
+        INSERT INTO inquiries (name, phone, email, course, city, message, source)
+        VALUES (${name}, ${phone}, ${email || null}, ${course || null}, ${city || null}, ${message || null}, ${source || 'Website Form'})
+      `;
+    } else {
+      console.log('Skipping database insert because DATABASE_URL is not set.', { name, phone, email, course, city, message, source });
+    }
 
     // Send Email via Resend
     if (process.env.RESEND_API_KEY) {
