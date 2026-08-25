@@ -98,7 +98,7 @@ export default function Hero() {
                 fill
                 className="object-cover object-center scale-105"
                 priority={idx === 0}
-                unoptimized={true}
+                sizes="100vw"
               />
             )}
             {/* Desktop horizontal fade */}

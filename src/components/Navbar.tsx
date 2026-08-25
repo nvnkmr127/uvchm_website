@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Menu, X, Sparkles, Search } from 'lucide-react';
 import { useApplyModal } from '@/context/ApplyModalContext';
 
@@ -45,9 +46,12 @@ export default function Navbar() {
             {/* Left Brand Logo Badge */}
             <Link href="/" className="flex items-center space-x-3 group shrink-0">
               <div className="bg-white p-1.5 rounded-full shadow-xs border border-slate-200 group-hover:scale-105 transition-transform flex items-center">
-                <img
+                <Image
                   src="/new-logo.png"
                   alt="UVCHM Logo"
+                  width={300}
+                  height={100}
+                  priority
                   className="h-9 sm:h-11 w-auto object-contain"
                 />
               </div>

@@ -31,6 +31,7 @@ export default function PartnersCarousel() {
               <img
                 src={partner.src}
                 alt={`${partner.name} Logo`}
+                loading="lazy"
                 className="h-8 sm:h-10 w-auto object-contain"
               />
             </div>

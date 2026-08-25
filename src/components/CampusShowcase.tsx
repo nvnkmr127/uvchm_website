@@ -58,6 +58,7 @@ export default function CampusShowcase() {
                 <img
                   src={fac.image}
                   alt={fac.name}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent"></div>
@@ -111,6 +112,7 @@ export default function CampusShowcase() {
               <img
                 src={selectedFacility.image}
                 alt={selectedFacility.name}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>

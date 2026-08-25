@@ -156,6 +156,7 @@ export default function GoogleReviews() {
                     <img
                       src={review.avatar}
                       alt={review.name}
+                      loading="lazy"
                       className="w-10 h-10 rounded-full object-cover border-2 border-[#E80088]/30 group-hover:scale-105 transition-transform"
                     />
                     <div>

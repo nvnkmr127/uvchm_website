@@ -292,7 +292,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               </p>
               <div className="flex items-center gap-3 pt-2">
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-100">
-                  <img src="/images/testimonials/student_1.jpg" alt="Student" className="w-full h-full object-cover" />
+                  <img src="/images/testimonials/student_1.jpg" alt="Student" loading="lazy" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-900">Priya Sharma</div>

@@ -428,7 +428,7 @@ export default function BrochureRoadmap() {
               '/images/4.jpg'
             ].map((img, i) => (
               <div key={i} className="w-64 sm:w-80 h-48 sm:h-56 relative rounded-2xl overflow-hidden shadow-md shrink-0 border border-slate-200 group">
-                <img src={img} alt={`Campus view ${i}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={img} alt={`Campus view ${i}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))}

@@ -180,6 +180,7 @@ export default function InstagramReels() {
               <img
                 src={featuredReel.thumbnail}
                 alt={featuredReel.title}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
@@ -258,6 +259,7 @@ export default function InstagramReels() {
                     <img
                       src={reel.thumbnail}
                       alt={reel.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
