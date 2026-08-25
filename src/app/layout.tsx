@@ -14,9 +14,73 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'UVCHM | Building Careers Bringing Excellence',
-  description: 'Official website of UVCHM. Offering BHM, Culinary Arts, Bakery, and Beverage Management with 100% 5-star placement in Taj, Oberoi, Marriott & Hyatt.',
-  keywords: ['UVCHM', 'UVCHM', 'Hotel Management Degree', 'Culinary Arts College', 'BHM Admissions', '5-Star Hotel Placements'],
+  title: 'UVCHM | Best Hotel Management College in Nizamabad, Telangana',
+  description: 'Official website of UVCHM (UV College of Hotel Management). The biggest hotel management college in Northern Telangana offering BHM, Culinary Arts, Bakery, and Beverage Management with 100% 5-star placement in Taj, Oberoi, Marriott & Hyatt.',
+  keywords: ['UVCHM', 'UV College of Hotel Management', 'Hotel Management Degree', 'Culinary Arts College in Nizamabad', 'BHM Admissions Telangana', '5-Star Hotel Placements', 'Best Hotel Management College'],
+  metadataBase: new URL('https://www.uvchm.com'),
+  openGraph: {
+    title: 'UVCHM | Best Hotel Management College in Nizamabad, Telangana',
+    description: 'UVCHM offers 100% 5-star placement in top hotels. Enroll now for BHM, Culinary Arts, and Mixology courses in Nizamabad.',
+    url: 'https://www.uvchm.com',
+    siteName: 'UVCHM',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'UVCHM | Best Hotel Management College in Nizamabad, Telangana',
+    description: 'UVCHM offers 100% 5-star placement in top hotels. Enroll now for BHM, Culinary Arts, and Mixology courses in Nizamabad.',
+  },
+  alternates: {
+    canonical: 'https://www.uvchm.com',
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollegeOrUniversity",
+      "@id": "https://www.uvchm.com/#college",
+      "name": "UVCHM (UV College of Hotel Management)",
+      "url": "https://www.uvchm.com",
+      "logo": "https://www.uvchm.com/images/uvchm_logo.png",
+      "description": "Northern Telangana's biggest hotel management college offering 100% 5-star placements.",
+      "telephone": "+91-8463995959",
+      "email": "Info@uvchm.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2nd floor, Never Give Up Building, 1, Gangastan",
+        "addressLocality": "Nizamabad",
+        "addressRegion": "Telangana",
+        "postalCode": "503003",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.uvchm.com/#localbusiness",
+      "name": "UVCHM",
+      "url": "https://www.uvchm.com",
+      "telephone": "+91-8465995959",
+      "email": "Info@uvchm.com",
+      "image": "https://www.uvchm.com/images/uvchm_logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2nd floor, Never Give Up Building, 1, Gangastan",
+        "addressLocality": "Nizamabad",
+        "addressRegion": "Telangana",
+        "postalCode": "503003",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.6700,
+        "longitude": 78.1000
+      },
+      "priceRange": "$$"
+    }
+  ]
 };
 
 export default function RootLayout({
@@ -26,6 +90,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
         {children}
         <Analytics />
