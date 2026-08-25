@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { GoogleTagManager } from '@next/third-parties/google';
 import './globals.css';
 import Providers from '@/components/Providers';
 import WhatsAppChat from '@/components/WhatsAppChat';
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://www.uvchm.com',
+  },
+  verification: {
+    google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
   },
 };
 
@@ -111,6 +115,7 @@ export default function RootLayout({
           <WhatsAppChat />
         </Providers>
         <Analytics />
+        <GoogleTagManager gtmId="GTM-K6M64ZQS" />
       </body>
     </html>
   );
