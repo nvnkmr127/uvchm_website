@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PartnersCarousel from '@/components/PartnersCarousel';
@@ -16,50 +14,38 @@ import InstagramReels from '@/components/InstagramReels';
 import GoogleReviews from '@/components/GoogleReviews';
 import ResearchFaculty from '@/components/ResearchFaculty';
 import Footer from '@/components/Footer';
-import ApplyModal from '@/components/ApplyModal';
-
 export default function Home() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
-  const [selectedProgramId, setSelectedProgramId] = useState<string | null>(null);
-
-  const handleOpenApplyWithProgram = (programId?: string) => {
-    if (programId) {
-      setSelectedProgramId(programId);
-    }
-    setApplyModalOpen(true);
-  };
-
   return (
     <main className="min-h-screen bg-white text-slate-900 selection:bg-pink-600 selection:text-white">
       {/* Floating Capsule Glass Navbar */}
       <Navbar />
 
       {/* Hero Section */}
-      <Hero onOpenApply={() => handleOpenApplyWithProgram()} />
+      <Hero />
 
       {/* Infinite Partners Carousel */}
       <PartnersCarousel />
 
       {/* Official About Us Section */}
-      <AboutUs onOpenApply={() => handleOpenApplyWithProgram()} />
+      <AboutUs />
 
       {/* Official College Brochure Career Roadmap & Campus Facilities */}
-      <BrochureRoadmap onOpenApply={() => handleOpenApplyWithProgram()} />
+      <BrochureRoadmap />
 
       {/* Backed by UV Consultancy Section */}
-      <UvConsultancy onOpenApply={() => handleOpenApplyWithProgram()} />
+      <UvConsultancy />
 
       {/* Why Choose Us Section */}
-      <WhyChooseUs onOpenApply={() => handleOpenApplyWithProgram()} />
+      <WhyChooseUs />
 
       {/* College Comparison Section */}
-      <CollegeComparison onOpenApply={() => handleOpenApplyWithProgram()} />
+      <CollegeComparison />
 
       {/* Hospitality Courses & Degrees (Editorial Showcase Layout) */}
-      <ProgramCatalog onSelectProgramToApply={(pId) => handleOpenApplyWithProgram(pId)} />
+      <ProgramCatalog />
 
       {/* 100% Placements & Alumni Success Stories */}
-      <StudentPlacements onOpenApply={() => handleOpenApplyWithProgram()} />
+      <StudentPlacements />
 
       {/* World-Class Campus Facilities */}
       <CampusShowcase />
@@ -68,7 +54,7 @@ export default function Home() {
       <InstagramReels />
 
       {/* Leadership & Faculty Stacked Slider */}
-      <ResearchFaculty onOpenApply={() => handleOpenApplyWithProgram()} />
+      <ResearchFaculty />
 
       {/* Verified Google Reviews */}
       <GoogleReviews />
@@ -77,7 +63,6 @@ export default function Home() {
       <Footer />
 
       {/* Global Application Modal */}
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </main>
   );
 }

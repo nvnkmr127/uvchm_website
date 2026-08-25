@@ -2,14 +2,13 @@
 
 import React, { useState } from 'react';
 import { X, CheckCircle2 } from 'lucide-react';
+import { useApplyModal } from '@/context/ApplyModalContext';
+import { toast } from 'sonner';
+import Image from 'next/image';
 
-interface ApplyModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  selectedProgramId?: string;
-}
-
-export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
+export default function ApplyModal() {
+  const { isOpen, closeModal } = useApplyModal();
+  
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -22,17 +21,31 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Basic phone validation (10 digits)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      toast.error('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+
     setIsLoading(true);
     try {
-      await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, source: 'Apply Modal' }),
       });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
       setIsSubmitted(true);
+      toast.success('Your application request was submitted successfully!');
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Something went wrong. Please try again or call us directly.');
+      toast.error('Something went wrong. Please try again or call us directly.');
     } finally {
       setIsLoading(false);
     }
@@ -40,19 +53,19 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
 
   const handleReset = () => {
     setIsSubmitted(false);
-    onClose();
+    closeModal();
   };
 
   return (
     <div 
-      onClick={(e) => e.target === e.currentTarget && onClose()}
+      onClick={(e) => e.target === e.currentTarget && closeModal()}
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn overflow-y-auto"
     >
       <div className="relative w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 border border-slate-200 max-h-[90vh] md:max-h-[85vh] overflow-y-auto my-auto">
         
         {/* Global Close Button */}
         <button
-          onClick={onClose}
+          onClick={closeModal}
           className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 p-2 text-slate-600 hover:text-slate-900 bg-white/90 hover:bg-white rounded-full shadow-md backdrop-blur-xs transition-transform active:scale-95"
           aria-label="Close modal"
         >
@@ -106,9 +119,11 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
 
           {/* Student Cutout Image Showcase */}
           <div className="relative mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex items-center gap-3">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
               alt="UVCHM Counselor"
+              width={48}
+              height={48}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#E80088] object-cover shadow-md shrink-0"
             />
             <div>

@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Menu, X, Sparkles, Search } from 'lucide-react';
-import ApplyModal from './ApplyModal';
+import { useApplyModal } from '@/context/ApplyModalContext';
 
 export default function Navbar() {
+  const { openModal } = useApplyModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Navbar() {
         <Sparkles className="w-3.5 h-3.5 animate-pulse" />
         <span>UVCHM — 100% Placements in Taj, Oberoi, Marriott & Overseas Hotels!</span>
         <button
-          onClick={() => setApplyModalOpen(true)}
+          onClick={() => openModal()}
           className="underline font-black hover:text-pink-200 ml-1"
         >
           Apply Today &rarr;
@@ -81,7 +81,7 @@ export default function Navbar() {
             {/* Right Action: Hot Magenta Pink Pill Button */}
             <div className="hidden sm:flex items-center space-x-3">
               <button
-                onClick={() => setApplyModalOpen(true)}
+                onClick={() => openModal()}
                 className="px-6 py-2.5 bg-gradient-to-r from-pink-600 via-pink-500 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-md shadow-pink-600/30 flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
               >
                 <span>APPLY NOW</span>
@@ -141,7 +141,7 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  setApplyModalOpen(true);
+                  openModal();
                 }}
                 className="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-black rounded-full text-center text-xs uppercase tracking-wider shadow-md shadow-pink-600/30 flex items-center justify-center gap-2"
               >
@@ -152,9 +152,6 @@ export default function Navbar() {
           </div>
         )}
       </header>
-
-      {/* Admissions Modal */}
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </>
   );
 }

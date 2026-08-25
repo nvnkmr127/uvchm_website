@@ -1,21 +1,14 @@
-'use client';
-
-import React, { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ApplyModal from '@/components/ApplyModal';
 import { PROGRAMS } from '@/data/collegeData';
-import { BookOpen, Sparkles, Clock, ShieldCheck, CheckCircle2, ArrowRight, ArrowLeft, Award, GraduationCap, DollarSign, Briefcase } from 'lucide-react';
+import { notFound } from 'next/navigation';
+import { BookOpen, Sparkles, Clock, CheckCircle2, ArrowRight, ArrowLeft, Award, GraduationCap, Briefcase, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import ApplyButton from '@/components/ApplyButton';
 
-export default function SingleCoursePage() {
-  const params = useParams();
-  const router = useRouter();
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
-
-  const courseId = params?.id as string;
-  const program = PROGRAMS.find((p) => p.id === courseId);
+export default function SingleCoursePage({ params }: { params: { id: string } }) {
+  const program = PROGRAMS.find((p) => p.id === params.id);
 
   if (!program) {
     return (
@@ -76,13 +69,11 @@ export default function SingleCoursePage() {
           </p>
 
           <div className="pt-4 flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => setApplyModalOpen(true)}
+            <ApplyButton
+              programId={program.id}
+              text="APPLY FOR ADMISSION NOW"
               className="px-8 py-3.5 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] hover:opacity-90 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#E80088]/30 flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
-            >
-              <span>APPLY FOR ADMISSION NOW</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            />
           </div>
         </div>
       </section>
@@ -221,13 +212,11 @@ export default function SingleCoursePage() {
                 </div>
               </div>
 
-              <button
-                onClick={() => setApplyModalOpen(true)}
+              <ApplyButton 
+                programId={program.id}
+                text="APPLY NOW FOR THIS COURSE"
                 className="w-full py-4 bg-pink-600 hover:bg-pink-700 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95"
-              >
-                <span>APPLY NOW FOR THIS COURSE</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              />
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 font-medium">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -240,11 +229,6 @@ export default function SingleCoursePage() {
       </section>
 
       <Footer />
-      <ApplyModal
-        isOpen={applyModalOpen}
-        onClose={() => setApplyModalOpen(false)}
-        selectedProgramId={program.id}
-      />
     </main>
   );
 }

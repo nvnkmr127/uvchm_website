@@ -1,15 +1,13 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import GoogleReviews from '@/components/GoogleReviews';
-import ApplyModal from '@/components/ApplyModal';
 import { RECRUITERS, COLLEGE_INFO } from '@/data/collegeData';
 import { Trophy, Sparkles, Building2, Globe, ShieldCheck, CheckCircle2, ArrowRight, Star, GraduationCap } from 'lucide-react';
+import ApplyButton from '@/components/ApplyButton';
+import Image from 'next/image';
 
 export default function PlacementsPage() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
 
   const stats = [
     { title: '100%', label: 'Placement Record' },
@@ -97,12 +95,12 @@ export default function PlacementsPage() {
               key={idx}
               className="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-pink-500/30 transition-all flex flex-col items-center justify-center text-center space-y-2 group"
             >
-              <div className="w-full h-16 flex items-center justify-center mb-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
+              <div className="w-full h-16 flex items-center justify-center mb-2 relative">
+                <Image 
                   src={`/logos/${idx + 1}.png`} 
                   alt={r.name} 
-                  className="max-h-full max-w-[80%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                  fill
+                  className="object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
                 />
               </div>
               <div className="space-y-1">
@@ -162,19 +160,15 @@ export default function PlacementsPage() {
       <section className="py-16 text-center max-w-4xl mx-auto px-4 space-y-6">
         <h2 className="text-3xl font-black text-slate-900">Ready to Start Your 5-Star Hospitality Career?</h2>
         <p className="text-slate-600 text-sm">Apply today to secure your seat for the upcoming 2026 academic batch with 100% placement assistance.</p>
-        <button
-          onClick={() => setApplyModalOpen(true)}
+        <ApplyButton
+          text="APPLY FOR ADMISSION"
           className="px-8 py-3.5 bg-pink-600 hover:bg-pink-700 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/30 inline-flex items-center gap-2 transition-all hover:scale-105"
-        >
-          <span>APPLY FOR ADMISSION</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
+        />
       </section>
 
       <GoogleReviews />
 
       <Footer />
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </main>
   );
 }

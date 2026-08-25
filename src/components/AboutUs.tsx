@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { Award, Globe, Heart, ShieldCheck, Sparkles, Star, Users, ArrowRight } from 'lucide-react';
+import { useApplyModal } from '@/context/ApplyModalContext';
+import Image from 'next/image';
 
-export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
+export default function AboutUs() {
+  const { openModal } = useApplyModal();
   return (
     <section id="about" className="py-16 bg-white relative overflow-hidden border-b border-slate-200">
       
@@ -19,9 +22,11 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
               
               {/* Main Campus Image */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-200 bg-slate-900 group">
-                <img
+                <Image
                   src="/college.png"
                   alt="UVCHM 5-Star Campus"
+                  width={600}
+                  height={600}
                   className="w-full h-auto max-h-[600px] object-contain group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
@@ -89,7 +94,7 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
             {/* Action CTA Button */}
             <div className="pt-2">
               <button
-                onClick={onOpenApply}
+                onClick={() => openModal()}
                 className="px-8 py-3.5 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#E80088]/30 flex items-center gap-2 hover:scale-105 transition-all"
               >
                 <span>APPLY FOR ADMISSION TODAY</span>

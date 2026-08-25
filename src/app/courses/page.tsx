@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ApplyModal from '@/components/ApplyModal';
-import { PROGRAMS, Program } from '@/data/collegeData';
 import { BookOpen, Search, Sparkles, Clock, Award, ArrowRight, CheckCircle2, Filter } from 'lucide-react';
+import { PROGRAMS, Program } from '@/data/collegeData';
 import Link from 'next/link';
+import { useApplyModal } from '@/context/ApplyModalContext';
 
 const BACKGROUND_IMAGES = [
   '/images/bhm_premium.jpg',
@@ -16,8 +16,7 @@ const BACKGROUND_IMAGES = [
 ];
 
 export default function CoursesPage() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
-  const [selectedProgramId, setSelectedProgramId] = useState<string | undefined>(undefined);
+  const { openModal } = useApplyModal();
   const [selectedLevel, setSelectedLevel] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentBg, setCurrentBg] = useState(0);
@@ -41,8 +40,7 @@ export default function CoursesPage() {
   });
 
   const handleApplyClick = (programId: string) => {
-    setSelectedProgramId(programId);
-    setApplyModalOpen(true);
+    openModal(programId);
   };
 
   return (
@@ -201,11 +199,6 @@ export default function CoursesPage() {
       </section>
 
       <Footer />
-      <ApplyModal
-        isOpen={applyModalOpen}
-        onClose={() => setApplyModalOpen(false)}
-        selectedProgramId={selectedProgramId}
-      />
     </main>
   );
 }

@@ -3,8 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Quote, ArrowLeft, ArrowRight, Star, ShieldCheck, Sparkles, CheckCircle2, Award } from 'lucide-react';
 import { FACULTY } from '@/data/collegeData';
+import { useApplyModal } from '@/context/ApplyModalContext';
+import Image from 'next/image';
 
-export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => void }) {
+export default function ResearchFaculty() {
+  const { openModal } = useApplyModal();
   const [activeFacultyIndex, setActiveFacultyIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -69,10 +72,11 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
 
               <div className="relative z-10 space-y-6">
                 <div className="relative mx-auto w-72 h-72 sm:w-96 sm:h-96 rounded-3xl overflow-hidden border-4 border-pink-500/40 shadow-2xl group">
-                  <img
+                  <Image
                     src="/images/ssa-1.png"
                     alt="Sujan Kumar Doddi - Founder & Principal"
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute bottom-3 left-3 right-3 px-3 py-1.5 bg-pink-600/90 backdrop-blur-md text-white text-[10px] font-black uppercase rounded-full shadow-lg text-center tracking-wider animate-pulse">
                     ★ FOUNDER & PRINCIPAL
@@ -141,15 +145,13 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                   <div className="text-pink-400 text-xs font-bold">Founder / Principal • UVCHM & UV Consultancy</div>
                 </div>
 
-                {onOpenApply && (
                   <button
-                    onClick={onOpenApply}
+                    onClick={() => openModal()}
                     className="px-6 py-2.5 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 hover:scale-105 transition-all"
                   >
                     <span>APPLY NOW</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                )}
               </div>
             </div>
           </div>
@@ -211,10 +213,11 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                     transform: isAnimating ? 'rotate(-12deg) scale(0.9)' : 'rotate(-6deg) scale(0.95)',
                   }}
                 >
-                  <img
+                  <Image
                     src={thirdFaculty.image}
                     alt={thirdFaculty.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
 
@@ -225,10 +228,11 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                     transform: isAnimating ? 'rotate(8deg) scale(0.95)' : 'rotate(3deg) scale(0.98)',
                   }}
                 >
-                  <img
+                  <Image
                     src={secondFaculty.image}
                     alt={secondFaculty.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
 
@@ -239,10 +243,11 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                     transform: isAnimating ? 'scale(0.96) translateY(-10px)' : 'scale(1) translateY(0px)',
                   }}
                 >
-                  <img
+                  <Image
                     src={currentFaculty.image}
                     alt={currentFaculty.name}
-                    className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05] ${
+                    fill
+                    className={`object-cover transition-transform duration-700 group-hover:scale-[1.05] ${
                       currentFaculty.imageStyle || 'object-top'
                     }`}
                   />

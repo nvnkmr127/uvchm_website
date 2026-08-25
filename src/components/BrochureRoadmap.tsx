@@ -4,8 +4,10 @@ import React from 'react';
 import { BROCHURE_FACILITIES, COLLEGE_INFO } from '@/data/collegeData';
 import { ChevronRight, Building2, ShieldCheck, ArrowRight, Utensils, Hotel, Laptop, Users, Bus, Trophy, HeartHandshake, Award, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useApplyModal } from '@/context/ApplyModalContext';
 
-export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => void }) {
+export default function BrochureRoadmap() {
+  const { openModal } = useApplyModal();
   const stepsData = [
     {
       step: '01',
@@ -413,7 +415,7 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
           </div>
 
           <button
-            onClick={onOpenApply}
+            onClick={() => openModal()}
             className="px-8 py-3.5 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#E80088]/30 flex items-center gap-2 shrink-0 hover:scale-105 transition-all"
           >
             <span>APPLY FOR ADMISSION TODAY</span>

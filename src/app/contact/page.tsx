@@ -3,12 +3,11 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ApplyModal from '@/components/ApplyModal';
 import { COLLEGE_INFO } from '@/data/collegeData';
 import { MapPin, Phone, Mail, Clock, Send, Sparkles, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import ApplyButton from '@/components/ApplyButton';
 
 export default function ContactPage() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -125,13 +124,10 @@ export default function ContactPage() {
               <p className="text-xs text-slate-300 leading-relaxed">
                 Direct foreign employment counseling is available on campus. Walk in or call our international recruitment coordinator.
               </p>
-              <button
-                onClick={() => setApplyModalOpen(true)}
+              <ApplyButton
+                text="APPLY FOR OVERSEAS PLACEMENT"
                 className="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
-              >
-                <span>APPLY FOR OVERSEAS PLACEMENT</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              />
             </div>
           </div>
 
@@ -257,7 +253,6 @@ export default function ContactPage() {
       </section>
 
       <Footer />
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </main>
   );
 }

@@ -3,12 +3,11 @@
 import React, { useState } from 'react';
 import { Clock, ArrowRight, Sparkles, X, CheckCircle2, Award, GraduationCap, Flame, GlassWater, BedDouble, Hotel } from 'lucide-react';
 import { PROGRAMS, Program } from '@/data/collegeData';
+import { useApplyModal } from '@/context/ApplyModalContext';
+import Image from 'next/image';
 
-interface ProgramCatalogProps {
-  onSelectProgramToApply: (programId: string) => void;
-}
-
-export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalogProps) {
+export default function ProgramCatalog() {
+  const { openModal } = useApplyModal();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeModalProgram, setActiveModalProgram] = useState<Program | null>(null);
 
@@ -133,10 +132,11 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
               >
                 {/* Image Section */}
                 <div className={`relative h-72 lg:h-full min-h-[350px] overflow-hidden transition-all duration-500 lg:col-span-7 ${!isEven ? 'lg:order-last' : ''}`}>
-                  <img
+                  <Image
                     src={prog.image || '/images/bhm_premium.jpg'}
                     alt={prog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-${!isEven ? 'l' : 'r'} from-transparent via-transparent to-slate-900 hidden lg:block`}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent lg:hidden"></div>
@@ -178,7 +178,7 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
 
                   <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4">
                     <button
-                      onClick={() => onSelectProgramToApply(prog.id)}
+                      onClick={() => openModal(prog.id)}
                       className="px-8 py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/35 flex items-center gap-2 hover:scale-105 transition-all"
                     >
                       <span>APPLY NOW</span>
@@ -253,7 +253,7 @@ export default function ProgramCatalog({ onSelectProgramToApply }: ProgramCatalo
                 onClick={() => {
                   const pId = activeModalProgram.id;
                   setActiveModalProgram(null);
-                  onSelectProgramToApply(pId);
+                  openModal(pId);
                 }}
                 className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-pink-600/30 text-center active:scale-95 transition-transform"
               >

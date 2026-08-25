@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { Globe, Plane, ShieldCheck, Sparkles, Star, Award, Building, ArrowRight, CheckCircle2, Building2, Briefcase, MapPin, Compass } from 'lucide-react';
+import { useApplyModal } from '@/context/ApplyModalContext';
 
-export default function UvConsultancy({ onOpenApply }: { onOpenApply: () => void }) {
+export default function UvConsultancy() {
+  const { openModal } = useApplyModal();
   return (
     <section className="py-16 bg-white relative overflow-hidden border-b border-slate-200">
       
@@ -83,7 +85,7 @@ export default function UvConsultancy({ onOpenApply }: { onOpenApply: () => void
             {/* CTA Button */}
             <div className="relative z-10 pt-2">
               <button
-                onClick={onOpenApply}
+                onClick={() => openModal()}
                 className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#E80088]/35 flex items-center justify-center gap-2 hover:scale-105 transition-all"
               >
                 <span>EXPLORE OVERSEAS CAREERS</span>

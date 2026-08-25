@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { COLLEGE_INFO } from '@/data/collegeData';
+import { useApplyModal } from '@/context/ApplyModalContext';
+import Image from 'next/image';
 
 interface HeroSlide {
   id: string;
@@ -12,7 +14,8 @@ interface HeroSlide {
   image: string;
 }
 
-export default function Hero({ onOpenApply }: { onOpenApply: () => void }) {
+export default function Hero() {
+  const { openModal } = useApplyModal();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -81,10 +84,11 @@ export default function Hero({ onOpenApply }: { onOpenApply: () => void }) {
               currentSlide === idx ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
           >
-            <img
+            <Image
               src={s.image}
               alt={s.title}
-              className="w-full h-full object-cover object-center scale-105"
+              fill
+              className="object-cover object-center scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
@@ -128,7 +132,7 @@ export default function Hero({ onOpenApply }: { onOpenApply: () => void }) {
         <div className="flex flex-wrap items-center gap-4 pt-2">
           
           <button
-            onClick={onOpenApply}
+            onClick={() => openModal()}
             className="px-8 py-4 bg-gradient-to-r from-pink-600 via-pink-500 to-rose-600 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-xl shadow-pink-600/30 flex items-center gap-2 hover:scale-105 transition-all"
           >
             <span>APPLY FOR ADMISSION NOW</span>

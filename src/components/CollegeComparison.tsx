@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, ShieldCheck, Briefcase, Globe, Award, Utensils, Users, Star, GraduationCap, MapPin, Laptop, HeartHandshake, Trophy, UserCheck } from 'lucide-react';
+import { useApplyModal } from '@/context/ApplyModalContext';
 
 const comparisonData = [
   {
@@ -121,11 +122,8 @@ const comparisonData = [
   },
 ];
 
-interface CollegeComparisonProps {
-  onOpenApply: () => void;
-}
-
-export default function CollegeComparison({ onOpenApply }: CollegeComparisonProps) {
+export default function CollegeComparison() {
+  const { openModal } = useApplyModal();
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background Ornaments */}
@@ -232,7 +230,7 @@ export default function CollegeComparison({ onOpenApply }: CollegeComparisonProp
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={onOpenApply}
+                onClick={() => openModal()}
                 className="px-8 py-3.5 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-black text-sm uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/30 flex items-center gap-2 hover:shadow-xl hover:shadow-pink-600/40 transition-all border border-pink-500"
               >
                 Start Your Application

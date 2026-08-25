@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { Award, Briefcase, Building2, Globe, ShieldCheck, Sparkles, Star, Users, ArrowRight } from 'lucide-react';
+import { useApplyModal } from '@/context/ApplyModalContext';
 
-export default function WhyChooseUs({ onOpenApply }: { onOpenApply: () => void }) {
+export default function WhyChooseUs() {
+  const { openModal } = useApplyModal();
   const pillars = [
     {
       icon: <Award className="w-6 h-6 text-pink-600" />,
@@ -100,7 +102,7 @@ export default function WhyChooseUs({ onOpenApply }: { onOpenApply: () => void }
           </div>
 
           <button
-            onClick={onOpenApply}
+            onClick={() => openModal()}
             className="px-8 py-3.5 bg-white text-pink-600 hover:bg-pink-50 font-black text-xs uppercase tracking-wider rounded-full shadow-lg flex items-center gap-2 shrink-0 hover:scale-105 transition-all"
           >
             <span>APPLY FOR ADMISSION NOW</span>

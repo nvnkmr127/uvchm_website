@@ -1,17 +1,14 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import GoogleReviews from '@/components/GoogleReviews';
-import ApplyModal from '@/components/ApplyModal';
 import { COLLEGE_INFO } from '@/data/collegeData';
 import { GraduationCap, Award, ShieldCheck, Building2, Sparkles, CheckCircle2, Globe, Users, ArrowRight, Compass } from 'lucide-react';
 import Link from 'next/link';
 import YoutubePromo from '@/components/YoutubePromo';
+import ApplyButton from '@/components/ApplyButton';
 
 export default function AboutPage() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 selection:bg-pink-600 selection:text-white">
@@ -81,13 +78,7 @@ export default function AboutPage() {
               ))}
             </div>
             <div className="pt-4">
-              <button
-                onClick={() => setApplyModalOpen(true)}
-                className="px-8 py-3.5 bg-pink-600 hover:bg-pink-700 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/30 flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
-              >
-                <span>APPLY FOR ADMISSION</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <ApplyButton />
             </div>
           </div>
 
@@ -141,7 +132,6 @@ export default function AboutPage() {
       <GoogleReviews />
 
       <Footer />
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </main>
   );
 }

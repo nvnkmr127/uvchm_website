@@ -1,13 +1,11 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ApplyModal from '@/components/ApplyModal';
 import { Building2, Sparkles, CheckCircle2, ArrowRight, ShieldCheck, Flame, Utensils, GlassWater, BedDouble, Monitor } from 'lucide-react';
+import ApplyButton from '@/components/ApplyButton';
+import Image from 'next/image';
 
 export default function FacilitiesPage() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
 
   const trainingLabs = [
     {
@@ -118,18 +116,15 @@ export default function FacilitiesPage() {
                   ))}
                 </div>
                 <div className="pt-4">
-                  <button
-                    onClick={() => setApplyModalOpen(true)}
+                  <ApplyButton
+                    text="BOOK CAMPUS VISIT"
                     className="px-6 py-3 bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md shadow-pink-600/30 flex items-center gap-2 transition-all hover:scale-105"
-                  >
-                    <span>BOOK CAMPUS VISIT</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  />
                 </div>
               </div>
 
               <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-slate-100 bg-slate-900 h-[350px]">
-                <img src={lab.image} alt={lab.name} className="w-full h-full object-cover" />
+                <Image src={lab.image} alt={lab.name} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                   <span className="text-xs font-bold text-white uppercase tracking-wider bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
                     {lab.name}
@@ -142,7 +137,6 @@ export default function FacilitiesPage() {
       </section>
 
       <Footer />
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </main>
   );
 }

@@ -1,14 +1,12 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ApplyModal from '@/components/ApplyModal';
 import { FACULTY } from '@/data/collegeData';
 import { Users, Sparkles, Award, GraduationCap, ArrowRight, Quote } from 'lucide-react';
+import ApplyButton from '@/components/ApplyButton';
+import Image from 'next/image';
 
 export default function FacultyPage() {
-  const [applyModalOpen, setApplyModalOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 selection:bg-pink-600 selection:text-white">
@@ -41,10 +39,11 @@ export default function FacultyPage() {
               className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-pink-500/30 transition-all flex flex-col sm:flex-row gap-6 items-start"
             >
               <div className="w-full sm:w-44 h-48 sm:h-full rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative">
-                <img
+                <Image
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
               </div>
@@ -84,17 +83,13 @@ export default function FacultyPage() {
       <section className="py-16 text-center max-w-4xl mx-auto px-4 space-y-6">
         <h2 className="text-3xl font-black text-slate-900">Want to Attend a Free Faculty Demo Class?</h2>
         <p className="text-slate-600 text-sm">Register for a live workshop or campus walkthrough with our department heads.</p>
-        <button
-          onClick={() => setApplyModalOpen(true)}
+        <ApplyButton
+          text="REGISTER FOR DEMO CLASS"
           className="px-8 py-3.5 bg-pink-600 hover:bg-pink-700 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-pink-600/30 inline-flex items-center gap-2 transition-all hover:scale-105"
-        >
-          <span>REGISTER FOR DEMO CLASS</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
+        />
       </section>
 
       <Footer />
-      <ApplyModal isOpen={applyModalOpen} onClose={() => setApplyModalOpen(false)} />
     </main>
   );
 }
