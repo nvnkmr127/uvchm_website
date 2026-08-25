@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X, CheckCircle2, PartyPopper, Sparkles } from 'lucide-react';
 import { useApplyModal } from '@/context/ApplyModalContext';
 import { toast } from 'sonner';
 import Image from 'next/image';
@@ -137,20 +137,39 @@ export default function ApplyModal() {
         <div className="md:col-span-7 p-5 sm:p-8 bg-white flex flex-col justify-between relative">
           
           {isSubmitted ? (
-            <div className="py-8 sm:py-12 text-center space-y-4 my-auto">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 border border-emerald-300 rounded-full flex items-center justify-center mx-auto animate-bounce">
-                <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10" />
+            <div className="relative py-12 sm:py-16 text-center flex flex-col items-center justify-center h-full my-auto overflow-hidden">
+              {/* Confetti / Celebration background elements */}
+              <div className="absolute top-10 left-10 w-3 h-3 bg-pink-500 rounded-full animate-ping opacity-70"></div>
+              <div className="absolute bottom-20 right-12 w-4 h-4 bg-yellow-400 rotate-45 animate-pulse"></div>
+              <div className="absolute top-20 right-16 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-bounce"></div>
+              <div className="absolute bottom-10 left-16 w-3 h-3 bg-indigo-500 rotate-12 animate-pulse"></div>
+              
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-tr from-pink-500 to-yellow-400 text-white rounded-full flex items-center justify-center mx-auto shadow-2xl relative z-10 animate-bounce">
+                  <PartyPopper className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Request Submitted!</h3>
-              <p className="text-slate-600 text-xs sm:text-sm max-w-xs mx-auto">
-                Thank you, <span className="font-bold text-pink-600">{formData.name}</span>. Our UVCHM admissions counselors will call you shortly at <span className="font-mono font-bold text-indigo-700">{formData.phone}</span>.
-              </p>
-              <div className="pt-2 sm:pt-4">
+              
+              <div className="mt-8 space-y-3 relative z-10">
+                <h3 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">
+                  Congratulations!
+                </h3>
+                <h4 className="text-lg font-bold text-slate-800">Your Request is Confirmed.</h4>
+                <p className="text-slate-600 text-sm max-w-sm mx-auto leading-relaxed">
+                  Thank you, <span className="font-black text-pink-600">{formData.name}</span>! You've taken the first step towards a brilliant career. Our expert admissions team will call you shortly at <span className="font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">{formData.phone}</span>.
+                </p>
+              </div>
+
+              <div className="pt-8 relative z-10">
                 <button
                   onClick={handleReset}
-                  className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-xl text-xs shadow-md shadow-pink-600/25 active:scale-95 transition-transform"
+                  className="group relative px-8 py-3.5 bg-slate-900 hover:bg-pink-600 text-white font-black rounded-full text-xs uppercase tracking-widest shadow-xl transition-all hover:scale-105 active:scale-95 overflow-hidden"
                 >
-                  Back to Website
+                  <span className="relative z-10 flex items-center gap-2">
+                    Back to Website <Sparkles className="w-4 h-4" />
+                  </span>
+                  <div className="absolute inset-0 h-full w-0 bg-gradient-to-r from-pink-600 to-rose-500 transition-all duration-300 ease-out group-hover:w-full z-0"></div>
                 </button>
               </div>
             </div>
