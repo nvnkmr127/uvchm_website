@@ -57,7 +57,14 @@ const jsonLd = {
         "addressRegion": "Telangana",
         "postalCode": "503003",
         "addressCountry": "IN"
-      }
+      },
+      "sameAs": [
+        "https://www.instagram.com/uv_chm?igsh=MW5rODhmNDQ3cm51ag%3D%3D&utm_source=qr",
+        "https://wa.me/918463995959",
+        "https://www.facebook.com/UVCHM/",
+        "https://www.youtube.com/@uvchm",
+        "https://www.linkedin.com/company/uv-college-of-hotel-managements/about/?viewAsMember=true"
+      ]
     },
     {
       "@type": "LocalBusiness",

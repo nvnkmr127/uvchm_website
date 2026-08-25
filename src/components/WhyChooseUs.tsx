@@ -98,7 +98,7 @@ export default function WhyChooseUs() {
         <div className="bg-gradient-to-r from-pink-600 via-rose-600 to-purple-700 rounded-3xl p-8 text-white shadow-2xl text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1">
             <h3 className="text-2xl font-black">Ready to Start Your Hospitality Journey?</h3>
-            <p className="text-pink-100 text-xs sm:text-sm">Apply today to secure your seat for the 2026-27 Academic Session.</p>
+            <p className="text-pink-100 text-xs sm:text-sm">Apply today to secure your seat for the upcoming Academic Session.</p>
           </div>
 
           <button

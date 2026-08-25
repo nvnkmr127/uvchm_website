@@ -7,8 +7,9 @@ import { BookOpen, Sparkles, Clock, CheckCircle2, ArrowRight, ArrowLeft, Award, 
 import Link from 'next/link';
 import ApplyButton from '@/components/ApplyButton';
 
-export default function SingleCoursePage({ params }: { params: { id: string } }) {
-  const program = PROGRAMS.find((p) => p.id === params.id);
+export default async function SingleCoursePage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const program = PROGRAMS.find((p) => p.id === resolvedParams.id);
 
   if (!program) {
     return (
@@ -189,7 +190,7 @@ export default function SingleCoursePage({ params }: { params: { id: string } })
           <div className="space-y-6">
             <div className="bg-slate-900 text-white p-8 rounded-3xl border border-pink-500/30 shadow-xl space-y-6 sticky top-28">
               <div className="space-y-2">
-                <span className="text-[10px] font-black uppercase tracking-widest text-pink-400">Admissions Open 2026-27</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-pink-400">Course Summary</span>
                 <h3 className="text-2xl font-black">Course Summary</h3>
               </div>
 
