@@ -157,8 +157,8 @@ export const BROCHURE_FACILITIES = [
     category: 'Campus',
   },
   {
-    title: 'Hostel & Transport',
-    description: 'Separate hostel facilities for boys & girls with round-the-clock security & bus pass facility.',
+    title: 'Hostel Facilities',
+    description: 'Separate hostel facilities for boys & girls with round-the-clock security.',
     category: 'Amenities',
   },
   {
