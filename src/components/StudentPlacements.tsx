@@ -32,7 +32,7 @@ export default function StudentPlacements() {
       course: 'Diploma in Hotel Management',
       year: 'Batch of 2025',
       quote: 'UVCHM provided me with hands-on fine dining training and foreign placement mentorship through UV Consultancy that directly landed me a role in Dubai right after graduation.',
-      image: '/images/testimonials/student_1.jpg',
+      image: 'https://cdn.uvchm.com/images/testimonials/student_1.jpg',
     },
     {
       id: 'test-2',
@@ -43,7 +43,7 @@ export default function StudentPlacements() {
       course: 'Craft Course in Food Production',
       year: 'Batch of 2026',
       quote: 'The 30% Women Empowerment Discount gave me the opportunity to pursue culinary arts. The practical quantity kitchen training helped me clear my Taj Executive Chef interview smoothly.',
-      image: '/images/testimonials/student_2.jpg',
+      image: 'https://cdn.uvchm.com/images/testimonials/student_2.jpg',
     },
     {
       id: 'test-3',
@@ -54,7 +54,7 @@ export default function StudentPlacements() {
       course: 'Advance Diploma in Hotel Management',
       year: 'Batch of 2025',
       quote: 'Learning real front office software in the college lab meant zero onboarding delay when I joined Marriott in Singapore. UVCHM’s 100% placement support delivered on every promise.',
-      image: '/images/testimonials/student_3.jpg',
+      image: 'https://cdn.uvchm.com/images/testimonials/student_3.jpg',
     },
   ];
 

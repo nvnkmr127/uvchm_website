@@ -25,28 +25,28 @@ export default function Hero() {
       badge: '★ UV COLLEGE OF HOTEL MANAGEMENT',
       title: "Nizamabad's #1 Hotel Management College",
       synopsis: "Northern Telangana's biggest hotel management college featuring 2 own campus buildings, 8+ advanced 5★ practical labs including a live show kitchen, and internationally experienced faculty.",
-      image: '/images/fnb_training_new.jpg',
+      image: 'https://cdn.uvchm.com/images/fnb_training_new.jpg',
     },
     {
       id: 'slide-2',
       badge: '★ CULINARY ARTS & FOOD PRODUCTION',
       title: 'Craft Course in Food Production',
       synopsis: 'Train under master chefs in commercial quantity kitchens, tandoor ranges, combi-ovens, and dedicated bakery suites with 100% hands-on cooking practicals.',
-      image: '/images/culinary_training_new.jpg',
+      image: 'https://cdn.uvchm.com/images/culinary_training_new.jpg',
     },
     {
       id: 'slide-3',
       badge: '★ BARTENDING & MIXOLOGY',
       title: 'Certification in Bartending and Mixology',
       synopsis: 'Master working flair, modern creative cocktails, and bar operations in our state-of-the-art mock bar. Prepare for lucrative careers in international cruise liners and premium nightclubs.',
-      image: '/images/bartending_training_new.jpg',
+      image: 'https://cdn.uvchm.com/images/bartending_training_new.jpg',
     },
     {
       id: 'slide-4',
       badge: '★ LUXURY HOUSEKEEPING & ACCOMMODATION',
       title: 'Craft Course in Housekeeping',
       synopsis: 'Specialize in luxury suite preparation, plant care & flower arrangements, and international cleaning rules. Become the backbone of every luxury resort and boutique hotel.',
-      image: '/images/housekeeping_training_new.jpg',
+      image: 'https://cdn.uvchm.com/images/housekeeping_training_new.jpg',
     },
   ];
 
