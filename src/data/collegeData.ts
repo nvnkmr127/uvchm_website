@@ -61,8 +61,8 @@ export interface Recruiter {
 }
 
 export const COLLEGE_INFO = {
-  name: 'UV College of Hotel Management',
-  shortName: 'UV College',
+  name: 'UVCHM',
+  shortName: 'UVCHM',
   motto: 'Shaping hospitality aspirants into creators, entrepreneurs & achievers.',
   rankTag: "NORTHERN TELANGANA'S BIGGEST HOTEL MANAGEMENT COLLEGE",
   subtitle: '2 Own Campus Buildings with 5★ Star Infrastructure and International Experienced Faculty',
@@ -496,7 +496,7 @@ export const EVENTS: EventItem[] = [
     title: 'Annual 5-Star Hotel Campus Placement Drive',
     date: 'Oct 14, 2026',
     time: '09:00 AM - 06:00 PM',
-    location: 'UV College Auditorium',
+    location: 'UVCHM Auditorium',
     category: 'Placement',
     description: 'On-campus interviews with Taj, Oberoi, Hyatt, ITC, and Marriott recruiters for immediate job offers.',
   },
@@ -505,10 +505,10 @@ export const EVENTS: EventItem[] = [
 export const NEWS: NewsItem[] = [
   {
     id: 'news-1',
-    title: 'UV College Achieves 100% Campus Placement Record for 2026 Batch',
+    title: 'UVCHM Achieves 100% Campus Placement Record for 2026 Batch',
     date: 'August 04, 2026',
     category: 'Placements',
-    summary: 'All final-year students of UV College of Hotel Management secured job offers at top 5-star hotel chains across India and abroad.',
+    summary: 'All final-year students of UVCHM secured job offers at top 5-star hotel chains across India and abroad.',
     image: '/images/slider/1.jpeg',
   },
   {
@@ -516,7 +516,7 @@ export const NEWS: NewsItem[] = [
     title: 'Inauguration of New Opera PMS Front Office Lab & Housekeeping Suite',
     date: 'July 28, 2026',
     category: 'Campus Expansion',
-    summary: 'UV College upgrades practical infrastructure with real-time hotel PMS terminals and luxury mock guest rooms.',
+    summary: 'UVCHM upgrades practical infrastructure with real-time hotel PMS terminals and luxury mock guest rooms.',
     image: '/images/slider/2.jpeg',
   },
 ];

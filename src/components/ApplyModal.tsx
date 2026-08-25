@@ -64,7 +64,7 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
             </h2>
 
             <p className="text-xs text-slate-300 font-medium hidden sm:block">
-              Limited Intakes Annually. Enroll Now to Secure Your Seat at UV College of Hotel Management!
+              Limited Intakes Annually. Enroll Now to Secure Your Seat at UVCHM!
             </p>
 
             {/* Feature Checklist */}
@@ -94,7 +94,7 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
           <div className="relative mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex items-center gap-3">
             <img
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
-              alt="UV College Counselor"
+              alt="UVCHM Counselor"
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#E80088] object-cover shadow-md shrink-0"
             />
             <div>
@@ -114,7 +114,7 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Request Submitted!</h3>
               <p className="text-slate-600 text-xs sm:text-sm max-w-xs mx-auto">
-                Thank you, <span className="font-bold text-pink-600">{formData.fullName}</span>. Our UV College admissions counselors will call you shortly at <span className="font-mono font-bold text-indigo-700">{formData.phone}</span>.
+                Thank you, <span className="font-bold text-pink-600">{formData.fullName}</span>. Our UVCHM admissions counselors will call you shortly at <span className="font-mono font-bold text-indigo-700">{formData.phone}</span>.
               </p>
               <div className="pt-2 sm:pt-4">
                 <button

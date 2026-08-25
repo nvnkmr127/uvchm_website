@@ -59,7 +59,7 @@ export default function PlacementsPage() {
             Placements & <span className="bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#E80088] bg-clip-text text-transparent">Global Careers</span>
           </h1>
           <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg font-medium leading-relaxed">
-            UV College guarantees 100% placement for eligible students in top luxury 5-star hotel chains in India and foreign employment overseas via UV Consultancy.
+            UVCHM guarantees 100% placement for eligible students in top luxury 5-star hotel chains in India and foreign employment overseas via UV Consultancy.
           </p>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function PlacementsPage() {
               </div>
               <h2 className="text-3xl sm:text-4xl font-black">Direct International Placements via UV Consultancy</h2>
               <p className="text-slate-300 text-sm leading-relaxed">
-                UV College is backed by UV Consultancy — an officially licensed foreign recruitment agency. We facilitate legal work visas, flights, and direct job contracts in 5-star luxury resorts across Dubai, Abu Dhabi, Singapore, Malaysia, Maldives, and Cruise Liners.
+                UVCHM is backed by UV Consultancy — an officially licensed foreign recruitment agency. We facilitate legal work visas, flights, and direct job contracts in 5-star luxury resorts across Dubai, Abu Dhabi, Singapore, Malaysia, Maldives, and Cruise Liners.
               </p>
               <div className="space-y-2">
                 {['Dubai & UAE Luxury Hotels', 'Maldives 5-Star Island Resorts', 'Singapore & Asian Cruise Lines', 'European & Middle East Hospitality Jobs'].map((item, idx) => (

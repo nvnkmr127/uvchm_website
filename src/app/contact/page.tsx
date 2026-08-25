@@ -41,7 +41,7 @@ export default function ContactPage() {
             <span className="text-white">Admissions Desk & Campus Helpline</span>
           </div>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
-            Get in Touch with <span className="bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#E80088] bg-clip-text text-transparent">UV College</span>
+            Get in Touch with <span className="bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#E80088] bg-clip-text text-transparent">UVCHM</span>
           </h1>
           <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg font-medium leading-relaxed">
             Have questions regarding admission eligibility, fee structures, scholarship support, or campus hostel facilities? Contact our counselor team today.
@@ -236,7 +236,7 @@ export default function ContactPage() {
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
-            title="UV College of Hotel Management Google Maps Location"
+            title="UVCHM Google Maps Location"
           />
         </div>
       </section>

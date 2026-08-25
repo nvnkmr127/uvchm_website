@@ -34,7 +34,7 @@ export async function GET() {
         profile_photo_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
         rating: 5,
         relative_time_description: '1 month ago',
-        text: 'UV College of Hotel Management is the best college in Nizamabad for hotel management courses. The practical culinary and bar training labs are top notch and faculty supports 100% placement.',
+        text: 'UVCHM is the best college in Nizamabad for hotel management courses. The practical culinary and bar training labs are top notch and faculty supports 100% placement.',
       },
       {
         author_name: 'Kavitha Reddy',

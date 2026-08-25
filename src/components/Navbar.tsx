@@ -28,7 +28,7 @@ export default function Navbar() {
       {/* Announcement Bar */}
       <div className="bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white text-xs font-black py-1.5 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
         <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-        <span>UV College of Hotel Management — 100% Placements in Taj, Oberoi, Marriott & Overseas Hotels!</span>
+        <span>UVCHM — 100% Placements in Taj, Oberoi, Marriott & Overseas Hotels!</span>
         <button
           onClick={() => setApplyModalOpen(true)}
           className="underline font-black hover:text-pink-200 ml-1"
@@ -47,7 +47,7 @@ export default function Navbar() {
               <div className="bg-white p-1.5 rounded-full shadow-xs border border-slate-200 group-hover:scale-105 transition-transform flex items-center">
                 <img
                   src="/new-logo.png"
-                  alt="UV College of Hotel Management Logo"
+                  alt="UVCHM Logo"
                   className="h-9 sm:h-11 w-auto object-contain"
                 />
               </div>

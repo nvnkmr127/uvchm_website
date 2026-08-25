@@ -58,10 +58,10 @@ export default function WhyChooseUs({ onOpenApply }: { onOpenApply: () => void }
             <span>EXCELLENCE IN HOSPITALITY EDUCATION</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight">
-            Why Choose <span className="text-pink-600">UV College of Hotel Management?</span>
+            Why Choose <span className="text-pink-600">UVCHM?</span>
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto font-medium">
-            Discover why thousands of students trust UV College to launch lucrative global careers in 5-star hotel administration and culinary arts.
+            Discover why thousands of students trust UVCHM to launch lucrative global careers in 5-star hotel administration and culinary arts.
           </p>
         </div>
 

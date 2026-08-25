@@ -21,7 +21,7 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-200 bg-slate-900 group">
                 <img
                   src="/college.png"
-                  alt="UV College 5-Star Campus"
+                  alt="UVCHM 5-Star Campus"
                   className="w-full h-auto max-h-[600px] object-contain group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
@@ -57,7 +57,7 @@ export default function AboutUs({ onOpenApply }: { onOpenApply: () => void }) {
 
             {/* Paragraph 1 */}
             <p className="text-slate-700 text-sm sm:text-base font-medium leading-relaxed">
-              UV College of Hotel Management (UVCHM) is more than just a college — it’s a launchpad for passionate individuals looking to build global careers in the dynamic hospitality industry. With a mission to empower students with world-class education, practical skills, and international exposure, UVCHM has become a trusted name in hotel management education.
+              UVCHM (UVCHM) is more than just a college — it’s a launchpad for passionate individuals looking to build global careers in the dynamic hospitality industry. With a mission to empower students with world-class education, practical skills, and international exposure, UVCHM has become a trusted name in hotel management education.
             </p>
 
             {/* Paragraph 2 */}

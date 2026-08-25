@@ -65,7 +65,7 @@ export default function AboutPage() {
               Shaping Tomorrow&apos;s Hospitality Leaders & Global Hotel Executives
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Founded in 2010, UV College of Hotel Management was built with a singular vision: to bridge the gap between academic education and real-world luxury hotel operations.
+              Founded in 2010, UVCHM was built with a singular vision: to bridge the gap between academic education and real-world luxury hotel operations.
             </p>
             <div className="space-y-3">
               {[
@@ -95,7 +95,7 @@ export default function AboutPage() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900">
               <img
                 src="/images/frontoffice_dept.png"
-                alt="UV College Campus Training"
+                alt="UVCHM Campus Training"
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
@@ -124,7 +124,7 @@ export default function AboutPage() {
             </div>
           </div>
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-4xl">
-            UV College students enjoy exclusive placement access through UV Consultancy — an official Foreign Employment Agency authorized by the Ministry of External Affairs, Govt. of India. Our students secure high-paying positions in luxury resorts across Dubai, Singapore, Maldives, Qatar, and Cruise Liners.
+            UVCHM students enjoy exclusive placement access through UV Consultancy — an official Foreign Employment Agency authorized by the Ministry of External Affairs, Govt. of India. Our students secure high-paying positions in luxury resorts across Dubai, Singapore, Maldives, Qatar, and Cruise Liners.
           </p>
           <div className="flex flex-wrap gap-4 pt-2">
             <Link

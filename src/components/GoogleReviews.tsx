@@ -21,7 +21,7 @@ export const REVIEWS: GoogleReview[] = [
     role: 'Student • Diploma in Hotel Management',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
-    quote: 'UV College of Hotel Management is the best college in Nizamabad for hotel management courses. The practical culinary and bar training labs are top notch and faculty supports 100% placement.',
+    quote: 'UVCHM is the best college in Nizamabad for hotel management courses. The practical culinary and bar training labs are top notch and faculty supports 100% placement.',
   },
   {
     id: 'rev-2',

@@ -30,7 +30,7 @@ export default function StudentPlacements({ onOpenApply }: { onOpenApply: () => 
       packageText: '₹18.5 LPA International Package',
       course: 'Diploma in Hotel Management',
       year: 'Batch of 2022',
-      quote: 'UV College provided me with hands-on fine dining training and foreign placement mentorship through UV Consultancy that directly landed me a role in Dubai right after graduation.',
+      quote: 'UVCHM provided me with hands-on fine dining training and foreign placement mentorship through UV Consultancy that directly landed me a role in Dubai right after graduation.',
       image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
     },
     {
@@ -54,7 +54,7 @@ export default function StudentPlacements({ onOpenApply }: { onOpenApply: () => 
       packageText: '₹14.2 LPA Overseas Package',
       course: 'Advance Diploma in Hotel Management',
       year: 'Batch of 2021',
-      quote: 'Learning real Opera PMS software in the college lab meant zero onboarding delay when I joined Marriott in Singapore. UV College’s 100% placement support delivered on every promise.',
+      quote: 'Learning real Opera PMS software in the college lab meant zero onboarding delay when I joined Marriott in Singapore. UVCHM’s 100% placement support delivered on every promise.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     },
   ];
@@ -92,7 +92,7 @@ export default function StudentPlacements({ onOpenApply }: { onOpenApply: () => 
               Guaranteed Placements & <span className="text-pink-600">Global Careers</span>
             </h2>
             <p className="text-slate-600 text-sm max-w-xl font-medium">
-              Over 5,000+ UV College alumni are leading luxury 5-star hotels, resorts, and cruise lines across 10+ countries worldwide.
+              Over 5,000+ UVCHM alumni are leading luxury 5-star hotels, resorts, and cruise lines across 10+ countries worldwide.
             </p>
           </div>
 

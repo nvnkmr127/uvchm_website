@@ -3,6 +3,7 @@
 import React from 'react';
 import { BROCHURE_FACILITIES, COLLEGE_INFO } from '@/data/collegeData';
 import { ChevronRight, Building2, ShieldCheck, ArrowRight, Utensils, Hotel, Laptop, Users, Bus, Trophy, HeartHandshake, Award, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => void }) {
   const stepsData = [
@@ -146,7 +147,13 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         {/* Header Section */}
-        <div className="text-center max-w-4xl mx-auto space-y-3">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-4xl mx-auto space-y-3"
+        >
           {/* Subheader Pill with decorative dots/lines */}
           <div className="flex items-center justify-center gap-3">
             <span className="w-12 h-[2px] bg-rose-300" />
@@ -170,7 +177,7 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
 
           {/* Underline accent */}
           <div className="w-12 h-1 bg-[#F43F5E] rounded-full mx-auto mt-2" />
-        </div>
+        </motion.div>
 
         {/* 6 Step Cards Grid with Animated Line Passing Through & Beyond */}
         <div className="relative pt-4">
@@ -209,7 +216,11 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
           {stepsData.map((item, idx) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
               key={idx}
               className="bg-white rounded-2xl border border-slate-200/80 shadow-lg shadow-slate-200/50 p-6 flex flex-col justify-between relative group hover:shadow-xl transition-all duration-300 overflow-hidden"
               style={{
@@ -262,13 +273,19 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
                   </div>
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
           </div>
         </div>
 
         {/* Bottom Feature Capsule Highlights Bar (Pixel-Perfect from Reference) */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
+        >
           
           {/* Feature 1 */}
           <div className="flex items-center gap-4">
@@ -331,21 +348,31 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
             </div>
           </div>
 
-        </div>
+        </motion.div>
 
         {/* 2. Brochure Infrastructure & Facilities Grid */}
         <div className="space-y-8 pt-12 border-t border-slate-200">
-          <div className="text-center space-y-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center space-y-2"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#E80088] text-xs font-black uppercase tracking-wider">
               <Building2 className="w-4 h-4 text-[#E80088]" />
               <span>5★ STAR CAMPUS INFRASTRUCTURE</span>
             </div>
             <h3 className="text-2xl sm:text-4xl font-black text-slate-950">2 Own Campus Buildings & Training Facilities</h3>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {BROCHURE_FACILITIES.map((facility, idx) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: idx * 0.05 }}
                 key={idx}
                 className="p-5 bg-white border border-slate-200/90 rounded-2xl shadow-xs hover:shadow-md hover:border-[#E80088]/30 transition-all flex items-start gap-4 group"
               >
@@ -363,13 +390,19 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
                     {facility.description}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* CTA Banner */}
-        <div className="p-8 sm:p-10 bg-slate-950 text-white rounded-3xl border border-[#E80088]/30 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="p-8 sm:p-10 bg-slate-950 text-white rounded-3xl border border-[#E80088]/30 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
           <div className="space-y-2 text-center sm:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E80088]/20 border border-[#E80088]/40 rounded-full text-[#E80088] text-[10px] font-black uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5" />
@@ -386,7 +419,7 @@ export default function BrochureRoadmap({ onOpenApply }: { onOpenApply?: () => v
             <span>APPLY FOR ADMISSION TODAY</span>
             <ArrowRight className="w-4 h-4" />
           </button>
-        </div>
+        </motion.div>
 
       </div>
     </section>

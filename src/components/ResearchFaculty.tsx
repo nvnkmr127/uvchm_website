@@ -122,7 +122,7 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                   </p>
 
                   <p className="text-white font-bold text-sm sm:text-base border-l-2 border-pink-500 pl-3 italic">
-                    &ldquo;Welcome to UV College of Hotel Management, where dreams take flight and careers travel the globe!&rdquo;
+                    &ldquo;Welcome to UVCHM, where dreams take flight and careers travel the globe!&rdquo;
                   </p>
 
                   <p>
@@ -130,7 +130,7 @@ export default function ResearchFaculty({ onOpenApply }: { onOpenApply?: () => v
                   </p>
 
                   <p>
-                    At UV College, we don’t just teach hospitality; we shape future-ready professionals. Our curriculum is designed to match international standards, and our commitment to excellence ensures that every student receives industry-relevant training, mentorship, and 100% placement support in prestigious hotels like Marriott, Taj, Hilton, and more.
+                    At UVCHM, we don’t just teach hospitality; we shape future-ready professionals. Our curriculum is designed to match international standards, and our commitment to excellence ensures that every student receives industry-relevant training, mentorship, and 100% placement support in prestigious hotels like Marriott, Taj, Hilton, and more.
                   </p>
                 </div>
               </div>

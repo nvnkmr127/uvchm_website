@@ -8,6 +8,7 @@ import AboutUs from '@/components/AboutUs';
 import BrochureRoadmap from '@/components/BrochureRoadmap';
 import UvConsultancy from '@/components/UvConsultancy';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import CollegeComparison from '@/components/CollegeComparison';
 import ProgramCatalog from '@/components/ProgramCatalog';
 import StudentPlacements from '@/components/StudentPlacements';
 import CampusShowcase from '@/components/CampusShowcase';
@@ -50,6 +51,9 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <WhyChooseUs onOpenApply={() => handleOpenApplyWithProgram()} />
+
+      {/* College Comparison Section */}
+      <CollegeComparison onOpenApply={() => handleOpenApplyWithProgram()} />
 
       {/* Hospitality Courses & Degrees (Editorial Showcase Layout) */}
       <ProgramCatalog onSelectProgramToApply={(pId) => handleOpenApplyWithProgram(pId)} />

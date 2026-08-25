@@ -101,7 +101,7 @@ export default function SingleCoursePage() {
                 <span>Program Overview</span>
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                {program.overviewExtended || 'This comprehensive program at UV College of Hotel Management combines intensive theoretical knowledge with over 500 hours of hands-on practical training inside our 5-star standard campus training labs.'}
+                {program.overviewExtended || 'This comprehensive program at UVCHM combines intensive theoretical knowledge with over 500 hours of hands-on practical training inside our 5-star standard campus training labs.'}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
                 <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">

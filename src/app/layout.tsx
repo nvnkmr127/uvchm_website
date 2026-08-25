@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'UV College of Hotel Management | Building Careers Bringing Excellence',
-  description: 'Official website of UV College of Hotel Management. Offering BHM, Culinary Arts, Bakery, and Beverage Management with 100% 5-star placement in Taj, Oberoi, Marriott & Hyatt.',
-  keywords: ['UV College of Hotel Management', 'UV College', 'Hotel Management Degree', 'Culinary Arts College', 'BHM Admissions', '5-Star Hotel Placements'],
+  title: 'UVCHM | Building Careers Bringing Excellence',
+  description: 'Official website of UVCHM. Offering BHM, Culinary Arts, Bakery, and Beverage Management with 100% 5-star placement in Taj, Oberoi, Marriott & Hyatt.',
+  keywords: ['UVCHM', 'UVCHM', 'Hotel Management Degree', 'Culinary Arts College', 'BHM Admissions', '5-Star Hotel Placements'],
 };
 
 export default function RootLayout({

@@ -164,7 +164,7 @@ export default function InstagramReels() {
             Watch Our <span className="text-pink-600">Featured Campus Reels</span>
           </h2>
           <p className="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto font-medium">
-            Daily practicals, masterclasses, and placement celebrations live from UV College campus.
+            Daily practicals, masterclasses, and placement celebrations live from UVCHM campus.
           </p>
         </div>
 
