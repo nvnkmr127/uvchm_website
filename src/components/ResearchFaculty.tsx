@@ -73,7 +73,7 @@ export default function ResearchFaculty() {
               <div className="relative z-10 space-y-6">
                 <div className="relative mx-auto w-72 h-72 sm:w-96 sm:h-96 rounded-3xl overflow-hidden border-4 border-pink-500/40 shadow-2xl group">
                   <Image
-                    src="https://cdn.uvchm.com/images/ssa-1.png"
+                    src="/images/ssa-1.png"
                     alt="Sujan Kumar Doddi - Founder & Principal"
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"

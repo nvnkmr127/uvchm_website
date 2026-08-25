@@ -238,7 +238,7 @@ export const PROGRAMS: Program[] = [
       'Paid 6-Month Internship in Taj, Oberoi & Marriott',
     ],
     careers: ['Front Office Executive', 'F&B Associate', 'Housekeeping Supervisor', 'Guest Relations Officer'],
-    image: 'https://cdn.uvchm.com/images/bhm_premium.jpg',
+    image: '/images/bhm_premium.jpg',
     featured: true,
   },
   {
@@ -271,7 +271,7 @@ export const PROGRAMS: Program[] = [
       'Paid 6-Month Executive Internship',
     ],
     careers: ['Assistant Front Office Manager', 'F&B Executive', 'Banquets Lead'],
-    image: 'https://cdn.uvchm.com/images/culinary_training_new.jpg',
+    image: '/images/culinary_training_new.jpg',
     featured: true,
   },
   {
@@ -304,7 +304,7 @@ export const PROGRAMS: Program[] = [
       'Management Trainee Internship Focus',
     ],
     careers: ['Assistant Resort Manager', 'Revenue Analyst', 'Hospitality Operations Lead'],
-    image: 'https://cdn.uvchm.com/images/culinary_sushi.jpg',
+    image: '/images/culinary_sushi.jpg',
     featured: true,
   },
   {
@@ -337,7 +337,7 @@ export const PROGRAMS: Program[] = [
       'Direct Managerial Placement Pathway',
     ],
     careers: ['General Manager', 'Corporate Director', 'Regional Operations Manager'],
-    image: 'https://cdn.uvchm.com/images/front_office_real.jpg',
+    image: '/images/front_office_real.jpg',
     featured: true,
   },
   {
@@ -370,7 +370,7 @@ export const PROGRAMS: Program[] = [
       'High-Volume Nightclub Simulation Training',
     ],
     careers: ['Head Bartender', 'Mixologist', 'Beverage Manager', 'Cruise Bar Lead'],
-    image: 'https://cdn.uvchm.com/images/bartending_training_new.jpg',
+    image: '/images/bartending_training_new.jpg',
     featured: true,
   },
   {
@@ -403,7 +403,7 @@ export const PROGRAMS: Program[] = [
       'Intensive Commercial Kitchen Training',
     ],
     careers: ['Chef de Partie', 'Commis Chef', 'Cloud Kitchen Specialist'],
-    image: 'https://cdn.uvchm.com/images/culinary_flambe.jpg',
+    image: '/images/culinary_flambe.jpg',
     featured: true,
   },
   {
@@ -436,7 +436,7 @@ export const PROGRAMS: Program[] = [
       'Rapid Career Entry as Restaurant Captain',
     ],
     careers: ['Restaurant Captain', 'F&B Steward', 'Banquet Supervisor'],
-    image: 'https://cdn.uvchm.com/images/fnb_training_new.jpg',
+    image: '/images/fnb_training_new.jpg',
   },
   {
     id: 'craft-course-housekeeping',
@@ -468,7 +468,7 @@ export const PROGRAMS: Program[] = [
       'VIP Suite Preparation & Inspection',
     ],
     careers: ['Housekeeping Executive', 'Linen Room Supervisor', 'Floor Controller'],
-    image: 'https://cdn.uvchm.com/images/housekeeping_training_new.jpg',
+    image: '/images/housekeeping_training_new.jpg',
   },
 ];
 
@@ -509,7 +509,7 @@ export const NEWS: NewsItem[] = [
     date: 'August 04, 2026',
     category: 'Placements',
     summary: 'All final-year students of UVCHM secured job offers at top 5-star hotel chains across India and abroad.',
-    image: 'https://cdn.uvchm.com/images/slider/1.jpeg',
+    image: '/images/slider/1.jpeg',
   },
   {
     id: 'news-2',
@@ -517,7 +517,7 @@ export const NEWS: NewsItem[] = [
     date: 'July 28, 2026',
     category: 'Campus Expansion',
     summary: 'UVCHM upgrades practical infrastructure with real-time hotel PMS terminals and luxury mock guest rooms.',
-    image: 'https://cdn.uvchm.com/images/slider/2.jpeg',
+    image: '/images/slider/2.jpeg',
   },
 ];
 
@@ -528,7 +528,7 @@ export const FACILITIES: Facility[] = [
     category: 'Culinary',
     description: 'Commercial stainless steel cooking ranges, tandoors, ovens, combi-steamers, and dedicated butchery stations.',
     features: ['Basic & Quantity Kitchens', 'Individual Cooking Ranges', 'Live Chef Demo Counter'],
-    image: 'https://cdn.uvchm.com/images/culinary_bakery_display.jpg',
+    image: '/images/culinary_bakery_display.jpg',
   },
   {
     id: 'fac-2',
@@ -536,7 +536,7 @@ export const FACILITIES: Facility[] = [
     category: 'Hospitality',
     description: 'Real-time front office check-in terminals, mock concierge desk, keycard encoders, and 5-star housekeeping guest room.',
     features: ['Front Office Software', 'Check-In/Out Counter', 'Housekeeping Suite'],
-    image: 'https://cdn.uvchm.com/images/front_office_real.jpg',
+    image: '/images/front_office_real.jpg',
   },
   {
     id: 'fac-3',
@@ -544,7 +544,7 @@ export const FACILITIES: Facility[] = [
     category: 'Beverage & F&B',
     description: 'Operational 60-seat fine dining training restaurant with flair bar, cocktail shakers, wine glass racks, and flambé trolleys.',
     features: ['60-Seat Restaurant', 'Flair Bartending Bar', 'Flambé Service Trolleys'],
-    image: 'https://cdn.uvchm.com/images/model_bar_real.jpg',
+    image: '/images/model_bar_real.jpg',
   },
 ];
 
@@ -557,7 +557,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Costa & Princess, Cruise Lines — 15 Years Experience',
     expertise: 'International Cruise Line Operations & Academic Leadership',
     perspective: 'Education is the passport to the future, for tomorrow belongs to those who prepare for it today. We are committed to shaping the next generation of hospitality professionals.',
-    image: 'https://cdn.uvchm.com/images/4.jpg',
+    image: '/images/4.jpg',
   },
   {
     id: 'fac-rakesh',
@@ -567,7 +567,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Burj Al Arab Hotel, U.A.E. — 16 Years Experience',
     expertise: 'Luxury Culinary Arts & Kitchen Leadership',
     perspective: 'Having worked at the iconic Burj Al Arab, I know what it takes to excel at the highest echelons of luxury hospitality. My goal is to instil that same level of culinary perfection in our students.',
-    image: 'https://cdn.uvchm.com/images/faculty/4.png',
+    image: '/images/faculty/4.png',
   },
   {
     id: 'fac-prashanth',
@@ -577,7 +577,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: '17 Yrs U.A.E. Exp.',
     expertise: 'International Cuisine & Kitchen Operations',
     perspective: 'Culinary arts is about passion and discipline. With 17 years of experience in the U.A.E., I aim to bring global standards to our students\' training.',
-    image: 'https://cdn.uvchm.com/images/faculty/3.png',
+    image: '/images/faculty/3.png',
   },
   {
     id: 'fac-naresh',
@@ -587,7 +587,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Qatar (7 Yrs Exp.)',
     expertise: 'Fine Dining Service & Guest Relations',
     perspective: 'Exceptional service is the hallmark of great hospitality. I bring 7 years of international experience from Qatar to train our students in delivering world-class food and beverage service.',
-    image: 'https://cdn.uvchm.com/images/faculty/2.png',
+    image: '/images/faculty/2.png',
   },
   {
     id: 'fac-akash',
@@ -597,7 +597,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: '5 Yrs Exp.',
     expertise: 'Luxury Room Maintenance & Hygiene Standards',
     perspective: 'Attention to detail is what makes a great hotel stay unforgettable. With 5 years of experience, I am dedicated to teaching students the highest standards of luxury housekeeping.',
-    image: 'https://cdn.uvchm.com/images/faculty/1.png',
+    image: '/images/faculty/1.png',
   },
   {
     id: 'fac-triveni',
@@ -607,7 +607,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Student Counseling & Career Guidance',
     expertise: 'Academic Planning & Career Roadmapping',
     perspective: 'Every student has a unique path to success. My goal is to provide personalized guidance and support to help each student discover their true potential and build a rewarding career in hospitality.',
-    image: 'https://cdn.uvchm.com/images/faculty/5.png',
+    image: '/images/faculty/5.png',
     imageStyle: 'scale-[1.3] object-center origin-top',
   },
   {
@@ -618,7 +618,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Student Counseling & Admissions',
     expertise: 'Student Mentorship & Guidance',
     perspective: 'I believe in nurturing student aspirations. I am here to guide students through their academic journey, ensuring they make informed decisions for a bright future in the hospitality sector.',
-    image: 'https://cdn.uvchm.com/images/faculty/6.png',
+    image: '/images/faculty/6.png',
     imageStyle: 'scale-[1.3] object-center origin-top',
   },
   {
@@ -629,7 +629,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Campus Operations & Coordination',
     expertise: 'Administrative Planning & Campus Management',
     perspective: 'Smooth operations form the backbone of a successful educational institution. I am dedicated to ensuring a seamless, organized, and welcoming campus environment for all our students and staff.',
-    image: 'https://cdn.uvchm.com/images/faculty/7.png',
+    image: '/images/faculty/7.png',
   },
   {
     id: 'fac-chaithanya',
@@ -639,7 +639,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Campus Administration & Support',
     expertise: 'Administrative Support & Operations',
     perspective: 'Our administration team works tirelessly behind the scenes to provide a supportive and efficient foundation, empowering both students and faculty to focus entirely on academic excellence.',
-    image: 'https://cdn.uvchm.com/images/faculty/8.png',
+    image: '/images/faculty/8.png',
   },
   {
     id: 'fac-srujana',
@@ -649,7 +649,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Campus Operations & Support',
     expertise: 'Administrative Logistics & Operations',
     perspective: 'Every successful institution relies on strong administrative support. I am committed to maintaining efficient campus operations so our students can thrive in a distraction-free environment.',
-    image: 'https://cdn.uvchm.com/images/faculty/9.png',
+    image: '/images/faculty/9.png',
   },
 
 ];

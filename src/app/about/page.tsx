@@ -85,7 +85,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900">
               <img
-                src="https://cdn.uvchm.com/images/frontoffice_dept.png"
+                src="/images/frontoffice_dept.png"
                 alt="UVCHM Campus Training"
                 className="w-full h-[400px] object-cover"
               />

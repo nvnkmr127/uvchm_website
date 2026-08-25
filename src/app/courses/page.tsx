@@ -9,10 +9,10 @@ import Link from 'next/link';
 import { useApplyModal } from '@/context/ApplyModalContext';
 
 const BACKGROUND_IMAGES = [
-  'https://cdn.uvchm.com/images/bhm_premium.jpg',
-  'https://cdn.uvchm.com/images/culinary_flambe.jpg',
-  'https://cdn.uvchm.com/images/model_bar_real.jpg',
-  'https://cdn.uvchm.com/images/front_office_real.jpg'
+  '/images/bhm_premium.jpg',
+  '/images/culinary_flambe.jpg',
+  '/images/model_bar_real.jpg',
+  '/images/front_office_real.jpg'
 ];
 
 export default function CoursesPage() {
@@ -133,7 +133,7 @@ export default function CoursesPage() {
                 {/* Header Image / Badge */}
                 <div className="relative h-48 bg-slate-900 overflow-hidden">
                   <img
-                    src={program.image || 'https://cdn.uvchm.com/images/frontoffice_dept.png'}
+                    src={program.image || '/images/frontoffice_dept.png'}
                     alt={program.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

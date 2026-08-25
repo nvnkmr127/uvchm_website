@@ -133,7 +133,7 @@ export default function ProgramCatalog() {
                 {/* Image Section */}
                 <div className={`relative h-72 lg:h-full min-h-[350px] overflow-hidden transition-all duration-500 lg:col-span-7 ${!isEven ? 'lg:order-last' : ''}`}>
                   <Image
-                    src={prog.image || 'https://cdn.uvchm.com/images/bhm_premium.jpg'}
+                    src={prog.image || '/images/bhm_premium.jpg'}
                     alt={prog.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"

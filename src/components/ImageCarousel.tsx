@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const IMAGES = [
-  'https://cdn.uvchm.com/images/bhm_premium.jpg',
-  'https://cdn.uvchm.com/images/culinary_training_new.jpg',
-  'https://cdn.uvchm.com/images/front_office_lab.jpg',
-  'https://cdn.uvchm.com/images/model_bar_restaurant.jpg'
+  '/images/bhm_premium.jpg',
+  '/images/culinary_training_new.jpg',
+  '/images/front_office_lab.jpg',
+  '/images/model_bar_restaurant.jpg'
 ];
 
 export default function ImageCarousel() {
