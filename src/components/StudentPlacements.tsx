@@ -11,7 +11,6 @@ interface Testimonial {
   role: string;
   company: string;
   location: string;
-  packageText: string;
   course: string;
   year: string;
   quote: string;
@@ -30,11 +29,10 @@ export default function StudentPlacements() {
       role: 'Assistant Food & Beverage Manager',
       company: 'Burj Al Arab Jumeirah',
       location: 'Dubai, UAE',
-      packageText: '₹18.5 LPA International Package',
       course: 'Diploma in Hotel Management',
-      year: 'Batch of 2022',
+      year: 'Batch of 2025',
       quote: 'UVCHM provided me with hands-on fine dining training and foreign placement mentorship through UV Consultancy that directly landed me a role in Dubai right after graduation.',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+      image: '/images/testimonials/student_1.jpg',
     },
     {
       id: 'test-2',
@@ -42,11 +40,10 @@ export default function StudentPlacements() {
       role: 'Sous Chef - Fine Dining',
       company: 'Taj Lake Palace',
       location: 'Udaipur, India',
-      packageText: '₹8.4 LPA Domestic Package',
       course: 'Craft Course in Food Production',
-      year: 'Batch of 2023',
+      year: 'Batch of 2026',
       quote: 'The 30% Women Empowerment Discount gave me the opportunity to pursue culinary arts. The practical quantity kitchen training helped me clear my Taj Executive Chef interview smoothly.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+      image: '/images/testimonials/student_2.jpg',
     },
     {
       id: 'test-3',
@@ -54,11 +51,10 @@ export default function StudentPlacements() {
       role: 'Front Office Executive',
       company: 'Marriott Marquis',
       location: 'Singapore',
-      packageText: '₹14.2 LPA Overseas Package',
       course: 'Advance Diploma in Hotel Management',
-      year: 'Batch of 2021',
-      quote: 'Learning real Opera PMS software in the college lab meant zero onboarding delay when I joined Marriott in Singapore. UVCHM’s 100% placement support delivered on every promise.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+      year: 'Batch of 2025',
+      quote: 'Learning real front office software in the college lab meant zero onboarding delay when I joined Marriott in Singapore. UVCHM’s 100% placement support delivered on every promise.',
+      image: '/images/testimonials/student_3.jpg',
     },
   ];
 
@@ -95,7 +91,7 @@ export default function StudentPlacements() {
               Guaranteed Placements & <span className="text-pink-600">Global Careers</span>
             </h2>
             <p className="text-slate-600 text-sm max-w-xl font-medium">
-              Over 5,000+ UVCHM alumni are leading luxury 5-star hotels, resorts, and cruise lines across 10+ countries worldwide.
+              Our recent UVCHM graduates are already securing roles in luxury 5-star hotels, resorts, and cruise lines internationally.
             </p>
           </div>
 
@@ -126,9 +122,9 @@ export default function StudentPlacements() {
             <div className="text-[11px] text-slate-500 font-medium">On-Campus Drives</div>
           </div>
           <div className="p-6 bg-white border border-slate-200 rounded-2xl space-y-1 shadow-xs">
-            <div className="text-3xl sm:text-4xl font-black text-pink-600">₹18.5 LPA</div>
-            <div className="text-xs font-bold text-slate-700 uppercase">Highest Package</div>
-            <div className="text-[11px] text-slate-500 font-medium">Dubai & Singapore Resort</div>
+            <div className="text-3xl sm:text-4xl font-black text-pink-600">Fast-Growing</div>
+            <div className="text-xs font-bold text-slate-700 uppercase">Alumni Network</div>
+            <div className="text-[11px] text-slate-500 font-medium">Globally & Domestically</div>
           </div>
           <div className="p-6 bg-white border border-slate-200 rounded-2xl space-y-1 shadow-xs">
             <div className="text-3xl sm:text-4xl font-black text-slate-950">10+</div>
@@ -157,9 +153,6 @@ export default function StudentPlacements() {
                 fill
                 className="object-cover object-top transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute bottom-3 left-3 right-3 px-3 py-1.5 bg-slate-950 text-white text-[10px] font-black uppercase rounded-lg shadow-md text-center">
-                {currentTestimonial.packageText}
-              </div>
             </div>
 
             <div className="text-center space-y-1">

@@ -30,7 +30,7 @@ export default function FacilitiesPage() {
       image: '/images/front_office_real.jpg',
       description: 'Fully simulated 5-star hotel lobby, reception desk, and guest suite designed to train students in guest check-in, key card allocation, and concierge etiquette.',
       features: [
-        'Opera PMS hotel reservation software training',
+        'Front office hotel reservation software training',
         'Simulated guest check-in / check-out desk',
         'Concierge & bell desk scenario practice',
         'Luxury guest room layout inspection',

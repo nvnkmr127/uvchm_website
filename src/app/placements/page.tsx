@@ -11,9 +11,9 @@ export default function PlacementsPage() {
 
   const stats = [
     { title: '100%', label: 'Placement Record' },
-    { title: '₹12.5 LPA', label: 'Highest International Package' },
+    { title: 'Growing', label: 'Alumni Network' },
     { title: '100+', label: '5-Star Recruiting Partners' },
-    { title: '1500+', label: 'Alumni Placed Overseas' },
+    { title: 'Global', label: 'Placement Network' },
   ];
 
   const alumni = [
@@ -21,22 +21,19 @@ export default function PlacementsPage() {
       name: 'Rajesh Varma',
       role: 'Commis Chef',
       hotel: 'Burj Al Arab, Dubai',
-      package: '₹9.6 LPA',
-      batch: 'Batch of 2023',
+      batch: 'Batch of 2025',
     },
     {
       name: 'Pooja Reddy',
       role: 'Guest Relations Executive',
       hotel: 'Taj Lake Palace, Udaipur',
-      package: '₹6.5 LPA',
-      batch: 'Batch of 2024',
+      batch: 'Batch of 2026',
     },
     {
       name: 'Suresh Kumar',
       role: 'Head Mixologist',
       hotel: 'Marriott Resort, Maldives',
-      package: '₹11.2 LPA',
-      batch: 'Batch of 2022',
+      batch: 'Batch of 2025',
     },
   ];
 
@@ -144,7 +141,6 @@ export default function PlacementsPage() {
                   <div key={idx} className="p-3.5 bg-slate-950/60 rounded-xl border border-white/10 space-y-1">
                     <div className="flex justify-between items-center text-xs font-bold">
                       <span className="text-pink-400">{a.name}</span>
-                      <span className="text-emerald-400">{a.package}</span>
                     </div>
                     <div className="text-xs text-white font-medium">{a.role} — {a.hotel}</div>
                     <div className="text-[10px] text-slate-400">{a.batch}</div>

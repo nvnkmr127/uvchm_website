@@ -35,14 +35,14 @@ export default function Home() {
       {/* Backed by UV Consultancy Section */}
       <UvConsultancy />
 
+      {/* Hospitality Courses & Degrees (Editorial Showcase Layout) */}
+      <ProgramCatalog />
+
       {/* Why Choose Us Section */}
       <WhyChooseUs />
 
       {/* College Comparison Section */}
       <CollegeComparison />
-
-      {/* Hospitality Courses & Degrees (Editorial Showcase Layout) */}
-      <ProgramCatalog />
 
       {/* 100% Placements & Alumni Success Stories */}
       <StudentPlacements />

@@ -22,7 +22,7 @@ export default function WhyChooseUs() {
     {
       icon: <Building2 className="w-6 h-6 text-orange-600" />,
       title: '16+ Practical Training Labs',
-      description: 'State-of-the-art commercial quantity kitchens, Opera PMS front office terminals, model bar, and guest suite lab.',
+      description: 'State-of-the-art commercial quantity kitchens, front office training terminals, model bar, and guest suite lab.',
       badge: 'MODERN INFRASTRUCTURE',
     },
     {
@@ -39,8 +39,8 @@ export default function WhyChooseUs() {
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-pink-600" />,
-      title: '16+ Years of Excellence',
-      description: "Nizamabad's #1 hotel management college with government recognized curriculum and personality grooming.",
+      title: 'Modern Campus Excellence',
+      description: "Nizamabad's #1 hotel management college with government recognized courses and personality grooming.",
       badge: "NIZAMABAD'S #1",
     },
   ];

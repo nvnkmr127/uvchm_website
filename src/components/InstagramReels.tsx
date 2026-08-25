@@ -61,7 +61,7 @@ const FALLBACK_REELS: Reel[] = [
   },
   {
     id: 'reel-4',
-    title: 'Opera PMS Front Office Check-in Simulator Training',
+    title: 'Front Office Check-in Simulator Training',
     category: 'Hotel Administration',
     views: '32.1K',
     likes: '1.8K',

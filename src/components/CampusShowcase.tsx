@@ -25,7 +25,7 @@ export default function CampusShowcase() {
             Learn Inside <span className="text-gradient-pink">Modern Training Labs</span>
           </h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Train inside commercial quantity kitchens, front office Opera PMS labs, model bar suites, and 60-seat fine dining student restaurant.
+            Train inside commercial quantity kitchens, front office software labs, model bar suites, and 60-seat fine dining student restaurant.
           </p>
         </div>
 

@@ -48,7 +48,7 @@ export const REVIEWS: GoogleReview[] = [
     role: 'Student • Advance Diploma in HM',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
-    quote: 'I took the Diploma in Hotel Management here. Superb infrastructure, real Opera PMS front office lab, and great principal mentorship throughout the year.',
+    quote: 'I took the Diploma in Hotel Management here. Superb infrastructure, real front office lab, and great principal mentorship throughout the year.',
   },
   {
     id: 'rev-5',

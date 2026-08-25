@@ -397,6 +397,44 @@ export default function BrochureRoadmap() {
           </motion.div>
         </div>
 
+        {/* Campus Images Carousel (Infinite Scroll) */}
+        <div className="mt-12 w-full overflow-hidden relative pb-4">
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10 bg-gradient-to-r from-[#FAF9F6] to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10 bg-gradient-to-l from-[#FAF9F6] to-transparent pointer-events-none"></div>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex gap-4 w-max animate-marquee hover:[animation-play-state:paused]"
+          >
+            {/* Array of images repeated twice for infinite loop effect */}
+            {[
+              '/images/front_office_real.jpg',
+              '/images/model_bar_real.jpg',
+              '/images/culinary_training_new.jpg',
+              '/images/bartending_training_new.jpg',
+              '/images/housekeeping_training_new.jpg',
+              '/images/2.jpg',
+              '/images/3.jpg',
+              '/images/4.jpg',
+              '/images/front_office_real.jpg',
+              '/images/model_bar_real.jpg',
+              '/images/culinary_training_new.jpg',
+              '/images/bartending_training_new.jpg',
+              '/images/housekeeping_training_new.jpg',
+              '/images/2.jpg',
+              '/images/3.jpg',
+              '/images/4.jpg'
+            ].map((img, i) => (
+              <div key={i} className="w-64 sm:w-80 h-48 sm:h-56 relative rounded-2xl overflow-hidden shadow-md shrink-0 border border-slate-200 group">
+                <img src={img} alt={`Campus view ${i}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
         {/* CTA Banner */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -408,7 +446,7 @@ export default function BrochureRoadmap() {
           <div className="space-y-2 text-center sm:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E80088]/20 border border-[#E80088]/40 rounded-full text-[#E80088] text-[10px] font-black uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>2 OWN CAMPUS BUILDINGS • ADMISSIONS OPEN 2026-27</span>
+              <span>2 OWN CAMPUS BUILDINGS</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black">Ready to Start Your Global Hospitality Career?</h3>
             <p className="text-xs sm:text-sm text-slate-300">Join Northern Telangana&apos;s Biggest Hotel Management College with 100% placement assurance.</p>

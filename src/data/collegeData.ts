@@ -63,10 +63,10 @@ export interface Recruiter {
 export const COLLEGE_INFO = {
   name: 'UVCHM',
   shortName: 'UVCHM',
-  motto: 'Shaping hospitality aspirants into creators, entrepreneurs & achievers.',
+  motto: 'Helping hospitality students become creators, business owners & achievers.',
   rankTag: "NORTHERN TELANGANA'S BIGGEST HOTEL MANAGEMENT COLLEGE",
   subtitle: '2 Own Campus Buildings with 5★ Star Infrastructure and International Experienced Faculty',
-  established: '2010',
+  established: '2024',
   accreditation: 'Govt Recognized • 100% Guaranteed 5-Star Placements',
   location: 'Nizamabad Campus, Hospitality Avenue, City Center',
   contact: {
@@ -133,7 +133,7 @@ export const BROCHURE_FACILITIES = [
   },
   {
     title: '2 Front Office Labs',
-    description: 'Simulated hotel reception desk & Opera PMS concierge administration training.',
+    description: 'Simulated hotel reception desk & hotel management software administration training.',
     category: 'Administration',
   },
   {
@@ -207,7 +207,7 @@ export const PROGRAMS: Program[] = [
     duration: '1 Year',
     department: 'Hospitality Management',
     description: 'A fast-tracked, intensive program designed to transform passionate individuals into polished hospitality professionals ready for 5-star placements.',
-    overviewExtended: 'At UVCHM, we are committed to cultivating the next generation of hospitality leaders—creators, doers, thinkers, and entrepreneurs. Our Diploma Course in Hotel Management is meticulously designed to equip students with the necessary skills and knowledge to excel in the vibrant world of hospitality. As a premier institution, we pride ourselves on offering a program that balances theoretical knowledge with practical experience, ensuring our students are industry-ready.',
+    overviewExtended: 'At UVCHM, we are committed to helping the next generation of hospitality leaders—creators, doers, thinkers, and business owners. Our Diploma Course in Hotel Management is carefully designed to give students the skills and knowledge to succeed in the hospitality world. As a top college, we take pride in offering a program that balances classroom learning with hands-on practice, making sure our students are job-ready.',
     whyChoose: [
       { title: 'Work Across the Globe', description: 'The hospitality industry is one of the fastest-growing sectors worldwide, providing ample opportunities for those willing to embark on a rewarding career. Our Hotel Management Diploma Course prepares you to work not just in your local market but across the globe.' },
       { title: 'Luxury Hotels', description: 'Experience the fast-paced environment of high-end hotels where service excellence is paramount.' },
@@ -231,7 +231,7 @@ export const PROGRAMS: Program[] = [
     ],
     modules: [
       '5-Star Luxury Hotel Standard Operating Procedures',
-      'Opera PMS & Hotel Front Desk Administration',
+      'Hotel Management Software & Hotel Front Desk Administration',
       'Advanced Culinary Arts & International Cuisines',
       'Mixology, Flair Bartending & Wine Etiquette',
       'Banquet Management & High-Profile Catering Operations',
@@ -247,11 +247,11 @@ export const PROGRAMS: Program[] = [
     department: 'Hotel Administration',
     level: 'Diploma',
     duration: '1.5 Years',
-    description: 'Advanced hospitality training including Opera PMS software, banquet management, commercial kitchen operations, and paid internship.',
-    overviewExtended: 'At UVCHM, we nurture budding hospitality students into creators, doers, thinkers, and entrepreneurs. Our Advance Diploma Course in Hotel Management is designed for students who have completed their intermediate education and are looking to take their first step into the vibrant world of hospitality. This fast-tracked program prepares you with both the theoretical foundation and the rigorous practical skills needed to thrive in supervisory roles across 5-star properties.',
+    description: 'Advanced hospitality training including hotel management software, banquet management, commercial kitchen operations, and paid internship.',
+    overviewExtended: 'At UVCHM, we help hospitality students become creators, doers, thinkers, and business owners. Our Advance Diploma Course in Hotel Management is designed for students who have finished their intermediate education and want to step into the hospitality world. This fast-tracked program prepares you with both the classroom foundation and the strong practical skills needed to succeed in supervisory roles across 5-star properties.',
     whyChoose: [
       { title: 'Supervisory Skill Development', description: 'Go beyond the basics. This program equips you with the leadership and management skills required to lead teams in front office, housekeeping, and F&B operations.' },
-      { title: 'Advanced Software Training', description: 'Get hands-on experience with industry-standard software like Opera PMS, giving you a competitive edge in front desk and revenue management roles.' },
+      { title: 'Advanced Software Training', description: 'Get hands-on experience with industry-standard hotel management software, giving you a competitive edge in front desk and revenue management roles.' },
       { title: 'Comprehensive Banquet Management', description: 'Learn the intricacies of planning, organizing, and executing large-scale events, conferences, and luxury weddings.' },
       { title: 'Paid Internship Opportunities', description: 'Gain invaluable real-world experience and earn while you learn through our guaranteed 6-month paid internship with top luxury brands.' },
       { title: 'Value-Based Practical Learning', description: 'Our curriculum emphasizes practical knowledge, with up to 90% of the program dedicated to industry-oriented practicals inside our campus training labs.' },
@@ -263,7 +263,7 @@ export const PROGRAMS: Program[] = [
       { question: 'What kind of practical training is included?', answer: 'Up to 90% of the course consists of industry-oriented practical training, including commercial kitchen operations, front office simulations, and a paid internship.' }
     ],
     modules: [
-      'Advanced Opera PMS & Revenue Management',
+      'Advanced Hotel Software & Revenue Management',
       'Strategic Front Desk & Lobby Operations',
       'Commercial Kitchen & Banquet Management',
       'Supervisory Leadership & Team Handling',
@@ -281,9 +281,9 @@ export const PROGRAMS: Program[] = [
     level: 'Postgraduate',
     duration: '1 Year',
     description: 'Postgraduate specialization for graduates focusing on luxury resort administration, yield management, and revenue optimization.',
-    overviewExtended: 'At UVCHM, we nurture aspiring hospitality professionals into creators, doers, thinkers, and entrepreneurs. Our PG Diploma in Hotel Management is specifically designed for degree holders who seek to advance their careers into managerial and executive roles within the dynamic hospitality industry. This program bridges the gap between general graduation and specialized luxury resort administration.',
+    overviewExtended: 'At UVCHM, we help aspiring hospitality professionals become creators, doers, thinkers, and business owners. Our PG Diploma in Hotel Management is specifically designed for degree holders who want to advance their careers into managerial and executive roles within the hospitality industry. This program connects general graduation with specialized luxury resort management.',
     whyChoose: [
-      { title: 'Accelerated Managerial Path', description: 'Designed exclusively for graduates, this program fast-tracks your journey into mid-level management and administrative roles in luxury properties.' },
+      { title: 'Fast-Track Manager Path', description: 'Designed exclusively for graduates, this program fast-tracks your journey into mid-level management and administrative roles in luxury properties.' },
       { title: 'Revenue & Yield Management', description: 'Learn advanced strategies for pricing, inventory control, and revenue optimization—critical skills highly sought after by modern hotel chains.' },
       { title: 'Luxury Resort Administration', description: 'Gain specialized insights into managing ultra-luxury resorts, boutique hotels, and eco-retreats.' },
       { title: 'Strategic Decision Making', description: 'Transition from operational tasks to strategic planning, focusing on HR management, hospitality marketing, and financial analysis.' },
@@ -314,11 +314,11 @@ export const PROGRAMS: Program[] = [
     level: 'Postgraduate',
     duration: '2 Years',
     description: 'Master level professional diploma preparing executive directors for international hotel chains, cruise liners, and aviation hospitality.',
-    overviewExtended: 'The Masters in Diploma in Hotel Management is UVCHM’s flagship 2-year postgraduate program, tailored for ambitious individuals aiming for the pinnacle of hospitality leadership. This comprehensive curriculum dives deep into global hospitality trends, multi-property management, and executive-level decision making, preparing you to direct international hotel chains and luxury cruise liners.',
+    overviewExtended: 'The Masters in Diploma in Hotel Management is UVCHM’s flagship 2-year postgraduate program, tailored for ambitious individuals aiming for the top level of hospitality leadership. This complete curriculum dives deep into global hospitality trends, multi-property management, and executive-level decision making, preparing you to direct international hotel chains and luxury cruise liners.',
     whyChoose: [
       { title: 'Executive Leadership Focus', description: 'Move beyond management into true leadership. Learn how to direct entire properties, handle P&L responsibilities, and lead large-scale operations.' },
-      { title: 'International Hospitality Standards', description: 'Study the SOPs and operational philosophies of the world’s top luxury brands, from Four Seasons to Ritz-Carlton.' },
-      { title: 'Multi-Department Mastery', description: 'Gain a holistic, top-down view of all departments—Rooms Division, F&B, HR, Sales, and Finance—to effectively govern a commercial property.' },
+      { title: 'International Hospitality Standards', description: 'Study the standard rules and work methods of the world’s top luxury brands, from Four Seasons to Ritz-Carlton.' },
+      { title: 'Complete Department Mastery', description: 'Gain a complete, big-picture view of all departments—Rooms Division, F&B, HR, Sales, and Finance—to effectively manage a commercial property.' },
       { title: 'Aviation & Cruise Line Management', description: 'Specialized modules focusing on the unique challenges and logistics of managing hospitality services in the aviation and cruise sectors.' },
       { title: 'Strategic Business Planning', description: 'Learn to conceptualize, plan, and execute business strategies, marketing campaigns, and brand expansions.' },
       { title: 'Elite Placement Opportunities', description: 'Graduates of this master-level program are prime candidates for executive trainee programs and direct managerial placements globally.' },
@@ -349,7 +349,7 @@ export const PROGRAMS: Program[] = [
     description: 'Master flair bartending, classic & molecular cocktail mixology, wine service etiquette, bar cost control, and beverage inventory.',
     overviewExtended: 'Step behind the bar and into a world of creativity and showmanship. UVCHM’s Bartending and Mixology Certification is an immersive 1-year program dedicated entirely to the art and science of beverages. From classic cocktail craftsmanship to jaw-dropping flair bartending, this course is designed for passionate individuals who want to dominate the high-energy nightlife and luxury bar scenes.',
     whyChoose: [
-      { title: 'Molecular Mixology', description: 'Learn cutting-edge techniques using foams, smokes, and gels to create avant-garde cocktails that wow guests.' },
+      { title: 'Modern Mixology', description: 'Learn cutting-edge techniques using foams, smokes, and gels to create modern creative cocktails that wow guests.' },
       { title: 'Flair Bartending', description: 'Master the art of working flair and exhibition flair to entertain guests while efficiently mixing drinks.' },
       { title: 'Wine & Spirit Knowledge', description: 'Gain deep expertise in the origins, tasting notes, and pairing etiquette of global wines, single malts, and premium spirits.' },
       { title: 'Bar Operations & Cost Control', description: 'Understand the business side of the bar—inventory management, pour costs, pricing strategies, and licensing.' },
@@ -445,13 +445,13 @@ export const PROGRAMS: Program[] = [
     level: 'Diploma',
     duration: '1 Year',
     description: 'Specialized training in luxury room cleaning standards, flower arrangements, linen management, laundry operations, and suite inspection.',
-    overviewExtended: 'At UVCHM, we are dedicated to cultivating the professionals who maintain the pristine standards of luxury properties. Our Craft Course in Housekeeping is designed for students from an SSC background who aspire to build a successful career in the accommodation sector. This course provides highly specialized training in housekeeping, an integral aspect of hospitality management that ensures guest satisfaction and operational excellence.',
+    overviewExtended: 'At UVCHM, we are dedicated to training the professionals who maintain the high standards of luxury properties. Our Craft Course in Housekeeping is designed for students from an SSC background who aspire to build a successful career in the accommodation sector. This course provides highly specialized training in housekeeping, an important part of hotel management that ensures guest satisfaction and smooth operations.',
     whyChoose: [
-      { title: 'Luxury Room Standards', description: 'Learn the exact protocols and aesthetic standards required to prepare and maintain 5-star luxury suites and VIP rooms.' },
-      { title: 'Horticulture & Floristry', description: 'Develop specialized skills in flower arrangements and indoor plant care to enhance the ambiance of lobbies and guest rooms.' },
+      { title: 'Luxury Room Standards', description: 'Learn the exact rules and standards required to prepare and maintain 5-star luxury suites and VIP rooms.' },
+      { title: 'Plant Care & Flower Arrangements', description: 'Develop specialized skills in flower arrangements and indoor plant care to make lobbies and guest rooms look beautiful.' },
       { title: 'Linen & Laundry Management', description: 'Master the operations of a commercial laundry, including fabric care, inventory management, and uniform control.' },
-      { title: 'Hygiene & Sanitization', description: 'Gain crucial knowledge regarding deep cleaning, pest control, and the latest international sanitization protocols.' },
-      { title: 'Interior Decoration Basics', description: 'Understand the principles of color themes, lighting, and layout aesthetics to ensure rooms always look their best.' },
+      { title: 'Cleaning & Sanitization', description: 'Gain crucial knowledge regarding deep cleaning, pest control, and the latest international cleaning rules.' },
+      { title: 'Room Decoration Basics', description: 'Understand the basics of color themes, lighting, and room layout to ensure rooms always look their best.' },
       { title: 'High Demand Profession', description: 'Housekeeping professionals are the backbone of any hotel, leading to high job security and rapid promotion opportunities to Executive Housekeeper roles.' },
     ],
     faq: [
@@ -462,9 +462,9 @@ export const PROGRAMS: Program[] = [
     modules: [
       '5-Star Luxury Room Cleaning Standards',
       'Commercial Laundry & Linen Management',
-      'Horticulture & Professional Floristry',
-      'Interior Decoration & Lighting Aesthetics',
-      'International Sanitization & Hygiene Protocols',
+      'Plant Care & Flower Arrangements',
+      'Room Decoration & Lighting Setup',
+      'International Cleaning & Hygiene Rules',
       'VIP Suite Preparation & Inspection',
     ],
     careers: ['Housekeeping Executive', 'Linen Room Supervisor', 'Floor Controller'],
@@ -513,7 +513,7 @@ export const NEWS: NewsItem[] = [
   },
   {
     id: 'news-2',
-    title: 'Inauguration of New Opera PMS Front Office Lab & Housekeeping Suite',
+    title: 'Inauguration of New Front Office Lab & Housekeeping Suite',
     date: 'July 28, 2026',
     category: 'Campus Expansion',
     summary: 'UVCHM upgrades practical infrastructure with real-time hotel PMS terminals and luxury mock guest rooms.',
@@ -534,8 +534,8 @@ export const FACILITIES: Facility[] = [
     id: 'fac-2',
     name: 'Front Office Simulator & Luxury Guest Suite Lab',
     category: 'Hospitality',
-    description: 'Real-time Opera PMS check-in terminals, mock concierge desk, keycard encoders, and 5-star housekeeping guest room.',
-    features: ['Opera PMS Software', 'Check-In/Out Counter', 'Housekeeping Suite'],
+    description: 'Real-time front office check-in terminals, mock concierge desk, keycard encoders, and 5-star housekeeping guest room.',
+    features: ['Front Office Software', 'Check-In/Out Counter', 'Housekeeping Suite'],
     image: '/images/front_office_real.jpg',
   },
   {
