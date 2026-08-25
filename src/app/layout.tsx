@@ -40,9 +40,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
   },
-  icons: {
-    icon: '/fav.png',
-  },
 };
 
 const jsonLd = {
