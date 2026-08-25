@@ -359,9 +359,8 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-zinc-300">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              Nizamabad&apos;s #1 Hospitality Education Campus
+            <span className="flex items-center gap-1.5 text-zinc-400">
+              Developed by <a href="https://digicloudify.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-zinc-200 hover:text-pink-400 transition-colors">Digicloudify</a>
             </span>
 
             <button
