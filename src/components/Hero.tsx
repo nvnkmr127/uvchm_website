@@ -89,6 +89,8 @@ export default function Hero() {
               alt={s.title}
               fill
               className="object-cover object-center scale-105"
+              priority={idx === 0}
+              unoptimized={true}
             />
             {/* Desktop horizontal fade */}
             <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 to-transparent"></div>
