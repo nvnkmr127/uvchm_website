@@ -16,12 +16,26 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
     city: '',
   });
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsLoading(true);
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, source: 'Apply Modal' }),
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please try again or call us directly.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleReset = () => {
@@ -181,9 +195,10 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-pink-600/30 transition-all hover:scale-[1.01] active:scale-[0.99]"
+                  disabled={isLoading}
+                  className="w-full py-3.5 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 disabled:opacity-70 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-pink-600/30 transition-all hover:scale-[1.01] active:scale-[0.99]"
                 >
-                  REQUEST CALLBACK
+                  {isLoading ? 'SUBMITTING...' : 'REQUEST CALLBACK'}
                 </button>
               </div>
             </form>

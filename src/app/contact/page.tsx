@@ -10,6 +10,7 @@ import { MapPin, Phone, Mail, Clock, Send, Sparkles, CheckCircle2, ShieldCheck, 
 export default function ContactPage() {
   const [applyModalOpen, setApplyModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -18,13 +19,26 @@ export default function ContactPage() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: '', phone: '', email: '', course: 'Diploma in Hotel Management', message: '' });
-    }, 4000);
+    setIsLoading(true);
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, source: 'Contact Page' }),
+      });
+      setFormSubmitted(true);
+      setTimeout(() => {
+        setFormSubmitted(false);
+        setFormData({ name: '', phone: '', email: '', course: 'Diploma in Hotel Management', message: '' });
+      }, 4000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please try again or call us directly.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -202,9 +216,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-pink-600 hover:bg-pink-700 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95"
+                    disabled={isLoading}
+                    className="w-full py-4 bg-pink-600 hover:bg-pink-700 disabled:opacity-70 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95"
                   >
-                    <span>SEND INQUIRY NOW</span>
+                    <span>{isLoading ? 'SENDING...' : 'SEND INQUIRY NOW'}</span>
                     <Send className="w-4 h-4" />
                   </button>
                 </form>
