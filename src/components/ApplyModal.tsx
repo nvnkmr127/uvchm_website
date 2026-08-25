@@ -11,7 +11,7 @@ interface ApplyModalProps {
 
 export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     phone: '',
     city: '',
   });
@@ -128,7 +128,7 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Request Submitted!</h3>
               <p className="text-slate-600 text-xs sm:text-sm max-w-xs mx-auto">
-                Thank you, <span className="font-bold text-pink-600">{formData.fullName}</span>. Our UVCHM admissions counselors will call you shortly at <span className="font-mono font-bold text-indigo-700">{formData.phone}</span>.
+                Thank you, <span className="font-bold text-pink-600">{formData.name}</span>. Our UVCHM admissions counselors will call you shortly at <span className="font-mono font-bold text-indigo-700">{formData.phone}</span>.
               </p>
               <div className="pt-2 sm:pt-4">
                 <button
@@ -153,8 +153,8 @@ export default function ApplyModal({ isOpen, onClose }: ApplyModalProps) {
                   type="text"
                   required
                   placeholder="Enter your name"
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-3.5 sm:px-4 py-2.5 text-sm sm:text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-600 focus:bg-white transition-colors"
                 />
               </div>
