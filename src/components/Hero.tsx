@@ -18,6 +18,7 @@ export default function Hero() {
   const { openModal } = useApplyModal();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [loadedSlides, setLoadedSlides] = useState<number[]>([0]);
 
   const slides: HeroSlide[] = [
     {
@@ -58,6 +59,12 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [isPaused, slides.length]);
 
+  useEffect(() => {
+    if (!loadedSlides.includes(currentSlide)) {
+      setLoadedSlides((prev) => [...prev, currentSlide]);
+    }
+  }, [currentSlide, loadedSlides]);
+
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
@@ -84,14 +91,16 @@ export default function Hero() {
               currentSlide === idx ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
           >
-            <Image
-              src={s.image}
-              alt={s.title}
-              fill
-              className="object-cover object-center scale-105"
-              priority={idx === 0}
-              unoptimized={true}
-            />
+            {loadedSlides.includes(idx) && (
+              <Image
+                src={s.image}
+                alt={s.title}
+                fill
+                className="object-cover object-center scale-105"
+                priority={idx === 0}
+                unoptimized={true}
+              />
+            )}
             {/* Desktop horizontal fade */}
             <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 to-transparent"></div>
             {/* Vertical fade: smoother on desktop */}
