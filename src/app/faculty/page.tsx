@@ -38,12 +38,12 @@ export default function FacultyPage() {
               key={member.id}
               className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-pink-500/30 transition-all flex flex-col sm:flex-row gap-6 items-start"
             >
-              <div className="w-full sm:w-44 h-48 sm:h-full rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative">
+              <div className="w-full sm:w-44 h-64 sm:h-full rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
               </div>

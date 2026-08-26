@@ -21,24 +21,26 @@ export default function AboutUs() {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Main Campus Image */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-200 bg-slate-900 group">
-                <Image
-                  src="/college.png"
-                  alt="UVCHM 5-Star Campus"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto max-h-[600px] object-contain group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-200 bg-slate-900 group flex flex-col">
+                <div className="relative w-full">
+                  <Image
+                    src="/college.png"
+                    alt="UVCHM 5-Star Campus"
+                    width={600}
+                    height={600}
+                    className="w-full h-auto max-h-[600px] object-contain group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent sm:block hidden"></div>
+                </div>
 
                 {/* Floating Women Scholarship Highlight Badge */}
-                <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-[#E80088] to-[#90268B] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-white/20">
-                  <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0">
-                    <Heart className="w-5 h-5 fill-current" />
+                <div className="sm:absolute sm:bottom-4 sm:left-4 sm:right-4 bg-gradient-to-r from-[#E80088] to-[#90268B] text-white p-3 sm:p-4 rounded-none sm:rounded-2xl shadow-xl flex items-center gap-2 sm:gap-3 border-t sm:border border-white/20 relative z-10">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0">
+                    <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
                   </div>
                   <div>
-                    <div className="text-xs font-black uppercase tracking-wider">Women Empowerment Scholarship</div>
-                    <div className="text-sm font-extrabold text-white">Exclusive 30% Fee Discount for Women</div>
+                    <div className="text-[10px] sm:text-xs font-black uppercase tracking-wider leading-tight">Women Empowerment Scholarship</div>
+                    <div className="text-[11px] sm:text-sm font-extrabold text-white leading-tight mt-0.5">Exclusive 30% Fee Discount for Women</div>
                   </div>
                 </div>
               </div>
@@ -76,18 +78,18 @@ export default function AboutUs() {
             </p>
 
             {/* Highlights Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                <div className="text-lg font-black text-[#E80088]">100%</div>
-                <div className="text-[10px] font-bold text-slate-700 uppercase">Job Placements</div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2">
+              <div className="p-2 sm:p-3 bg-slate-50 border border-slate-200 rounded-xl text-center flex flex-col justify-center">
+                <div className="text-base sm:text-lg font-black text-[#E80088]">100%</div>
+                <div className="text-[8px] sm:text-[10px] font-bold text-slate-700 uppercase leading-tight mt-0.5">Job Placements</div>
               </div>
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
-                <div className="text-lg font-black text-[#E80088]">10+</div>
-                <div className="text-[10px] font-bold text-slate-700 uppercase">Countries Worldwide</div>
+              <div className="p-2 sm:p-3 bg-slate-50 border border-slate-200 rounded-xl text-center flex flex-col justify-center">
+                <div className="text-base sm:text-lg font-black text-[#E80088]">10+</div>
+                <div className="text-[8px] sm:text-[10px] font-bold text-slate-700 uppercase leading-tight mt-0.5">Countries Worldwide</div>
               </div>
-              <div className="p-3 bg-pink-50 border border-pink-200 rounded-xl text-center">
-                <div className="text-lg font-black text-[#90268B]">30% OFF</div>
-                <div className="text-[10px] font-bold text-pink-800 uppercase">Discount for Women</div>
+              <div className="p-2 sm:p-3 bg-pink-50 border border-pink-200 rounded-xl text-center flex flex-col justify-center">
+                <div className="text-base sm:text-lg font-black text-[#90268B]">30% OFF</div>
+                <div className="text-[8px] sm:text-[10px] font-bold text-pink-800 uppercase leading-tight mt-0.5">Discount for Women</div>
               </div>
             </div>
 

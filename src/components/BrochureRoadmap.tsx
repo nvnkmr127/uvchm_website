@@ -286,27 +286,27 @@ export default function BrochureRoadmap() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
+          className="bg-white rounded-2xl border border-slate-200/80 shadow-md p-4 sm:p-6 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left"
         >
           
           {/* Feature 1 */}
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center shrink-0">
-              <svg className="w-6 h-6 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4 sm:w-6 sm:h-6 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" />
                 <path d="M12 7v5l3 3" />
               </svg>
             </div>
             <div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Industry-Focused</div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Education</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Industry-Focused</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Education</div>
             </div>
           </div>
 
           {/* Feature 2 */}
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center shrink-0">
-              <svg className="w-6 h-6 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4 sm:w-6 sm:h-6 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                 <circle cx="10" cy="7" r="4" />
                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
@@ -314,15 +314,15 @@ export default function BrochureRoadmap() {
               </svg>
             </div>
             <div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Expert Faculty &</div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Mentorship</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Expert Faculty &</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Mentorship</div>
             </div>
           </div>
 
           {/* Feature 3 */}
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0">
-              <svg className="w-6 h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4 sm:w-6 sm:h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M2 20h20" />
                 <path d="M6 16v4" />
                 <path d="M18 16v4" />
@@ -330,23 +330,23 @@ export default function BrochureRoadmap() {
               </svg>
             </div>
             <div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Internships in Top</div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Hospitality Brands</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Internships in Top</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Hospitality Brands</div>
             </div>
           </div>
 
           {/* Feature 4 */}
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-              <svg className="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4 sm:w-6 sm:h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20" />
                 <path d="M2 12h20" />
               </svg>
             </div>
             <div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Global Exposure &</div>
-              <div className="text-xs font-extrabold text-[#0F172A] leading-tight">Placement Support</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Global Exposure &</div>
+              <div className="text-[9px] sm:text-xs font-extrabold text-[#0F172A] leading-tight">Placement Support</div>
             </div>
           </div>
 

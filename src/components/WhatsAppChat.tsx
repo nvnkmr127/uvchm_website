@@ -3,8 +3,8 @@
 import React from 'react';
 
 export default function WhatsAppChat() {
-  // Placeholder WhatsApp number
-  const phoneNumber = '+910000000000';
+  // UVCHM WhatsApp number
+  const phoneNumber = '+918463995959';
   const defaultMessage = 'Hello UVCHM, I would like to know more about the admission process.';
 
   const encodedMessage = encodeURIComponent(defaultMessage);
