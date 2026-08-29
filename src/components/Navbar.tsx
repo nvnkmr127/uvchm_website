@@ -71,6 +71,9 @@ export default function Navbar() {
               <Link href="/placements" className="hover:text-pink-600 transition-colors">
                 Placements
               </Link>
+              <Link href="/campuses" className="hover:text-pink-600 transition-colors">
+                Campuses
+              </Link>
               <Link href="/facilities" className="hover:text-pink-600 transition-colors">
                 Training Labs
               </Link>
@@ -129,6 +132,9 @@ export default function Navbar() {
               </Link>
               <Link href="/placements" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
                 Placements
+              </Link>
+              <Link href="/campuses" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
+                Campuses
               </Link>
               <Link href="/facilities" onClick={() => setMobileMenuOpen(false)} className="hover:text-pink-600 py-1">
                 Training Labs
