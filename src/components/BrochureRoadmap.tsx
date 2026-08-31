@@ -415,17 +415,17 @@ export default function BrochureRoadmap() {
               '/images/culinary_training_new.jpg',
               '/images/bartending_training_new.jpg',
               '/images/housekeeping_training_new.jpg',
-              '/images/2.jpg',
-              '/images/3.jpg',
-              '/images/4.jpg',
+              '/images/IMG_8427.JPG',
+              '/images/IMG_9585.JPG',
+              '/images/IMG_9641.JPG',
               '/images/front_office_real.jpg',
               '/images/model_bar_real.jpg',
               '/images/culinary_training_new.jpg',
               '/images/bartending_training_new.jpg',
               '/images/housekeeping_training_new.jpg',
-              '/images/2.jpg',
-              '/images/3.jpg',
-              '/images/4.jpg'
+              '/images/IMG_8427.JPG',
+              '/images/IMG_9585.JPG',
+              '/images/IMG_9641.JPG'
             ].map((img, i) => (
               <div key={i} className="w-64 sm:w-80 h-48 sm:h-56 relative rounded-2xl overflow-hidden shadow-md shrink-0 border border-slate-200 group">
                 <img src={img} alt={`Campus view ${i}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />

@@ -60,25 +60,44 @@ const facultyExperiences = [
 ];
 
 const allImages = [
+  // Campus 1 (North Campus) & General
+  { src: '/college.png', alt: 'UVCHM Main Campus Building', campus: 'Campus 1', lab: 'General' },
+  { src: '/images/bhm_premium.jpg', alt: 'Premium BHM Facilities', campus: 'Campus 1', lab: 'General' },
+  { src: '/images/IMG_8427.JPG', alt: 'Campus Infrastructure & Courtyard', campus: 'Campus 1', lab: 'General' },
+  { src: '/images/IMG_9585.JPG', alt: 'Academic & Training Block', campus: 'Campus 1', lab: 'General' },
+  { src: '/images/IMG_9641.JPG', alt: 'Student Practical Training Area', campus: 'Campus 1', lab: 'General' },
+  { src: '/images/IMG_9724.JPG', alt: 'Campus View & Facilities', campus: 'Campus 1', lab: 'General' },
+  { src: encodeURI('/College Photos/North Campus/WhatsApp Image 2025-02-04 at 12.53.06 PM.jpeg'), alt: 'North Campus Building', campus: 'Campus 1', lab: 'General' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Kitchen/IMG_2726.jpeg'), alt: 'North Campus Culinary Practical', campus: 'Campus 1', lab: 'Culinary' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Kitchen/IMG_3615.jpeg'), alt: 'North Campus Main Kitchen Lab', campus: 'Campus 1', lab: 'Culinary' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Kitchen/IMG_8720.jpeg'), alt: 'Advanced Chef Demo Station', campus: 'Campus 1', lab: 'Culinary' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Service/IMG_4276.jpeg'), alt: 'North Campus F&B Service Training', campus: 'Campus 1', lab: 'Restaurant' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Service/IMG_4290.jpeg'), alt: 'Dining & Service Practice Lab', campus: 'Campus 1', lab: 'Restaurant' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Housekeeping/IMG_2560.jpeg'), alt: 'North Campus Housekeeping Suite', campus: 'Campus 1', lab: 'Housekeeping' },
+  { src: encodeURI('/College Photos/North Campus/All departments/Housekeeping/IMG_4246.jpeg'), alt: 'Housekeeping Practical Area', campus: 'Campus 1', lab: 'Housekeeping' },
+
+  // Campus 2 (South Campus) & Practical Labs
   { src: '/images/culinary_basic.jpg', alt: 'Basic Culinary Lab', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/model_bar_real.jpg', alt: 'Model Bar', campus: 'Campus 2', lab: 'Bar' },
+  { src: '/images/model_bar_real.jpg', alt: 'Model Bar Training', campus: 'Campus 2', lab: 'Bar' },
   { src: '/images/front_office_real.jpg', alt: 'Front Office Suite', campus: 'Campus 2', lab: 'Front Office' },
   { src: '/images/housekeeping_training_new.jpg', alt: 'Housekeeping Lab', campus: 'Campus 2', lab: 'Housekeeping' },
-  { src: '/images/culinary_bakery_display.jpg', alt: 'Bakery Display', campus: 'Campus 2', lab: 'Bakery' },
-  { src: '/images/front_office_lab.jpg', alt: 'Model Guest Room', campus: 'Campus 2', lab: 'Front Office' },
-  { src: '/images/bhm_premium.jpg', alt: 'Premium BHM', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/bartending_training_new.jpg', alt: 'Bartending Training', campus: 'Campus 2', lab: 'Bar' },
-  { src: '/images/culinary_flambe.jpg', alt: 'Culinary Flambe', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/culinary_sushi.jpg', alt: 'Sushi Training', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/culinary_training_new.jpg', alt: 'Culinary Training', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/fnb_training_new.jpg', alt: 'F&B Training', campus: 'Campus 2', lab: 'Restaurant' },
-  { src: '/images/model_bar_restaurant.jpg', alt: 'Restaurant Bar', campus: 'Campus 2', lab: 'Restaurant' },
-  { src: '/college.png', alt: 'UVCHM College Building', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/unnamed-scaled.jpg', alt: 'Campus View', campus: 'Campus 1', lab: 'General' }
+  { src: '/images/culinary_bakery_display.jpg', alt: 'Bakery & Patisserie Display', campus: 'Campus 2', lab: 'Bakery' },
+  { src: '/images/front_office_lab.jpg', alt: 'Model Guest Room Suite', campus: 'Campus 2', lab: 'Front Office' },
+  { src: '/images/bartending_training_new.jpg', alt: 'Bartending Practical Class', campus: 'Campus 2', lab: 'Bar' },
+  { src: '/images/culinary_flambe.jpg', alt: 'Culinary Flambe Technique', campus: 'Campus 2', lab: 'Culinary' },
+  { src: '/images/culinary_sushi.jpg', alt: 'Sushi Preparation Training', campus: 'Campus 2', lab: 'Culinary' },
+  { src: '/images/culinary_training_new.jpg', alt: 'Professional Kitchen Training', campus: 'Campus 2', lab: 'Culinary' },
+  { src: '/images/fnb_training_new.jpg', alt: 'F&B Fine Dining Training', campus: 'Campus 2', lab: 'Restaurant' },
+  { src: '/images/model_bar_restaurant.jpg', alt: 'Restaurant & Bar Lounge', campus: 'Campus 2', lab: 'Restaurant' },
+  { src: encodeURI('/College Photos/South/IMG_8167.jpeg'), alt: 'South Campus Practical Hub', campus: 'Campus 2', lab: 'General' },
+  { src: encodeURI('/College Photos/South/IMG_8166.jpeg'), alt: 'South Campus Hospitality Suite', campus: 'Campus 2', lab: 'General' },
+  { src: encodeURI('/College Photos/South/IMG_8170.jpeg'), alt: 'South Campus Training Lab', campus: 'Campus 2', lab: 'General' },
+  { src: encodeURI('/College Photos/South/IMG_8177.jpeg'), alt: 'South Campus Student Activity Area', campus: 'Campus 2', lab: 'General' }
 ];
 
-const row1 = allImages.slice(0, 8);
-const row2 = allImages.slice(8);
+const halfCount = Math.ceil(allImages.length / 2);
+const row1 = allImages.slice(0, halfCount);
+const row2 = allImages.slice(halfCount);
 
 export default function CampusesPage() {
   const [activeCampus, setActiveCampus] = useState(0);

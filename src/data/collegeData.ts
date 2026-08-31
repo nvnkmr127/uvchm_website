@@ -509,7 +509,7 @@ export const NEWS: NewsItem[] = [
     date: 'August 04, 2026',
     category: 'Placements',
     summary: 'All final-year students of UVCHM secured job offers at top 5-star hotel chains across India and abroad.',
-    image: '/images/slider/1.jpeg',
+    image: '/images/IMG_8427.JPG',
   },
   {
     id: 'news-2',
@@ -517,7 +517,7 @@ export const NEWS: NewsItem[] = [
     date: 'July 28, 2026',
     category: 'Campus Expansion',
     summary: 'UVCHM upgrades practical infrastructure with real-time hotel PMS terminals and luxury mock guest rooms.',
-    image: '/images/slider/2.jpeg',
+    image: '/images/front_office_lab.jpg',
   },
 ];
 
@@ -557,7 +557,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Costa & Princess, Cruise Lines — 15 Years Experience',
     expertise: 'International Cruise Line Operations & Academic Leadership',
     perspective: 'Education is the passport to the future, for tomorrow belongs to those who prepare for it today. We are committed to shaping the next generation of hospitality professionals.',
-    image: '/images/4.jpg',
+    image: '/images/faculty/7.png',
   },
   {
     id: 'fac-rakesh',
