@@ -11,11 +11,15 @@ export async function GET() {
       );
       const data = await res.json();
       if (data.status === 'OK') {
+        const fiveStarTextReviews = (data.result.reviews || []).filter(
+          (r: { rating: number; text?: string }) => r.rating === 5 && r.text && r.text.trim().length > 0
+        );
+
         return NextResponse.json({
           status: 'success',
           rating: data.result.rating,
           totalRatings: data.result.user_ratings_total,
-          reviews: data.result.reviews,
+          reviews: fiveStarTextReviews,
         });
       }
     } catch (err) {

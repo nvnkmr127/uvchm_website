@@ -6,22 +6,23 @@ import Footer from '@/components/Footer';
 import { Building2, PlayCircle, MapPin, Sparkles, Navigation, X, ChevronLeft, ChevronRight, Maximize2, Filter, Users } from 'lucide-react';
 import ApplyButton from '@/components/ApplyButton';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import YouTube from 'react-youtube';
 
 const campuses = [
   {
     id: 0,
-    name: 'Main Administrative Campus',
-    type: 'Campus 1',
+    name: 'North Campus',
+    type: 'North Campus',
     image: '/college.png',
-    desc: 'The heart of UVCHM featuring core administrative offices, theory classrooms, and student recreation areas.',
+    desc: 'The North Campus hub featuring core administrative offices, practical kitchens, housekeeping suites, and service training labs.',
     accent: 'from-[#E80088] to-[#90268B]'
   },
   {
     id: 1,
-    name: 'Practical Training Campus',
-    type: 'Campus 2',
+    name: 'South Campus',
+    type: 'South Campus',
     image: '/images/bhm_premium.jpg',
     desc: 'A dedicated hub for hands-on 5-star luxury labs, simulated hotel environments, and technical skill development.',
     accent: 'from-[#0D9488] to-[#0F766E]'
@@ -60,44 +61,56 @@ const facultyExperiences = [
 ];
 
 const allImages = [
-  // Campus 1 (North Campus) & General
-  { src: '/college.png', alt: 'UVCHM Main Campus Building', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/bhm_premium.jpg', alt: 'Premium BHM Facilities', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/IMG_8427.JPG', alt: 'Campus Infrastructure & Courtyard', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/IMG_9585.JPG', alt: 'Academic & Training Block', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/IMG_9641.JPG', alt: 'Student Practical Training Area', campus: 'Campus 1', lab: 'General' },
-  { src: '/images/IMG_9724.JPG', alt: 'Campus View & Facilities', campus: 'Campus 1', lab: 'General' },
-  { src: encodeURI('/College Photos/North Campus/WhatsApp Image 2025-02-04 at 12.53.06 PM.jpeg'), alt: 'North Campus Building', campus: 'Campus 1', lab: 'General' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Kitchen/IMG_2726.jpeg'), alt: 'North Campus Culinary Practical', campus: 'Campus 1', lab: 'Culinary' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Kitchen/IMG_3615.jpeg'), alt: 'North Campus Main Kitchen Lab', campus: 'Campus 1', lab: 'Culinary' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Kitchen/IMG_8720.jpeg'), alt: 'Advanced Chef Demo Station', campus: 'Campus 1', lab: 'Culinary' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Service/IMG_4276.jpeg'), alt: 'North Campus F&B Service Training', campus: 'Campus 1', lab: 'Restaurant' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Service/IMG_4290.jpeg'), alt: 'Dining & Service Practice Lab', campus: 'Campus 1', lab: 'Restaurant' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Housekeeping/IMG_2560.jpeg'), alt: 'North Campus Housekeeping Suite', campus: 'Campus 1', lab: 'Housekeeping' },
-  { src: encodeURI('/College Photos/North Campus/All departments/Housekeeping/IMG_4246.jpeg'), alt: 'Housekeeping Practical Area', campus: 'Campus 1', lab: 'Housekeeping' },
+  // North Campus
+  { src: '/college.png', alt: 'UVCHM Main Campus Building', campus: 'North Campus', lab: 'General' },
+  { src: '/images/bhm_premium.jpg', alt: 'Premium BHM Facilities', campus: 'North Campus', lab: 'General' },
+  { src: '/images/IMG_8427.JPG', alt: 'Campus Infrastructure & Courtyard', campus: 'North Campus', lab: 'General' },
+  { src: '/images/IMG_9585.JPG', alt: 'Academic & Training Block', campus: 'North Campus', lab: 'General' },
+  { src: '/images/IMG_9641.JPG', alt: 'Student Practical Training Area', campus: 'North Campus', lab: 'General' },
+  { src: '/images/IMG_9724.JPG', alt: 'Campus View & Facilities', campus: 'North Campus', lab: 'General' },
+  { src: '/College Photos/North Campus/WhatsApp Image 2025-02-04 at 12.53.02 PM.jpeg', alt: 'North Campus Main Exterior', campus: 'North Campus', lab: 'General' },
+  { src: '/College Photos/North Campus/WhatsApp Image 2025-02-01 at 11.40.45 AM (2).jpeg', alt: 'North Campus Quadrangle', campus: 'North Campus', lab: 'General' },
+  { src: '/College Photos/North Campus/WhatsApp Image 2025-02-04 at 12.53.03 PM.jpeg', alt: 'North Campus Academic Corridor', campus: 'North Campus', lab: 'General' },
+  { src: '/College Photos/North Campus/IMG_2726.jpeg', alt: 'North Campus Culinary Practical', campus: 'North Campus', lab: 'Culinary' },
+  { src: '/College Photos/North Campus/IMG_3615.jpeg', alt: 'North Campus Kitchen Training', campus: 'North Campus', lab: 'Culinary' },
+  { src: '/College Photos/North Campus/IMG_8720.jpeg', alt: 'Chef Demo & Practical Station', campus: 'North Campus', lab: 'Culinary' },
+  { src: '/College Photos/North Campus/IMG_3013.jpeg', alt: 'Quantity Kitchen Production', campus: 'North Campus', lab: 'Culinary' },
+  { src: '/College Photos/North Campus/IMG_4145.jpeg', alt: 'Student Bakery & Cooking Session', campus: 'North Campus', lab: 'Culinary' },
+  { src: '/College Photos/North Campus/IMG_3360.jpeg', alt: 'Professional Kitchen Workstations', campus: 'North Campus', lab: 'Culinary' },
+  { src: '/College Photos/North Campus/IMG_4276.jpeg', alt: 'North Campus F&B Service Training', campus: 'North Campus', lab: 'Restaurant' },
+  { src: '/College Photos/North Campus/IMG_4290.jpeg', alt: 'Dining & Service Practice Lab', campus: 'North Campus', lab: 'Restaurant' },
+  { src: '/College Photos/North Campus/IMG_2548.jpeg', alt: 'Restaurant Table Setup Practice', campus: 'North Campus', lab: 'Restaurant' },
+  { src: '/College Photos/North Campus/IMG_2560.jpeg', alt: 'North Campus Housekeeping Suite', campus: 'North Campus', lab: 'Housekeeping' },
+  { src: '/College Photos/North Campus/IMG_4246.jpeg', alt: 'Housekeeping Practical Area', campus: 'North Campus', lab: 'Housekeeping' },
+  { src: '/College Photos/North Campus/IMG_4248.jpeg', alt: 'Linen & Room Maintenance Lab', campus: 'North Campus', lab: 'Housekeeping' },
 
-  // Campus 2 (South Campus) & Practical Labs
-  { src: '/images/culinary_basic.jpg', alt: 'Basic Culinary Lab', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/model_bar_real.jpg', alt: 'Model Bar Training', campus: 'Campus 2', lab: 'Bar' },
-  { src: '/images/front_office_real.jpg', alt: 'Front Office Suite', campus: 'Campus 2', lab: 'Front Office' },
-  { src: '/images/housekeeping_training_new.jpg', alt: 'Housekeeping Lab', campus: 'Campus 2', lab: 'Housekeeping' },
-  { src: '/images/culinary_bakery_display.jpg', alt: 'Bakery & Patisserie Display', campus: 'Campus 2', lab: 'Bakery' },
-  { src: '/images/front_office_lab.jpg', alt: 'Model Guest Room Suite', campus: 'Campus 2', lab: 'Front Office' },
-  { src: '/images/bartending_training_new.jpg', alt: 'Bartending Practical Class', campus: 'Campus 2', lab: 'Bar' },
-  { src: '/images/culinary_flambe.jpg', alt: 'Culinary Flambe Technique', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/culinary_sushi.jpg', alt: 'Sushi Preparation Training', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/culinary_training_new.jpg', alt: 'Professional Kitchen Training', campus: 'Campus 2', lab: 'Culinary' },
-  { src: '/images/fnb_training_new.jpg', alt: 'F&B Fine Dining Training', campus: 'Campus 2', lab: 'Restaurant' },
-  { src: '/images/model_bar_restaurant.jpg', alt: 'Restaurant & Bar Lounge', campus: 'Campus 2', lab: 'Restaurant' },
-  { src: encodeURI('/College Photos/South/IMG_8167.jpeg'), alt: 'South Campus Practical Hub', campus: 'Campus 2', lab: 'General' },
-  { src: encodeURI('/College Photos/South/IMG_8166.jpeg'), alt: 'South Campus Hospitality Suite', campus: 'Campus 2', lab: 'General' },
-  { src: encodeURI('/College Photos/South/IMG_8170.jpeg'), alt: 'South Campus Training Lab', campus: 'Campus 2', lab: 'General' },
-  { src: encodeURI('/College Photos/South/IMG_8177.jpeg'), alt: 'South Campus Student Activity Area', campus: 'Campus 2', lab: 'General' }
+  // South Campus
+  { src: '/images/culinary_basic.jpg', alt: 'Basic Culinary Lab', campus: 'South Campus', lab: 'Culinary' },
+  { src: '/images/model_bar_real.jpg', alt: 'Model Bar Training', campus: 'South Campus', lab: 'Bar' },
+  { src: '/images/front_office_real.jpg', alt: 'Front Office Suite', campus: 'South Campus', lab: 'Front Office' },
+  { src: '/images/housekeeping_training_new.jpg', alt: 'Housekeeping Lab', campus: 'South Campus', lab: 'Housekeeping' },
+  { src: '/images/culinary_bakery_display.jpg', alt: 'Bakery & Patisserie Display', campus: 'South Campus', lab: 'Bakery' },
+  { src: '/images/front_office_lab.jpg', alt: 'Model Guest Room Suite', campus: 'South Campus', lab: 'Front Office' },
+  { src: '/images/bartending_training_new.jpg', alt: 'Bartending Practical Class', campus: 'South Campus', lab: 'Bar' },
+  { src: '/images/culinary_flambe.jpg', alt: 'Culinary Flambe Technique', campus: 'South Campus', lab: 'Culinary' },
+  { src: '/images/culinary_sushi.jpg', alt: 'Sushi Preparation Training', campus: 'South Campus', lab: 'Culinary' },
+  { src: '/images/culinary_training_new.jpg', alt: 'Professional Kitchen Training', campus: 'South Campus', lab: 'Culinary' },
+  { src: '/images/fnb_training_new.jpg', alt: 'F&B Fine Dining Training', campus: 'South Campus', lab: 'Restaurant' },
+  { src: '/images/model_bar_restaurant.jpg', alt: 'Restaurant & Bar Lounge', campus: 'South Campus', lab: 'Restaurant' },
+  { src: '/College Photos/South/IMG_8167.jpeg', alt: 'South Campus Practical Hub', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/IMG_8166.jpeg', alt: 'South Campus Hospitality Suite', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/IMG_8170.jpeg', alt: 'South Campus Training Lab', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/IMG_8177.jpeg', alt: 'South Campus Student Activity Area', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/IMG_8157.jpeg', alt: 'South Campus Practical Class', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/IMG_8182.jpeg', alt: 'South Campus Practical Session', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/17.jpg.jpeg', alt: 'South Campus Lab Facility', campus: 'South Campus', lab: 'General' },
+  { src: '/College Photos/South/22.jpg.jpeg', alt: 'South Campus Student Workshop', campus: 'South Campus', lab: 'General' }
 ];
 
-const halfCount = Math.ceil(allImages.length / 2);
-const row1 = allImages.slice(0, halfCount);
-const row2 = allImages.slice(halfCount);
+const northCampusImages = allImages.filter(img => img.campus === 'North Campus');
+const southCampusImages = allImages.filter(img => img.campus === 'South Campus');
+const row1 = northCampusImages;
+const row2 = southCampusImages;
 
 export default function CampusesPage() {
   const [activeCampus, setActiveCampus] = useState(0);
@@ -113,18 +126,14 @@ export default function CampusesPage() {
 
   // Filter State
   const [filterCampus, setFilterCampus] = useState('All');
-  const [filterLab, setFilterLab] = useState('All');
   
-  const campusOptions = ['All', 'Campus 1', 'Campus 2'];
-  const labOptions = ['All', 'Culinary', 'Front Office', 'Housekeeping', 'Bar', 'Bakery', 'Restaurant', 'General'];
+  const campusOptions = ['All', 'North Campus', 'South Campus'];
 
   const filteredImages = allImages.filter(img => {
-    const matchCampus = filterCampus === 'All' || img.campus === filterCampus;
-    const matchLab = filterLab === 'All' || img.lab === filterLab;
-    return matchCampus && matchLab;
+    return filterCampus === 'All' || img.campus === filterCampus;
   });
 
-  const isFiltered = filterCampus !== 'All' || filterLab !== 'All';
+  const isFiltered = filterCampus !== 'All';
 
   // Lightbox State
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -236,6 +245,16 @@ export default function CampusesPage() {
                 </button>
               ))}
             </div>
+
+            <div className="pt-2">
+              <Link 
+                href="/facilities" 
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-pink-600/30 transition-all hover:scale-105"
+              >
+                <Building2 className="w-4 h-4" />
+                <span>EXPLORE CAMPUS FACILITIES</span>
+              </Link>
+            </div>
           </div>
 
           <div className="lg:col-span-5 relative mt-8 lg:mt-0 max-w-sm mx-auto w-full lg:max-w-none z-20">
@@ -249,7 +268,7 @@ export default function CampusesPage() {
                 className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-900/50 backdrop-blur-xl p-3 sm:p-4"
               >
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden group">
-                  <Image src={activeData.image} alt={activeData.name} fill className="object-cover object-top transition-transform duration-700 group-hover:scale-110" />
+                  <Image src={activeData.image} alt={activeData.name} fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover object-top transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
                   
                   <div className="absolute bottom-6 left-6 right-6 space-y-2">
@@ -296,7 +315,7 @@ export default function CampusesPage() {
             >
               {!activeVideo.videoId ? (
                 <>
-                  <Image src={activeVideo.thumbnail} alt={activeVideo.title} fill className="object-cover opacity-70" />
+                  <Image src={activeVideo.thumbnail} alt={activeVideo.title} fill sizes="(max-width: 1024px) 100vw, 1000px" className="object-cover opacity-70" />
                   <div className="absolute inset-0 bg-slate-950/20" />
                   
                   <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
@@ -348,7 +367,7 @@ export default function CampusesPage() {
                     : 'border-transparent shadow-sm scale-95 opacity-60 hover:opacity-100 hover:scale-100'
                 }`}
               >
-                <Image src={video.thumbnail} alt={video.title} fill className="object-cover" />
+                <Image src={video.thumbnail} alt={video.title} fill sizes="256px" className="object-cover" />
                 <div className={`absolute inset-0 transition-colors ${activeVideoIndex === idx ? 'bg-black/10' : 'bg-black/40 hover:bg-black/20'}`} />
                 
                 {activeVideoIndex === idx && (
@@ -404,7 +423,7 @@ export default function CampusesPage() {
                 />
               ) : (
                 <>
-                  <Image src={short.thumbnail} alt={short.title} fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={short.thumbnail} alt={short.title} fill sizes="320px" className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
                   
                   <div className="absolute inset-0 flex items-center justify-center cursor-pointer" onClick={() => setPlayingShortId(short.id)}>
@@ -475,7 +494,7 @@ export default function CampusesPage() {
                 />
               ) : (
                 <>
-                  <Image src={faculty.thumbnail} alt={faculty.title} fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={faculty.thumbnail} alt={faculty.title} fill sizes="320px" className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
                   
                   <div className="absolute inset-0 flex items-center justify-center cursor-pointer" onClick={() => setPlayingFacultyId(faculty.id)}>
@@ -528,42 +547,20 @@ export default function CampusesPage() {
                 <Filter className="w-4 h-4" /> Filter By:
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-6 w-full">
-                {/* Campus Filter */}
-                <div className="flex flex-wrap gap-2">
-                  {campusOptions.map((campus) => (
-                    <button
-                      key={campus}
-                      onClick={() => setFilterCampus(campus)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                        filterCampus === campus 
-                          ? 'bg-slate-900 text-white shadow-md' 
-                          : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300'
-                      }`}
-                    >
-                      {campus}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="hidden sm:block w-px h-8 bg-slate-200"></div>
-
-                {/* Lab Filter */}
-                <div className="flex flex-wrap gap-2">
-                  {labOptions.map((lab) => (
-                    <button
-                      key={lab}
-                      onClick={() => setFilterLab(lab)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                        filterLab === lab 
-                          ? 'bg-pink-600 text-white shadow-md' 
-                          : 'bg-white text-slate-600 border border-slate-200 hover:border-pink-200 hover:text-pink-600'
-                      }`}
-                    >
-                      {lab}
-                    </button>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-2">
+                {campusOptions.map((campus) => (
+                  <button
+                    key={campus}
+                    onClick={() => setFilterCampus(campus)}
+                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
+                      filterCampus === campus 
+                        ? 'bg-slate-900 text-white shadow-md' 
+                        : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
+                    {campus}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -583,12 +580,11 @@ export default function CampusesPage() {
                     onClick={() => openLightbox(img.src)}
                     className="relative w-80 h-56 sm:w-96 sm:h-64 rounded-3xl overflow-hidden shrink-0 cursor-zoom-in group shadow-sm hover:shadow-xl transition-shadow bg-slate-900"
                   >
-                    <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 group-hover:opacity-80 transition-all duration-500" />
+                    <Image src={img.src} alt={img.alt} fill sizes="384px" className="object-cover group-hover:scale-110 group-hover:opacity-80 transition-all duration-500" />
                     <div className="absolute inset-0 bg-pink-600/0 group-hover:bg-pink-600/20 transition-colors flex items-center justify-center">
                       <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-50 group-hover:scale-100 duration-300" />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-between items-end">
-                      <span className="text-white text-sm font-bold">{img.alt}</span>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end items-end">
                       <span className="text-white/60 text-[10px] font-black uppercase tracking-widest bg-black/40 px-2 py-0.5 rounded-sm">{img.lab}</span>
                     </div>
                   </div>
@@ -606,12 +602,11 @@ export default function CampusesPage() {
                     onClick={() => openLightbox(img.src)}
                     className="relative w-80 h-56 sm:w-96 sm:h-64 rounded-3xl overflow-hidden shrink-0 cursor-zoom-in group shadow-sm hover:shadow-xl transition-shadow bg-slate-900"
                   >
-                    <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 group-hover:opacity-80 transition-all duration-500" />
+                    <Image src={img.src} alt={img.alt} fill sizes="384px" className="object-cover group-hover:scale-110 group-hover:opacity-80 transition-all duration-500" />
                     <div className="absolute inset-0 bg-pink-600/0 group-hover:bg-pink-600/20 transition-colors flex items-center justify-center">
                       <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-50 group-hover:scale-100 duration-300" />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-between items-end">
-                      <span className="text-white text-sm font-bold">{img.alt}</span>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end items-end">
                       <span className="text-white/60 text-[10px] font-black uppercase tracking-widest bg-black/40 px-2 py-0.5 rounded-sm">{img.lab}</span>
                     </div>
                   </div>
@@ -632,7 +627,7 @@ export default function CampusesPage() {
                 >
                   <div className="text-slate-400">No images match your selected filters.</div>
                   <button 
-                    onClick={() => { setFilterCampus('All'); setFilterLab('All'); }}
+                    onClick={() => setFilterCampus('All')}
                     className="text-pink-600 font-bold hover:underline"
                   >
                     Clear Filters
@@ -651,16 +646,14 @@ export default function CampusesPage() {
                       onClick={() => openLightbox(img.src)}
                       className="relative h-64 rounded-3xl overflow-hidden cursor-zoom-in group shadow-sm hover:shadow-xl transition-shadow bg-slate-900"
                     >
-                      <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 group-hover:opacity-80 transition-all duration-500" />
+                      <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 group-hover:opacity-80 transition-all duration-500" />
                       <div className="absolute inset-0 bg-pink-600/0 group-hover:bg-pink-600/20 transition-colors flex items-center justify-center">
                         <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-50 group-hover:scale-100 duration-300" />
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end">
-                        <div className="flex gap-2 mb-1">
-                           <span className="text-white text-[9px] font-black uppercase tracking-widest bg-pink-600/80 px-2 py-0.5 rounded-sm">{img.campus}</span>
+                        <div className="flex gap-2">
                            <span className="text-white text-[9px] font-black uppercase tracking-widest bg-black/60 px-2 py-0.5 rounded-sm">{img.lab}</span>
                         </div>
-                        <span className="text-white text-sm font-bold">{img.alt}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -678,11 +671,18 @@ export default function CampusesPage() {
         <div className="relative z-10 max-w-3xl mx-auto space-y-8">
           <h2 className="text-4xl sm:text-5xl font-black text-white">Ready to Step Inside?</h2>
           <p className="text-slate-300 text-lg font-medium">Book an in-person campus walkthrough with our department heads and experience the infrastructure yourself.</p>
-          <div className="pt-4">
+          <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
             <ApplyButton
               text="BOOK A CAMPUS VISIT"
               className="px-10 py-4 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-black text-sm uppercase tracking-wider rounded-full shadow-2xl shadow-pink-600/40 inline-flex items-center gap-3 transition-all hover:scale-105"
             />
+            <Link
+              href="/facilities"
+              className="px-8 py-4 border border-white/30 hover:border-white hover:bg-white/10 text-white font-black text-sm uppercase tracking-wider rounded-full backdrop-blur-md inline-flex items-center gap-2 transition-all hover:scale-105"
+            >
+              <Building2 className="w-4 h-4 text-pink-500" />
+              <span>EXPLORE FACILITIES</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -740,13 +740,13 @@ export default function CampusesPage() {
                   src={activeImageList[currentIndex].src}
                   alt={activeImageList[currentIndex].alt}
                   fill
+                  sizes="100vw"
                   className="object-contain"
                 />
               </motion.div>
               
               <div className="absolute bottom-0 translate-y-12 text-white text-center">
                 <p className="font-bold text-xl flex items-center justify-center gap-3">
-                  {activeImageList[currentIndex].alt}
                   <span className="text-[10px] font-black uppercase tracking-widest bg-pink-600/80 px-2 py-0.5 rounded-sm">{activeImageList[currentIndex].lab}</span>
                 </p>
                 {activeImageList.length > 1 && (

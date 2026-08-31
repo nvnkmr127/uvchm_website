@@ -82,13 +82,13 @@ const comparisonData = [
     feature: 'Soft Skills, Grooming & Comm. Training',
     icon: <UserCheck className="w-5 h-5 text-cyan-600" />,
     us: true,
-    others: false,
+    others: true,
   },
   {
     feature: 'Smart Classrooms & Digital Computer Labs',
     icon: <Laptop className="w-5 h-5 text-blue-400" />,
     us: true,
-    others: false,
+    others: true,
   },
   {
     feature: 'Full-Time Mentors & Individual Attention',
@@ -100,19 +100,19 @@ const comparisonData = [
     feature: 'Regular Parent-Teacher Meetings',
     icon: <Users className="w-5 h-5 text-amber-600" />,
     us: true,
-    others: false,
+    others: true,
   },
   {
     feature: 'Guest Sessions & Career Counselling',
     icon: <Award className="w-5 h-5 text-indigo-400" />,
     us: true,
-    others: false,
+    others: true,
   },
   {
     feature: 'Safe Campus with Lockers & Lounge',
     icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />,
     us: true,
-    others: false,
+    others: true,
   },
   {
     feature: 'Basic Hospitality Degree & Theory Classes',

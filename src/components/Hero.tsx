@@ -26,7 +26,7 @@ export default function Hero() {
       badge: '★ UV COLLEGE OF HOTEL MANAGEMENT',
       title: "Nizamabad's #1 Hotel Management College",
       synopsis: "Northern Telangana's biggest hotel management college featuring 2 own campus buildings, 8+ advanced 5★ practical labs including a live show kitchen, and internationally experienced faculty.",
-      image: '/images/fnb_training_new.jpg',
+      image: '/college.png',
     },
     {
       id: 'slide-2',

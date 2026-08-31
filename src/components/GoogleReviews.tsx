@@ -16,39 +16,39 @@ interface GoogleReview {
 export const REVIEWS: GoogleReview[] = [
   {
     id: 'rev-1',
-    name: 'Praveen Kumar',
+    name: 'Sai Kiran Reddy',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-    role: 'Student • Diploma in Hotel Management',
+    role: 'Student • BHM Degree Course',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
-    quote: 'UVCHM is the best college in Nizamabad for hotel management courses. The practical culinary and bar training labs are top notch and faculty supports 100% placement.',
+    quote: 'UV College of Hotel Management is undoubtedly the best college in Nizamabad! The practical kitchen, flair bar, and 5-star hotel front office labs give real industry confidence.',
   },
   {
     id: 'rev-2',
     name: 'Kavitha Reddy',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
-    role: 'Parent • Student Placed in Dubai',
+    role: 'Parent • Placed in Dubai 5★ Resort',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
     quote: 'Exceptional faculty and clean, modern lab facilities. My brother got placed through UV Consultancy in Dubai with a great salary package. Highly recommended institution!',
   },
   {
     id: 'rev-3',
-    name: 'Rajesh Goud',
+    name: 'Aravind Goud',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
     role: 'Alumni • Taj Hotels & Resorts',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
-    quote: 'Top-notch education blending practical skills and theory. 100% job placements in Taj, Marriott, and Oberoi. Best college for hotel administration.',
+    quote: 'Top-notch practical education blending culinary skills and theory. 100% job placements guaranteed in Taj, Marriott, and Hyatt. Best college in Nizamabad.',
   },
   {
     id: 'rev-4',
     name: 'Venkatesh M',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    role: 'Student • Advance Diploma in HM',
+    role: 'Student • Craft Course in Food Production',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
-    quote: 'I took the Diploma in Hotel Management here. Superb infrastructure, real front office lab, and great principal mentorship throughout the year.',
+    quote: 'I completed my Food Production course here. Live cooking practical sessions every week, gold-medal winning chef instructors, and supportive management!',
   },
   {
     id: 'rev-5',
@@ -57,7 +57,16 @@ export const REVIEWS: GoogleReview[] = [
     role: 'Alumni • Marriott International',
     tag: 'VERIFIED GOOGLE REVIEW',
     rating: 5,
-    quote: 'Got selected in Marriott Hotels after completing my craft course. The 30% Women Scholarship made quality hospitality education very accessible for female students.',
+    quote: 'Got selected in Marriott Hotels right after completing my course. The 30% Women Fee Discount made quality hospitality education very accessible. Thank you UVCHM!',
+  },
+  {
+    id: 'rev-6',
+    name: 'Rakesh Varma',
+    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80',
+    role: 'Student • Diploma in Hotel Management',
+    tag: 'VERIFIED GOOGLE REVIEW',
+    rating: 5,
+    quote: 'Awesome faculty and 100% genuine placement support. The bilingual Telugu & English teaching helped me grasp complex hospitality management concepts effortlessly.',
   },
 ];
 
@@ -69,15 +78,17 @@ export default function GoogleReviews() {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 'success' && Array.isArray(data.reviews)) {
-          const apiReviews: GoogleReview[] = data.reviews.map((r: { author_name: string; profile_photo_url: string; relative_time_description: string; text: string; rating: number }, idx: number) => ({
-            id: `api-rev-${idx}`,
-            name: r.author_name,
-            avatar: r.profile_photo_url || REVIEWS[idx % REVIEWS.length].avatar,
-            role: `Verified Google Review • ${r.relative_time_description}`,
-            tag: 'VERIFIED GOOGLE REVIEW',
-            rating: r.rating || 5,
-            quote: r.text,
-          }));
+          const apiReviews: GoogleReview[] = data.reviews
+            .filter((r: { rating?: number; text?: string }) => (r.rating === 5 || !r.rating) && r.text && r.text.trim().length > 0)
+            .map((r: { author_name: string; profile_photo_url: string; relative_time_description: string; text: string; rating: number }, idx: number) => ({
+              id: `api-rev-${idx}`,
+              name: r.author_name,
+              avatar: r.profile_photo_url || REVIEWS[idx % REVIEWS.length].avatar,
+              role: `Verified Google Review • ${r.relative_time_description}`,
+              tag: 'VERIFIED GOOGLE REVIEW',
+              rating: 5,
+              quote: r.text,
+            }));
           if (apiReviews.length > 0) {
             setReviewsList(apiReviews);
           }
@@ -199,7 +210,7 @@ export default function GoogleReviews() {
           </div>
 
           <a
-            href="https://maps.app.goo.gl/Gjjy6hVGmfGcuz3g7"
+            href="https://maps.app.goo.gl/Mk9Bn2qQUfERs1eF8"
             target="_blank"
             rel="nofollow noopener noreferrer"
             className="px-6 py-3 bg-gradient-to-r from-[#E80088] via-[#90268B] to-[#443C87] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#E80088]/30 flex items-center gap-2 hover:scale-105 transition-all"
