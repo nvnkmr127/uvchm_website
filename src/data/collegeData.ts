@@ -557,7 +557,7 @@ export const FACULTY: FacultyMember[] = [
     qualifications: 'Costa & Princess, Cruise Lines — 15 Years Experience',
     expertise: 'International Cruise Line Operations & Academic Leadership',
     perspective: 'Education is the passport to the future, for tomorrow belongs to those who prepare for it today. We are committed to shaping the next generation of hospitality professionals.',
-    image: '/images/faculty/7.png',
+    image: '/images/faculty/Vice.jpg',
   },
   {
     id: 'fac-rakesh',
