@@ -11,8 +11,6 @@ import {
   MapPin,
   GraduationCap,
   Calendar,
-  ShieldCheck,
-  AlertCircle,
   MessageCircle,
   Copy,
   Check,
@@ -28,8 +26,7 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Eye,
-  Trash2
+  Eye
 } from 'lucide-react';
 
 interface Inquiry {
@@ -58,10 +55,10 @@ export default function EnquiriesDashboard() {
   const [selectedStatusFilter, setSelectedStatusFilter] = useState('ALL');
   const [messageNotice, setMessageNotice] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  
+
   // Bulk selection state
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
-  
+
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(25);
@@ -78,14 +75,13 @@ export default function EnquiriesDashboard() {
       setPasscode(savedKey);
       fetchEnquiries(savedKey);
     }
-    
-    // Load local statuses
+
     const savedStatuses = localStorage.getItem('uvchm_lead_statuses');
     if (savedStatuses) {
       try {
         setStatuses(JSON.parse(savedStatuses));
       } catch (e) {
-        console.error('Error parsing lead statuses', e);
+        console.error('Error parsing statuses', e);
       }
     }
   }, []);
@@ -100,7 +96,7 @@ export default function EnquiriesDashboard() {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        setError(data.error || 'Authentication failed. Please check passcode.');
+        setError(data.error || 'Wrong password. Please try again.');
         setAuthenticated(false);
         sessionStorage.removeItem('uvchm_admin_key');
       } else {
@@ -113,7 +109,7 @@ export default function EnquiriesDashboard() {
       }
     } catch (err) {
       console.error('Fetch error:', err);
-      setError('Network error occurred while fetching enquiries.');
+      setError('Could not fetch data. Check your internet connection.');
     } finally {
       setLoading(false);
     }
@@ -159,27 +155,23 @@ export default function EnquiriesDashboard() {
     return digits;
   };
 
-  // Distinct courses list for filter dropdown
   const uniqueCourses = useMemo(() => {
     const list = Array.from(new Set(inquiries.map((iq) => iq.course).filter(Boolean))) as string[];
     return list.sort();
   }, [inquiries]);
 
-  // Analytics Stats
   const stats = useMemo(() => {
     const total = inquiries.length;
     const todayStr = new Date().toISOString().slice(0, 10);
     const todayCount = inquiries.filter((iq) => iq.created_at && iq.created_at.slice(0, 10) === todayStr).length;
 
-    // Course distribution
     const courseCounts: Record<string, number> = {};
     inquiries.forEach((iq) => {
-      const c = iq.course || 'Unspecified';
+      const c = iq.course || 'General';
       courseCounts[c] = (courseCounts[c] || 0) + 1;
     });
     const topCourse = Object.entries(courseCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
 
-    // City distribution
     const cityCounts: Record<string, number> = {};
     inquiries.forEach((iq) => {
       const city = iq.city || 'Not Specified';
@@ -190,7 +182,6 @@ export default function EnquiriesDashboard() {
     return { total, todayCount, topCourse, topCity };
   }, [inquiries]);
 
-  // Filtered List
   const filteredInquiries = useMemo(() => {
     return inquiries.filter((iq) => {
       const term = searchTerm.toLowerCase();
@@ -227,14 +218,12 @@ export default function EnquiriesDashboard() {
     });
   }, [inquiries, searchTerm, selectedCourse, selectedStatusFilter, dateFilter, statuses]);
 
-  // Paginated List
   const totalPages = Math.ceil(filteredInquiries.length / pageSize) || 1;
   const paginatedInquiries = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
     return filteredInquiries.slice(start, start + pageSize);
   }, [filteredInquiries, currentPage, pageSize]);
 
-  // Toggle selection
   const toggleSelectAll = () => {
     if (selectedIds.length === filteredInquiries.length && filteredInquiries.length > 0) {
       setSelectedIds([]);
@@ -251,19 +240,17 @@ export default function EnquiriesDashboard() {
     }
   };
 
-  // Export functions
   const getExportData = (onlySelected = false) => {
-    const targets = onlySelected
+    return onlySelected
       ? inquiries.filter((iq) => selectedIds.includes(iq.id))
       : filteredInquiries;
-    return targets;
   };
 
   const exportToCSV = (onlySelected = false) => {
     const data = getExportData(onlySelected);
     if (data.length === 0) return;
 
-    const headers = ['ID', 'Date', 'Name', 'Phone', 'Email', 'Course', 'City/Village', 'Status', 'Source', 'Message'];
+    const headers = ['ID', 'Date', 'Name', 'Phone', 'Email', 'Course', 'City', 'Status', 'Source', 'Message'];
     const rows = data.map((iq) => [
       iq.id,
       iq.created_at ? new Date(iq.created_at).toLocaleString('en-IN') : 'N/A',
@@ -281,7 +268,7 @@ export default function EnquiriesDashboard() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `uvchm_enquiries_${onlySelected ? 'selected_' : ''}${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `enquiries_${onlySelected ? 'selected_' : ''}${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -298,7 +285,7 @@ export default function EnquiriesDashboard() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `uvchm_enquiries_${onlySelected ? 'selected_' : ''}${new Date().toISOString().slice(0, 10)}.json`;
+    link.download = `enquiries_${onlySelected ? 'selected_' : ''}${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -311,504 +298,365 @@ export default function EnquiriesDashboard() {
   const getStatusBadge = (status: LeadStatus = 'New') => {
     switch (status) {
       case 'Enrolled':
-        return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+        return 'bg-green-50 text-green-700 border-green-200 dark:bg-green-950/40 dark:text-green-300 dark:border-green-800/50';
       case 'Contacted':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+        return 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-800/50';
       case 'Follow Up':
-        return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+        return 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800/50';
       case 'Closed':
-        return 'bg-slate-700/50 text-slate-400 border-slate-600/30';
+        return 'bg-zinc-100 text-zinc-600 border-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-700';
       default:
-        return 'bg-pink-500/20 text-pink-300 border-pink-500/30 animate-pulse';
+        return 'bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-950/40 dark:text-pink-300 dark:border-pink-800/50';
     }
   };
 
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4 selection:bg-pink-600 selection:text-white">
-        <div className="w-full max-w-md bg-slate-900/90 backdrop-blur-2xl border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
-          <div className="text-center space-y-3">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pink-600 to-purple-600 text-white border border-pink-500/40 flex items-center justify-center mx-auto shadow-xl shadow-pink-600/20">
-              <Lock className="w-8 h-8" />
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex items-center justify-center p-4">
+        <div className="w-full max-w-sm bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm space-y-5">
+          <div className="text-center space-y-1.5">
+            <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center mx-auto">
+              <Lock className="w-5 h-5" />
             </div>
-            <h1 className="text-2xl font-black tracking-tight text-white">UVCHM Private Portal</h1>
-            <p className="text-xs text-slate-400 max-w-xs mx-auto">
-              Secure internal access to real-time admission leads & student inquiries.
-            </p>
+            <h1 className="text-lg font-bold text-zinc-900 dark:text-white">Admin Login</h1>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">Enter password to view student enquiries.</p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-3">
             <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                Security Passcode
-              </label>
               <input
                 type="password"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                placeholder="Enter access passcode"
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all font-mono text-sm"
+                placeholder="Enter password"
+                className="w-full px-3.5 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl text-zinc-900 dark:text-white placeholder-zinc-400 text-xs focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-100 transition-all font-mono"
                 autoFocus
               />
             </div>
 
-            {error && (
-              <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{error}</span>
-              </div>
-            )}
+            {error && <p className="text-xs text-red-600 dark:text-red-400">{error}</p>}
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 px-6 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-pink-600/30 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs rounded-xl transition-all disabled:opacity-50"
             >
-              {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <ShieldCheck className="w-4 h-4" />}
-              <span>Authenticate & Access</span>
+              {loading ? 'Checking...' : 'Login'}
             </button>
           </form>
-
-          <div className="text-center pt-2">
-            <span className="text-[10px] text-slate-500 tracking-wider uppercase font-mono">
-              Confidential Internal System • No-Index & No-Follow Active
-            </span>
-          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-8 font-sans selection:bg-pink-600 selection:text-white print:bg-white print:text-slate-900 print:p-0">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Top Navigation / Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/90 backdrop-blur-2xl border border-slate-800 p-6 rounded-3xl shadow-2xl print:hidden">
-          <div className="space-y-1">
-            <div className="flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-pink-500/20 text-pink-400 border border-pink-500/30 rounded-full text-[10px] font-black uppercase tracking-wider">
-                Private Portal
-              </span>
-              <span className="text-xs text-slate-500 font-mono flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                Live Database Connected
-              </span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Admission Enquiries</h1>
-            <p className="text-xs text-slate-400">
-              Real-time student leads captured from website forms & location pages.
-            </p>
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 p-4 sm:p-8 font-sans print:bg-white print:text-black">
+      <div className="max-w-6xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5 print:hidden">
+          <div>
+            <h1 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Student Enquiries</h1>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">View and manage admission leads from website forms.</p>
           </div>
 
-          <div className="flex items-center flex-wrap gap-2.5">
+          <div className="flex items-center gap-2 flex-wrap">
             <button
               onClick={() => fetchEnquiries(passcode)}
               disabled={loading}
-              className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-all flex items-center gap-1.5"
+              className="px-3 py-1.5 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
               <span>Refresh</span>
             </button>
 
-            {/* Export Dropdown Group */}
-            <div className="flex items-center gap-1 bg-slate-800/80 border border-slate-700 p-1 rounded-xl">
-              <button
-                onClick={() => exportToCSV(false)}
-                disabled={filteredInquiries.length === 0}
-                className="px-3 py-1.5 bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold rounded-lg shadow-sm transition-all disabled:opacity-50 flex items-center gap-1.5"
-                title="Export all filtered leads to CSV"
-              >
-                <FileSpreadsheet className="w-3.5 h-3.5" />
-                <span>CSV</span>
-              </button>
+            <button
+              onClick={() => exportToCSV(false)}
+              disabled={filteredInquiries.length === 0}
+              className="px-3 py-1.5 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium rounded-lg transition-all disabled:opacity-50 flex items-center gap-1.5"
+            >
+              <FileSpreadsheet className="w-3.5 h-3.5 text-green-600" />
+              <span>Export CSV</span>
+            </button>
 
-              <button
-                onClick={() => exportToJSON(false)}
-                disabled={filteredInquiries.length === 0}
-                className="px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition-all disabled:opacity-50 flex items-center gap-1.5"
-                title="Export all filtered leads to JSON"
-              >
-                <FileCode className="w-3.5 h-3.5 text-purple-400" />
-                <span>JSON</span>
-              </button>
+            <button
+              onClick={() => exportToJSON(false)}
+              disabled={filteredInquiries.length === 0}
+              className="px-3 py-1.5 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium rounded-lg transition-all disabled:opacity-50 flex items-center gap-1.5"
+            >
+              <FileCode className="w-3.5 h-3.5 text-purple-600" />
+              <span>JSON</span>
+            </button>
 
-              <button
-                onClick={printReport}
-                disabled={filteredInquiries.length === 0}
-                className="px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition-all disabled:opacity-50 flex items-center gap-1.5"
-                title="Print Summary Report"
-              >
-                <Printer className="w-3.5 h-3.5 text-blue-400" />
-                <span>Print</span>
-              </button>
-            </div>
+            <button
+              onClick={printReport}
+              disabled={filteredInquiries.length === 0}
+              className="px-3 py-1.5 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium rounded-lg transition-all disabled:opacity-50 flex items-center gap-1.5"
+            >
+              <Printer className="w-3.5 h-3.5 text-blue-600" />
+              <span>Print</span>
+            </button>
 
             <button
               onClick={handleLogout}
-              className="px-3.5 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-bold rounded-xl border border-red-500/30 transition-all"
+              className="px-3 py-1.5 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs font-medium rounded-lg transition-all"
             >
-              Lock
+              Logout
             </button>
           </div>
         </div>
 
         {messageNotice && (
-          <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-amber-300 text-xs flex items-center gap-2 print:hidden">
-            <AlertCircle className="w-4 h-4 shrink-0" />
-            <span>{messageNotice}</span>
-          </div>
+          <p className="text-xs p-3 bg-amber-50 text-amber-800 dark:bg-amber-950/30 dark:text-amber-300 rounded-lg border border-amber-200 dark:border-amber-900 print:hidden">
+            {messageNotice}
+          </p>
         )}
 
-        {/* Overview Analytics Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 print:grid-cols-4 print:gap-2">
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2 print:bg-slate-100 print:border-slate-300 print:text-black">
-            <div className="flex items-center justify-between text-slate-400 print:text-slate-700">
-              <span className="text-xs font-bold uppercase tracking-wider">Total Leads</span>
-              <Users className="w-4 h-4 text-pink-500 print:text-pink-600" />
-            </div>
-            <div className="text-3xl font-black text-white print:text-black">{stats.total}</div>
-            <p className="text-[11px] text-slate-500 print:text-slate-600">All-time form submissions</p>
+        {/* Minimal Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 print:grid-cols-4">
+          <div className="p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
+            <span className="text-[11px] text-zinc-500 font-medium">Total Leads</span>
+            <div className="text-2xl font-bold text-zinc-900 dark:text-white mt-1">{stats.total}</div>
           </div>
-
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2 print:bg-slate-100 print:border-slate-300 print:text-black">
-            <div className="flex items-center justify-between text-slate-400 print:text-slate-700">
-              <span className="text-xs font-bold uppercase tracking-wider">Today's Leads</span>
-              <Clock className="w-4 h-4 text-purple-400 print:text-purple-600" />
-            </div>
-            <div className="text-3xl font-black text-purple-300 print:text-black">{stats.todayCount}</div>
-            <p className="text-[11px] text-slate-500 print:text-slate-600">Submitted today</p>
+          <div className="p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
+            <span className="text-[11px] text-zinc-500 font-medium">Today</span>
+            <div className="text-2xl font-bold text-zinc-900 dark:text-white mt-1">{stats.todayCount}</div>
           </div>
-
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2 print:bg-slate-100 print:border-slate-300 print:text-black">
-            <div className="flex items-center justify-between text-slate-400 print:text-slate-700">
-              <span className="text-xs font-bold uppercase tracking-wider">Top Course</span>
-              <GraduationCap className="w-4 h-4 text-blue-400 print:text-blue-600" />
-            </div>
-            <div className="text-base font-bold text-white print:text-black truncate" title={stats.topCourse}>
+          <div className="p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
+            <span className="text-[11px] text-zinc-500 font-medium">Top Course</span>
+            <div className="text-sm font-semibold text-zinc-900 dark:text-white mt-1 truncate" title={stats.topCourse}>
               {stats.topCourse}
             </div>
-            <p className="text-[11px] text-slate-500 print:text-slate-600">Most requested program</p>
           </div>
-
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2 print:bg-slate-100 print:border-slate-300 print:text-black">
-            <div className="flex items-center justify-between text-slate-400 print:text-slate-700">
-              <span className="text-xs font-bold uppercase tracking-wider">Top Location</span>
-              <MapPin className="w-4 h-4 text-emerald-400 print:text-emerald-600" />
-            </div>
-            <div className="text-base font-bold text-white print:text-black truncate" title={stats.topCity}>
+          <div className="p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
+            <span className="text-[11px] text-zinc-500 font-medium">Top City</span>
+            <div className="text-sm font-semibold text-zinc-900 dark:text-white mt-1 truncate" title={stats.topCity}>
               {stats.topCity}
             </div>
-            <p className="text-[11px] text-slate-500 print:text-slate-600">Highest student origin</p>
           </div>
         </div>
 
-        {/* Filters & Search Toolbar */}
-        <div className="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl flex flex-col md:flex-row gap-3 print:hidden">
+        {/* Search & Filters */}
+        <div className="flex flex-col sm:flex-row gap-2 print:hidden">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-500 absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by student name, phone, email, course, city..."
+              placeholder="Search name, phone, course, city..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-11 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all"
+              className="w-full pl-9 pr-3 py-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400"
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2">
-              <Filter className="w-3.5 h-3.5 text-slate-400" />
-              <select
-                value={selectedCourse}
-                onChange={(e) => {
-                  setSelectedCourse(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
-              >
-                <option value="ALL">All Courses ({uniqueCourses.length})</option>
-                {uniqueCourses.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="flex items-center gap-2">
+            <select
+              value={selectedCourse}
+              onChange={(e) => {
+                setSelectedCourse(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="px-3 py-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg text-xs text-zinc-700 dark:text-zinc-300 focus:outline-none"
+            >
+              <option value="ALL">All Courses</option>
+              {uniqueCourses.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
 
-            <div className="flex items-center gap-2">
-              <select
-                value={selectedStatusFilter}
-                onChange={(e) => {
-                  setSelectedStatusFilter(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
-              >
-                <option value="ALL">All Statuses</option>
-                <option value="New">New</option>
-                <option value="Contacted">Contacted</option>
-                <option value="Follow Up">Follow Up</option>
-                <option value="Enrolled">Enrolled</option>
-                <option value="Closed">Closed</option>
-              </select>
-            </div>
+            <select
+              value={selectedStatusFilter}
+              onChange={(e) => {
+                setSelectedStatusFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="px-3 py-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg text-xs text-zinc-700 dark:text-zinc-300 focus:outline-none"
+            >
+              <option value="ALL">All Statuses</option>
+              <option value="New">New</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Follow Up">Follow Up</option>
+              <option value="Enrolled">Enrolled</option>
+              <option value="Closed">Closed</option>
+            </select>
 
-            <div className="flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-slate-400" />
-              <select
-                value={dateFilter}
-                onChange={(e) => {
-                  setDateFilter(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
-              >
-                <option value="ALL">All Time</option>
-                <option value="TODAY">Today</option>
-                <option value="WEEK">Last 7 Days</option>
-                <option value="MONTH">Last 30 Days</option>
-              </select>
-            </div>
+            <select
+              value={dateFilter}
+              onChange={(e) => {
+                setDateFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="px-3 py-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg text-xs text-zinc-700 dark:text-zinc-300 focus:outline-none"
+            >
+              <option value="ALL">All Time</option>
+              <option value="TODAY">Today</option>
+              <option value="WEEK">Last 7 Days</option>
+              <option value="MONTH">Last 30 Days</option>
+            </select>
           </div>
         </div>
 
-        {/* Floating / Sticky Bulk Action Bar */}
+        {/* Bulk Action Bar */}
         {selectedIds.length > 0 && (
-          <div className="sticky top-4 z-20 bg-gradient-to-r from-pink-900/90 via-slate-900/95 to-purple-900/90 backdrop-blur-2xl border border-pink-500/40 p-4 rounded-2xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-3 animate-in fade-in slide-in-from-top-2 duration-200 print:hidden">
-            <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-lg bg-pink-600 text-white font-black text-xs flex items-center justify-center">
-                {selectedIds.length}
-              </span>
-              <span className="text-xs font-bold text-white">Leads Selected</span>
-            </div>
+          <div className="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xl flex items-center justify-between gap-3 text-xs print:hidden">
+            <span className="font-semibold text-zinc-800 dark:text-zinc-200">{selectedIds.length} selected</span>
 
-            <div className="flex items-center flex-wrap gap-2">
-              <span className="text-[11px] text-slate-300 font-semibold mr-1">Bulk Status:</span>
-              {(['Contacted', 'Follow Up', 'Enrolled', 'Closed'] as LeadStatus[]).map((status) => (
+            <div className="flex items-center gap-2">
+              <span className="text-zinc-500 text-[11px]">Mark as:</span>
+              {(['Contacted', 'Follow Up', 'Enrolled', 'Closed'] as LeadStatus[]).map((st) => (
                 <button
-                  key={status}
-                  onClick={() => bulkUpdateStatus(status)}
-                  className="px-2.5 py-1 bg-slate-800/90 hover:bg-slate-700 text-slate-200 text-[11px] font-bold rounded-lg border border-slate-700 transition-all"
+                  key={st}
+                  onClick={() => bulkUpdateStatus(st)}
+                  className="px-2.5 py-1 bg-white dark:bg-zinc-800 hover:bg-zinc-200 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-700 dark:text-zinc-300 text-[11px] font-medium"
                 >
-                  Set {status}
+                  {st}
                 </button>
               ))}
 
-              <div className="h-4 w-px bg-slate-700 mx-1" />
-
               <button
                 onClick={() => exportToCSV(true)}
-                className="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg shadow-sm transition-all flex items-center gap-1"
+                className="px-2.5 py-1 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded font-medium text-[11px]"
               >
-                <FileSpreadsheet className="w-3 h-3" />
-                <span>CSV</span>
+                Export Selected CSV
               </button>
 
-              <button
-                onClick={() => exportToJSON(true)}
-                className="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white text-[11px] font-bold rounded-lg shadow-sm transition-all flex items-center gap-1"
-              >
-                <FileCode className="w-3 h-3" />
-                <span>JSON</span>
-              </button>
-
-              <button
-                onClick={() => setSelectedIds([])}
-                className="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-lg transition-all"
-                title="Deselect All"
-              >
-                <X className="w-3.5 h-3.5" />
+              <button onClick={() => setSelectedIds([])} className="p-1 text-zinc-400 hover:text-zinc-600">
+                <X className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* Data Table */}
-        <div className="bg-slate-900/90 backdrop-blur-2xl border border-slate-800 rounded-2xl shadow-xl overflow-hidden print:bg-white print:border-slate-300 print:shadow-none">
+        {/* Minimal Table */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden print:border-none">
           {filteredInquiries.length === 0 ? (
-            <div className="text-center py-20 px-4 space-y-3">
-              <div className="w-14 h-14 rounded-2xl bg-slate-800 text-slate-500 flex items-center justify-center mx-auto border border-slate-700">
-                <Search className="w-7 h-7" />
-              </div>
-              <p className="text-base font-bold text-slate-200">No matching enquiries found</p>
-              <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                {searchTerm || selectedCourse !== 'ALL' || dateFilter !== 'ALL'
-                  ? 'Try clearing or tweaking your filter criteria.'
-                  : 'New website form submissions will appear here in real time.'}
-              </p>
-            </div>
+            <div className="text-center py-12 text-zinc-400 text-xs">No enquiries found.</div>
           ) : (
             <>
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-slate-300 border-collapse print:text-black">
-                  <thead className="bg-slate-950/80 text-slate-400 uppercase tracking-wider font-mono text-[10px] border-b border-slate-800 print:bg-slate-200 print:text-slate-800">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead className="bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 font-medium">
                     <tr>
-                      <th className="py-4 px-4 font-bold print:hidden">
-                        <button
-                          onClick={toggleSelectAll}
-                          className="text-slate-400 hover:text-white transition-colors"
-                          title="Select / Deselect All Filtered Leads"
-                        >
+                      <th className="py-3 px-3 print:hidden">
+                        <button onClick={toggleSelectAll}>
                           {selectedIds.length === filteredInquiries.length && filteredInquiries.length > 0 ? (
-                            <CheckSquare className="w-4 h-4 text-pink-500" />
+                            <CheckSquare className="w-3.5 h-3.5 text-zinc-900 dark:text-white" />
                           ) : selectedIds.length > 0 ? (
-                            <MinusSquare className="w-4 h-4 text-pink-400" />
+                            <MinusSquare className="w-3.5 h-3.5 text-zinc-600" />
                           ) : (
-                            <Square className="w-4 h-4 text-slate-600" />
+                            <Square className="w-3.5 h-3.5 text-zinc-400" />
                           )}
                         </button>
                       </th>
-                      <th className="py-4 px-4 font-bold">#</th>
-                      <th className="py-4 px-4 font-bold">Date & Time</th>
-                      <th className="py-4 px-4 font-bold">Student Name</th>
-                      <th className="py-4 px-4 font-bold">Contact Details</th>
-                      <th className="py-4 px-4 font-bold">Course Requested</th>
-                      <th className="py-4 px-4 font-bold">City / Origin</th>
-                      <th className="py-4 px-4 font-bold">Status</th>
-                      <th className="py-4 px-4 font-bold">Source</th>
-                      <th className="py-4 px-4 font-bold print:hidden">Actions</th>
+                      <th className="py-3 px-3">#</th>
+                      <th className="py-3 px-3">Date</th>
+                      <th className="py-3 px-3">Name</th>
+                      <th className="py-3 px-3">Phone</th>
+                      <th className="py-3 px-3">Course</th>
+                      <th className="py-3 px-3">City</th>
+                      <th className="py-3 px-3">Status</th>
+                      <th className="py-3 px-3 print:hidden">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60 print:divide-slate-300">
+                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800/60">
                     {paginatedInquiries.map((iq, index) => {
                       const isSelected = selectedIds.includes(iq.id);
                       const cleanPhone = getCleanPhone(iq.phone || '');
                       const currentStatus = statuses[iq.id] || 'New';
                       const whatsappText = encodeURIComponent(
-                        `Hello ${iq.name}, thank you for contacting UV College of Hotel Management (UVCHM) regarding the ${iq.course || 'Hotel Management'} program. How can we assist you with admissions?`
+                        `Hi ${iq.name}, regarding your UVCHM admission enquiry...`
                       );
-
                       const rowIndex = (currentPage - 1) * pageSize + index + 1;
 
                       return (
                         <tr
                           key={iq.id || index}
-                          className={`transition-colors group ${
-                            isSelected ? 'bg-pink-950/20 hover:bg-pink-950/30' : 'hover:bg-slate-800/40'
+                          className={`hover:bg-zinc-50 dark:hover:bg-zinc-800/40 ${
+                            isSelected ? 'bg-zinc-50 dark:bg-zinc-800/30' : ''
                           }`}
                         >
-                          <td className="py-4 px-4 print:hidden">
-                            <button
-                              onClick={() => toggleSelectOne(iq.id)}
-                              className="text-slate-500 hover:text-white transition-colors"
-                            >
+                          <td className="py-3 px-3 print:hidden">
+                            <button onClick={() => toggleSelectOne(iq.id)}>
                               {isSelected ? (
-                                <CheckSquare className="w-4 h-4 text-pink-500" />
+                                <CheckSquare className="w-3.5 h-3.5 text-zinc-900 dark:text-white" />
                               ) : (
-                                <Square className="w-4 h-4 text-slate-700" />
+                                <Square className="w-3.5 h-3.5 text-zinc-300 dark:text-zinc-700" />
                               )}
                             </button>
                           </td>
-                          <td className="py-4 px-4 text-slate-500 font-mono">{iq.id || rowIndex}</td>
-                          <td className="py-4 px-4 whitespace-nowrap text-slate-400 font-mono">
-                            <div className="flex items-center gap-1.5">
-                              <Clock className="w-3.5 h-3.5 text-slate-500 print:hidden" />
-                              <span>{iq.created_at ? new Date(iq.created_at).toLocaleString('en-IN') : 'N/A'}</span>
-                            </div>
+                          <td className="py-3 px-3 text-zinc-400 font-mono text-[11px]">{iq.id || rowIndex}</td>
+                          <td className="py-3 px-3 whitespace-nowrap text-zinc-500 font-mono text-[11px]">
+                            {iq.created_at ? new Date(iq.created_at).toLocaleDateString('en-IN') : 'N/A'}
                           </td>
-                          <td className="py-4 px-4 font-bold text-white print:text-black whitespace-nowrap">
+                          <td className="py-3 px-3 font-semibold text-zinc-900 dark:text-white whitespace-nowrap">
                             <button
                               onClick={() => setActiveModalLead(iq)}
-                              className="hover:text-pink-400 hover:underline text-left transition-all"
+                              className="hover:underline text-left"
                             >
                               {iq.name}
                             </button>
                           </td>
-                          <td className="py-4 px-4 whitespace-nowrap">
-                            <div className="space-y-1">
-                              <div className="flex items-center gap-2">
-                                <a
-                                  href={`tel:${iq.phone}`}
-                                  className="text-pink-400 hover:text-pink-300 font-bold flex items-center gap-1 font-mono text-xs"
-                                >
-                                  <Phone className="w-3.5 h-3.5 print:hidden" />
-                                  <span>{iq.phone}</span>
-                                </a>
-                                <button
-                                  onClick={() => copyToClipboard(iq.phone, `phone_${iq.id}`)}
-                                  className="text-slate-500 hover:text-slate-300 transition-colors print:hidden"
-                                  title="Copy Phone Number"
-                                >
-                                  {copiedId === `phone_${iq.id}` ? (
-                                    <Check className="w-3 h-3 text-emerald-400" />
-                                  ) : (
-                                    <Copy className="w-3 h-3" />
-                                  )}
-                                </button>
-                              </div>
-
-                              {iq.email && (
-                                <div className="text-[11px] text-slate-400 flex items-center gap-1">
-                                  <Mail className="w-3 h-3 text-slate-500 print:hidden" />
-                                  <span>{iq.email}</span>
-                                </div>
-                              )}
+                          <td className="py-3 px-3 whitespace-nowrap">
+                            <div className="flex items-center gap-2 font-mono">
+                              <a href={`tel:${iq.phone}`} className="text-zinc-900 dark:text-zinc-100 font-semibold hover:underline">
+                                {iq.phone}
+                              </a>
+                              <button
+                                onClick={() => copyToClipboard(iq.phone, `phone_${iq.id}`)}
+                                className="text-zinc-400 hover:text-zinc-600 print:hidden"
+                                title="Copy Phone"
+                              >
+                                {copiedId === `phone_${iq.id}` ? (
+                                  <Check className="w-3 h-3 text-green-600" />
+                                ) : (
+                                  <Copy className="w-3 h-3" />
+                                )}
+                              </button>
                             </div>
                           </td>
-                          <td className="py-4 px-4 whitespace-nowrap">
-                            <span className="px-2.5 py-1 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-xl text-[11px] font-semibold flex items-center gap-1.5 w-fit print:bg-slate-200 print:text-black print:border-none">
-                              <GraduationCap className="w-3.5 h-3.5 text-purple-400 print:hidden" />
-                              <span>{iq.course || 'General Admission'}</span>
-                            </span>
+                          <td className="py-3 px-3 whitespace-nowrap text-zinc-700 dark:text-zinc-300">
+                            {iq.course || 'General'}
                           </td>
-                          <td className="py-4 px-4 whitespace-nowrap">
-                            <span className="flex items-center gap-1 text-slate-300 print:text-black">
-                              <MapPin className="w-3.5 h-3.5 text-slate-500 print:hidden" />
-                              <span>{iq.city || 'N/A'}</span>
-                            </span>
+                          <td className="py-3 px-3 whitespace-nowrap text-zinc-600 dark:text-zinc-400">
+                            {iq.city || '-'}
                           </td>
-                          <td className="py-4 px-4 whitespace-nowrap">
+                          <td className="py-3 px-3 whitespace-nowrap">
                             <select
                               value={currentStatus}
                               onChange={(e) => updateLeadStatus(iq.id, e.target.value as LeadStatus)}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider border cursor-pointer focus:outline-none print:border-slate-400 print:bg-white print:text-black ${getStatusBadge(
+                              className={`px-2 py-0.5 rounded text-[10px] font-semibold border cursor-pointer focus:outline-none ${getStatusBadge(
                                 currentStatus
                               )}`}
                             >
-                              <option value="New" className="bg-slate-900 text-pink-300">
-                                New
-                              </option>
-                              <option value="Contacted" className="bg-slate-900 text-blue-300">
-                                Contacted
-                              </option>
-                              <option value="Follow Up" className="bg-slate-900 text-amber-300">
-                                Follow Up
-                              </option>
-                              <option value="Enrolled" className="bg-slate-900 text-emerald-300">
-                                Enrolled
-                              </option>
-                              <option value="Closed" className="bg-slate-900 text-slate-400">
-                                Closed
-                              </option>
+                              <option value="New">New</option>
+                              <option value="Contacted">Contacted</option>
+                              <option value="Follow Up">Follow Up</option>
+                              <option value="Enrolled">Enrolled</option>
+                              <option value="Closed">Closed</option>
                             </select>
                           </td>
-                          <td className="py-4 px-4 whitespace-nowrap">
-                            <span className="px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md text-[10px] font-mono border border-slate-700/50 print:bg-transparent print:border-none print:text-slate-700">
-                              {iq.source || 'Website Form'}
-                            </span>
-                          </td>
-                          <td className="py-4 px-4 whitespace-nowrap print:hidden">
+                          <td className="py-3 px-3 whitespace-nowrap print:hidden">
                             <div className="flex items-center gap-1.5">
                               {cleanPhone && (
                                 <a
                                   href={`https://wa.me/${cleanPhone}?text=${whatsappText}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="p-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 rounded-lg transition-all"
-                                  title="WhatsApp Chat"
+                                  className="px-2 py-1 bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-300 hover:bg-green-200 border border-green-200 dark:border-green-800 rounded text-[10px] font-medium flex items-center gap-1"
                                 >
-                                  <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                                  <MessageCircle className="w-3 h-3" />
+                                  <span>WhatsApp</span>
                                 </a>
                               )}
                               <button
                                 onClick={() => setActiveModalLead(iq)}
-                                className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg transition-all"
-                                title="View Full Details"
+                                className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 border border-zinc-200 dark:border-zinc-700 rounded text-[10px] font-medium"
                               >
-                                <Eye className="w-3.5 h-3.5" />
+                                View
                               </button>
                             </div>
                           </td>
@@ -819,44 +667,26 @@ export default function EnquiriesDashboard() {
                 </table>
               </div>
 
-              {/* Pagination Bar */}
-              <div className="p-4 bg-slate-950/60 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 print:hidden">
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <span>Show</span>
-                  <select
-                    value={pageSize}
-                    onChange={(e) => {
-                      setPageSize(Number(e.target.value));
-                      setCurrentPage(1);
-                    }}
-                    className="px-2 py-1 bg-slate-900 border border-slate-800 rounded-lg text-white font-medium focus:outline-none"
-                  >
-                    <option value={10}>10</option>
-                    <option value={25}>25</option>
-                    <option value={50}>50</option>
-                    <option value={100}>100</option>
-                    <option value={9999}>All</option>
-                  </select>
-                  <span>per page • Total {filteredInquiries.length} leads</span>
-                </div>
-
+              {/* Pagination */}
+              <div className="p-3 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 print:hidden">
+                <div>Total: {filteredInquiries.length} leads</div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-400 font-mono mr-2">
+                  <span>
                     Page {currentPage} of {totalPages}
                   </span>
                   <button
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
-                    className="p-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 disabled:opacity-40 rounded-lg text-slate-300 transition-all"
+                    className="p-1 border border-zinc-200 dark:border-zinc-800 rounded disabled:opacity-30"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
-                    className="p-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 disabled:opacity-40 rounded-lg text-slate-300 transition-all"
+                    className="p-1 border border-zinc-200 dark:border-zinc-800 rounded disabled:opacity-30"
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
@@ -865,95 +695,72 @@ export default function EnquiriesDashboard() {
         </div>
       </div>
 
-      {/* Lead Detail Modal */}
+      {/* Simple View Modal */}
       {activeModalLead && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl space-y-6 relative">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+          <div className="w-full max-w-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-xl space-y-4 relative">
             <button
               onClick={() => setActiveModalLead(null)}
-              className="absolute top-4 right-4 p-2 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-xl transition-all"
+              className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <div className="space-y-1">
-              <span className="px-2.5 py-0.5 bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-full text-[10px] font-bold uppercase tracking-wider">
-                Student Enquiry Detail
-              </span>
-              <h2 className="text-xl font-black text-white">{activeModalLead.name}</h2>
-              <p className="text-xs text-slate-400 font-mono">
-                Submitted: {activeModalLead.created_at ? new Date(activeModalLead.created_at).toLocaleString('en-IN') : 'N/A'}
+            <div>
+              <h2 className="text-base font-bold text-zinc-900 dark:text-white">{activeModalLead.name}</h2>
+              <p className="text-xs text-zinc-500 font-mono">
+                {activeModalLead.created_at ? new Date(activeModalLead.created_at).toLocaleString('en-IN') : ''}
               </p>
             </div>
 
-            <div className="space-y-3 bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs">
-              <div className="flex justify-between py-1 border-b border-slate-800">
-                <span className="text-slate-400 font-bold uppercase tracking-wider">Phone</span>
-                <a href={`tel:${activeModalLead.phone}`} className="text-pink-400 font-bold font-mono">
+            <div className="space-y-2 text-xs border-t border-b border-zinc-100 dark:border-zinc-800 py-3">
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Phone:</span>
+                <a href={`tel:${activeModalLead.phone}`} className="font-mono font-semibold text-zinc-900 dark:text-white">
                   {activeModalLead.phone}
                 </a>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
-                <span className="text-slate-400 font-bold uppercase tracking-wider">Email</span>
-                <span className="text-slate-200 font-mono">{activeModalLead.email || 'Not provided'}</span>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Email:</span>
+                <span className="font-mono text-zinc-800 dark:text-zinc-200">{activeModalLead.email || 'None'}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
-                <span className="text-slate-400 font-bold uppercase tracking-wider">Course</span>
-                <span className="text-purple-300 font-semibold">{activeModalLead.course || 'General'}</span>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Course:</span>
+                <span className="font-medium text-zinc-800 dark:text-zinc-200">{activeModalLead.course || 'General'}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
-                <span className="text-slate-400 font-bold uppercase tracking-wider">City/Village</span>
-                <span className="text-slate-200">{activeModalLead.city || 'Not specified'}</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
-                <span className="text-slate-400 font-bold uppercase tracking-wider">Source</span>
-                <span className="text-slate-400 font-mono">{activeModalLead.source || 'Website Form'}</span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span className="text-slate-400 font-bold uppercase tracking-wider">Status</span>
-                <select
-                  value={statuses[activeModalLead.id] || 'New'}
-                  onChange={(e) => updateLeadStatus(activeModalLead.id, e.target.value as LeadStatus)}
-                  className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${getStatusBadge(
-                    statuses[activeModalLead.id] || 'New'
-                  )}`}
-                >
-                  <option value="New">New</option>
-                  <option value="Contacted">Contacted</option>
-                  <option value="Follow Up">Follow Up</option>
-                  <option value="Enrolled">Enrolled</option>
-                  <option value="Closed">Closed</option>
-                </select>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">City:</span>
+                <span className="text-zinc-800 dark:text-zinc-200">{activeModalLead.city || 'None'}</span>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Full Message / Notes</label>
-              <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl text-xs text-slate-300 leading-relaxed max-h-36 overflow-y-auto">
-                {activeModalLead.message || 'No additional message was included in this form submission.'}
-              </div>
+            <div className="space-y-1">
+              <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Message:</span>
+              <p className="text-xs text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-950 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 max-h-32 overflow-y-auto">
+                {activeModalLead.message || 'No message provided.'}
+              </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 pt-2">
               {getCleanPhone(activeModalLead.phone || '') && (
                 <a
                   href={`https://wa.me/${getCleanPhone(activeModalLead.phone || '')}?text=${encodeURIComponent(
-                    `Hello ${activeModalLead.name}, thank you for contacting UVCHM regarding admission in ${activeModalLead.course || 'Hotel Management'}.`
+                    `Hi ${activeModalLead.name}, regarding your UVCHM admission enquiry...`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/20 text-center transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-2 bg-green-600 hover:bg-green-500 text-white font-medium text-xs rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Open WhatsApp</span>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp</span>
                 </a>
               )}
               <a
                 href={`tel:${activeModalLead.phone}`}
-                className="flex-1 py-3 bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-pink-600/20 text-center transition-all flex items-center justify-center gap-2"
+                className="flex-1 py-2 bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-zinc-900 font-medium text-xs rounded-xl text-center transition-all flex items-center justify-center gap-1.5"
               >
-                <Phone className="w-4 h-4" />
-                <span>Call Student</span>
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call</span>
               </a>
             </div>
           </div>
