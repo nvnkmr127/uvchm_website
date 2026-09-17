@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { PROGRAMS } from '@/data/collegeData';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 
+import { getTrackingMetadata } from '@/lib/tracking';
+
 export default function LocationLeadForm({ locationName }: { locationName: string }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -15,6 +17,7 @@ export default function LocationLeadForm({ locationName }: { locationName: strin
     setStatus('loading');
 
     try {
+      const tracking = getTrackingMetadata();
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -24,8 +27,7 @@ export default function LocationLeadForm({ locationName }: { locationName: strin
           course: course || 'General Admission',
           city: locationName,
           source: `Location Page: ${locationName}`,
-          page_url: typeof window !== 'undefined' ? window.location.pathname : '',
-          referrer: typeof document !== 'undefined' ? document.referrer || 'Direct' : 'Direct',
+          ...tracking,
         }),
       });
       setStatus('success');

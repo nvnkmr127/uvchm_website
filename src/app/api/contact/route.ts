@@ -7,7 +7,22 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy');
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, email, course, city, message, source, page_url, referrer } = body;
+    const {
+      name,
+      phone,
+      email,
+      course,
+      city,
+      message,
+      source,
+      page_url,
+      referrer,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      device_type,
+      screen_res,
+    } = body;
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -31,6 +46,10 @@ export async function POST(req: Request) {
           source VARCHAR(255) DEFAULT 'Website Form',
           page_url VARCHAR(500),
           referrer VARCHAR(500),
+          utm_source VARCHAR(255),
+          utm_medium VARCHAR(255),
+          utm_campaign VARCHAR(255),
+          device_type VARCHAR(100),
           created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         );
       `;
@@ -38,13 +57,45 @@ export async function POST(req: Request) {
       // Safely add missing columns if table already existed without them
       await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS page_url VARCHAR(500);`;
       await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS referrer VARCHAR(500);`;
+      await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS utm_source VARCHAR(255);`;
+      await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS utm_medium VARCHAR(255);`;
+      await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS utm_campaign VARCHAR(255);`;
+      await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS device_type VARCHAR(100);`;
 
       await sql`
-        INSERT INTO inquiries (name, phone, email, course, city, message, source, page_url, referrer)
-        VALUES (${name}, ${phone}, ${email || null}, ${course || null}, ${city || null}, ${message || null}, ${source || 'Website Form'}, ${page_url || null}, ${referrer || null})
+        INSERT INTO inquiries (
+          name, phone, email, course, city, message, source, page_url, referrer, utm_source, utm_medium, utm_campaign, device_type
+        )
+        VALUES (
+          ${name},
+          ${phone},
+          ${email || null},
+          ${course || null},
+          ${city || null},
+          ${message || null},
+          ${source || 'Website Form'},
+          ${page_url || null},
+          ${referrer || null},
+          ${utm_source || null},
+          ${utm_medium || null},
+          ${utm_campaign || null},
+          ${device_type || null}
+        )
       `;
     } else {
-      console.log('Skipping database insert because DATABASE_URL is not set.', { name, phone, email, course, city, message, source, page_url, referrer });
+      console.log('Skipping database insert because DATABASE_URL is not set.', {
+        name,
+        phone,
+        email,
+        course,
+        city,
+        message,
+        source,
+        page_url,
+        referrer,
+        utm_source,
+        device_type,
+      });
     }
 
     // Send Email via Resend
@@ -60,9 +111,14 @@ export async function POST(req: Request) {
           <p><strong>Email:</strong> ${email || 'Not provided'}</p>
           <p><strong>City/Village:</strong> ${city || 'Not provided'}</p>
           <p><strong>Course of Interest:</strong> ${course || 'Not specified'}</p>
-          <p><strong>Source Form:</strong> ${source || 'Website Form'}</p>
+          <hr />
+          <h3>User Tracking & Analytics</h3>
+          <p><strong>Form Source:</strong> ${source || 'Website Form'}</p>
           <p><strong>Page URL:</strong> ${page_url || 'Direct/Unknown'}</p>
           <p><strong>Referrer:</strong> ${referrer || 'Direct'}</p>
+          <p><strong>Device:</strong> ${device_type || 'Unknown'} (${screen_res || 'N/A'})</p>
+          ${utm_source ? `<p><strong>UTM Source:</strong> ${utm_source}</p>` : ''}
+          ${utm_campaign ? `<p><strong>UTM Campaign:</strong> ${utm_campaign}</p>` : ''}
           <br/>
           <p><strong>Message:</strong></p>
           <p>${message || 'No message provided.'}</p>

@@ -40,6 +40,10 @@ interface Inquiry {
   source?: string;
   page_url?: string;
   referrer?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  device_type?: string;
   created_at?: string;
 }
 
@@ -771,6 +775,24 @@ export default function EnquiriesDashboard() {
                   <div className="flex justify-between">
                     <span className="text-zinc-500">Referrer:</span>
                     <span className="font-mono text-zinc-800 dark:text-zinc-200 text-[11px]">{activeModalLead.referrer}</span>
+                  </div>
+                )}
+                {activeModalLead.device_type && (
+                  <div className="flex justify-between">
+                    <span className="text-zinc-500">Device:</span>
+                    <span className="font-mono text-zinc-800 dark:text-zinc-200 text-[11px]">{activeModalLead.device_type}</span>
+                  </div>
+                )}
+                {activeModalLead.utm_source && (
+                  <div className="flex justify-between">
+                    <span className="text-zinc-500">UTM Source:</span>
+                    <span className="font-mono text-purple-600 dark:text-purple-400 text-[11px]">{activeModalLead.utm_source}</span>
+                  </div>
+                )}
+                {activeModalLead.utm_campaign && (
+                  <div className="flex justify-between">
+                    <span className="text-zinc-500">UTM Campaign:</span>
+                    <span className="font-mono text-purple-600 dark:text-purple-400 text-[11px]">{activeModalLead.utm_campaign}</span>
                   </div>
                 )}
               </div>

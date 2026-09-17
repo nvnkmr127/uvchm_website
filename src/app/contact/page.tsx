@@ -7,6 +7,8 @@ import { COLLEGE_INFO } from '@/data/collegeData';
 import { MapPin, Phone, Mail, Clock, Send, Sparkles, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
 import ApplyButton from '@/components/ApplyButton';
 
+import { getTrackingMetadata } from '@/lib/tracking';
+
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -22,14 +24,14 @@ export default function ContactPage() {
     e.preventDefault();
     setIsLoading(true);
     try {
+      const tracking = getTrackingMetadata();
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
           source: 'Contact Page',
-          page_url: typeof window !== 'undefined' ? window.location.pathname : '',
-          referrer: typeof document !== 'undefined' ? document.referrer || 'Direct' : 'Direct',
+          ...tracking,
         }),
       });
       setFormSubmitted(true);

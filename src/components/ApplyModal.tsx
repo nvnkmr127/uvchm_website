@@ -6,6 +6,8 @@ import { useApplyModal } from '@/context/ApplyModalContext';
 import { toast } from 'sonner';
 import Image from 'next/image';
 
+import { getTrackingMetadata } from '@/lib/tracking';
+
 export default function ApplyModal() {
   const { isOpen, closeModal } = useApplyModal();
   
@@ -31,14 +33,14 @@ export default function ApplyModal() {
 
     setIsLoading(true);
     try {
+      const tracking = getTrackingMetadata();
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
           source: 'Apply Modal',
-          page_url: typeof window !== 'undefined' ? window.location.pathname : '',
-          referrer: typeof document !== 'undefined' ? document.referrer || 'Direct' : 'Direct',
+          ...tracking,
         }),
       });
       
