@@ -25,7 +25,12 @@ export default function ContactPage() {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source: 'Contact Page' }),
+        body: JSON.stringify({
+          ...formData,
+          source: 'Contact Page',
+          page_url: typeof window !== 'undefined' ? window.location.pathname : '',
+          referrer: typeof document !== 'undefined' ? document.referrer || 'Direct' : 'Direct',
+        }),
       });
       setFormSubmitted(true);
       setTimeout(() => {

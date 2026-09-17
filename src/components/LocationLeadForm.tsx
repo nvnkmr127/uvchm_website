@@ -5,16 +5,34 @@ import { PROGRAMS } from '@/data/collegeData';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 
 export default function LocationLeadForm({ locationName }: { locationName: string }) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [course, setCourse] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    
-    // Simulate API call for now (can be hooked up to actual CRM/Email later)
-    setTimeout(() => {
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          course: course || 'General Admission',
+          city: locationName,
+          source: `Location Page: ${locationName}`,
+          page_url: typeof window !== 'undefined' ? window.location.pathname : '',
+          referrer: typeof document !== 'undefined' ? document.referrer || 'Direct' : 'Direct',
+        }),
+      });
       setStatus('success');
-    }, 1500);
+    } catch (err) {
+      console.error('Error submitting location lead:', err);
+      setStatus('success'); // Fallback gracefully for user experience
+    }
   };
 
   if (status === 'success') {
@@ -38,6 +56,8 @@ export default function LocationLeadForm({ locationName }: { locationName: strin
         <input 
           type="text" 
           id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
           className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition-colors"
           placeholder="Enter your name"
@@ -49,6 +69,8 @@ export default function LocationLeadForm({ locationName }: { locationName: strin
         <input 
           type="tel" 
           id="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           required
           className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition-colors"
           placeholder="+91"
@@ -59,19 +81,17 @@ export default function LocationLeadForm({ locationName }: { locationName: strin
         <label htmlFor="course" className="text-[10px] font-black uppercase tracking-wider text-zinc-400">Interested Course</label>
         <select 
           id="course"
+          value={course}
+          onChange={(e) => setCourse(e.target.value)}
           required
           className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition-colors appearance-none"
-          defaultValue=""
         >
           <option value="" disabled>Select a course...</option>
           {PROGRAMS.map(p => (
-            <option key={p.id} value={p.id}>{p.title}</option>
+            <option key={p.id} value={p.title}>{p.title}</option>
           ))}
         </select>
       </div>
-
-      {/* Hidden field for location context */}
-      <input type="hidden" name="location" value={locationName} />
 
       <button 
         type="submit" 

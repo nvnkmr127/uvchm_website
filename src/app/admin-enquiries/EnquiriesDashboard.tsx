@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import {
   Lock,
   Search,
-  Download,
   RefreshCw,
   Phone,
   Mail,
@@ -26,7 +25,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Eye
+  Globe,
+  ExternalLink
 } from 'lucide-react';
 
 interface Inquiry {
@@ -38,6 +38,8 @@ interface Inquiry {
   city?: string;
   message?: string;
   source?: string;
+  page_url?: string;
+  referrer?: string;
   created_at?: string;
 }
 
@@ -193,6 +195,7 @@ export default function EnquiriesDashboard() {
         (iq.course && iq.course.toLowerCase().includes(term)) ||
         (iq.city && iq.city.toLowerCase().includes(term)) ||
         (iq.source && iq.source.toLowerCase().includes(term)) ||
+        (iq.page_url && iq.page_url.toLowerCase().includes(term)) ||
         (iq.message && iq.message.toLowerCase().includes(term));
 
       const matchesCourse = selectedCourse === 'ALL' || iq.course === selectedCourse;
@@ -250,7 +253,7 @@ export default function EnquiriesDashboard() {
     const data = getExportData(onlySelected);
     if (data.length === 0) return;
 
-    const headers = ['ID', 'Date', 'Name', 'Phone', 'Email', 'Course', 'City', 'Status', 'Source', 'Message'];
+    const headers = ['ID', 'Date', 'Name', 'Phone', 'Email', 'Course', 'City', 'Status', 'Form Source', 'Page URL', 'Referrer', 'Message'];
     const rows = data.map((iq) => [
       iq.id,
       iq.created_at ? new Date(iq.created_at).toLocaleString('en-IN') : 'N/A',
@@ -261,6 +264,8 @@ export default function EnquiriesDashboard() {
       `"${(iq.city || '').replace(/"/g, '""')}"`,
       `"${statuses[iq.id] || 'New'}"`,
       `"${(iq.source || '').replace(/"/g, '""')}"`,
+      `"${(iq.page_url || '').replace(/"/g, '""')}"`,
+      `"${(iq.referrer || '').replace(/"/g, '""')}"`,
       `"${(iq.message || '').replace(/"/g, '""')}"`,
     ]);
 
@@ -356,7 +361,7 @@ export default function EnquiriesDashboard() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5 print:hidden">
           <div>
             <h1 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Student Enquiries</h1>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">View and manage admission leads from website forms.</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">View and manage admission leads with exact page & source tracking.</p>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
@@ -441,7 +446,7 @@ export default function EnquiriesDashboard() {
             <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search name, phone, course, city..."
+              placeholder="Search name, phone, course, city, page URL..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -557,7 +562,7 @@ export default function EnquiriesDashboard() {
                       <th className="py-3 px-3">Name</th>
                       <th className="py-3 px-3">Phone</th>
                       <th className="py-3 px-3">Course</th>
-                      <th className="py-3 px-3">City</th>
+                      <th className="py-3 px-3">Page Source</th>
                       <th className="py-3 px-3">Status</th>
                       <th className="py-3 px-3 print:hidden">Actions</th>
                     </tr>
@@ -621,8 +626,17 @@ export default function EnquiriesDashboard() {
                           <td className="py-3 px-3 whitespace-nowrap text-zinc-700 dark:text-zinc-300">
                             {iq.course || 'General'}
                           </td>
-                          <td className="py-3 px-3 whitespace-nowrap text-zinc-600 dark:text-zinc-400">
-                            {iq.city || '-'}
+                          <td className="py-3 px-3 whitespace-nowrap text-zinc-600 dark:text-zinc-400 max-w-xs truncate">
+                            <div className="space-y-0.5">
+                              <span className="font-medium text-zinc-800 dark:text-zinc-200 block text-[11px]">
+                                {iq.source || 'Website Form'}
+                              </span>
+                              {iq.page_url && (
+                                <span className="font-mono text-[10px] text-zinc-500 block truncate" title={iq.page_url}>
+                                  {iq.page_url}
+                                </span>
+                              )}
+                            </div>
                           </td>
                           <td className="py-3 px-3 whitespace-nowrap">
                             <select
@@ -731,6 +745,34 @@ export default function EnquiriesDashboard() {
               <div className="flex justify-between">
                 <span className="text-zinc-500">City:</span>
                 <span className="text-zinc-800 dark:text-zinc-200">{activeModalLead.city || 'None'}</span>
+              </div>
+
+              {/* Source Details */}
+              <div className="pt-2 border-t border-zinc-100 dark:border-zinc-800 space-y-1">
+                <div className="flex justify-between">
+                  <span className="text-zinc-500">Form Source:</span>
+                  <span className="font-medium text-zinc-800 dark:text-zinc-200">{activeModalLead.source || 'Website Form'}</span>
+                </div>
+                {activeModalLead.page_url && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-zinc-500">Page URL:</span>
+                    <a
+                      href={activeModalLead.page_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 dark:text-blue-400 font-mono text-[11px] hover:underline flex items-center gap-1 max-w-[200px] truncate"
+                    >
+                      <span className="truncate">{activeModalLead.page_url}</span>
+                      <ExternalLink className="w-3 h-3 shrink-0" />
+                    </a>
+                  </div>
+                )}
+                {activeModalLead.referrer && (
+                  <div className="flex justify-between">
+                    <span className="text-zinc-500">Referrer:</span>
+                    <span className="font-mono text-zinc-800 dark:text-zinc-200 text-[11px]">{activeModalLead.referrer}</span>
+                  </div>
+                )}
               </div>
             </div>
 
