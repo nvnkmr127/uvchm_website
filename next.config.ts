@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      // Map legacy Yoast/RankMath WordPress sitemap URL to Next.js App Router sitemap
+      {
+        source: '/sitemap_index.xml',
+        destination: '/sitemap.xml',
+      },
+    ];
+  },
   async redirects() {
     return [
       // Old WordPress course URLs -> Next.js dynamic course pages
