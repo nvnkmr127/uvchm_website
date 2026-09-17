@@ -20,6 +20,8 @@ export async function POST(req: Request) {
       utm_source,
       utm_medium,
       utm_campaign,
+      search_keywords,
+      visit_count,
       device_type,
       screen_res,
     } = body;
@@ -49,6 +51,8 @@ export async function POST(req: Request) {
           utm_source VARCHAR(255),
           utm_medium VARCHAR(255),
           utm_campaign VARCHAR(255),
+          search_keywords VARCHAR(255),
+          visit_count INT DEFAULT 1,
           device_type VARCHAR(100),
           created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         );
@@ -60,11 +64,13 @@ export async function POST(req: Request) {
       await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS utm_source VARCHAR(255);`;
       await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS utm_medium VARCHAR(255);`;
       await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS utm_campaign VARCHAR(255);`;
+      await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS search_keywords VARCHAR(255);`;
+      await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS visit_count INT DEFAULT 1;`;
       await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS device_type VARCHAR(100);`;
 
       await sql`
         INSERT INTO inquiries (
-          name, phone, email, course, city, message, source, page_url, referrer, utm_source, utm_medium, utm_campaign, device_type
+          name, phone, email, course, city, message, source, page_url, referrer, utm_source, utm_medium, utm_campaign, search_keywords, visit_count, device_type
         )
         VALUES (
           ${name},
@@ -79,6 +85,8 @@ export async function POST(req: Request) {
           ${utm_source || null},
           ${utm_medium || null},
           ${utm_campaign || null},
+          ${search_keywords || null},
+          ${visit_count || 1},
           ${device_type || null}
         )
       `;
@@ -93,7 +101,8 @@ export async function POST(req: Request) {
         source,
         page_url,
         referrer,
-        utm_source,
+        search_keywords,
+        visit_count,
         device_type,
       });
     }
@@ -116,6 +125,8 @@ export async function POST(req: Request) {
           <p><strong>Form Source:</strong> ${source || 'Website Form'}</p>
           <p><strong>Page URL:</strong> ${page_url || 'Direct/Unknown'}</p>
           <p><strong>Referrer:</strong> ${referrer || 'Direct'}</p>
+          <p><strong>Visit History:</strong> Visited site ${visit_count || 1} time(s) before submitting form</p>
+          ${search_keywords ? `<p><strong>Search Keywords:</strong> ${search_keywords}</p>` : ''}
           <p><strong>Device:</strong> ${device_type || 'Unknown'} (${screen_res || 'N/A'})</p>
           ${utm_source ? `<p><strong>UTM Source:</strong> ${utm_source}</p>` : ''}
           ${utm_campaign ? `<p><strong>UTM Campaign:</strong> ${utm_campaign}</p>` : ''}
