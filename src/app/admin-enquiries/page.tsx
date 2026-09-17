@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import EnquiriesDashboard from './EnquiriesDashboard';
+import EnquiriesDashboard from '@/app/admin-enquiries/EnquiriesDashboard';
 
 export const metadata: Metadata = {
   title: 'Enquiries Data | Internal Portal',

@@ -112,13 +112,13 @@ const nextConfig: NextConfig = {
 
       // Generic handler for any malformed prefixed location URLs
       {
-        source: '/location/https-www-uv-college-com-:slug*',
-        destination: '/location/:slug*',
+        source: '/location/https-www-uv-college-com-:slug(.*)',
+        destination: '/location/:slug',
         permanent: true,
       },
       {
-        source: '/location/https-www-:slug*',
-        destination: '/location/:slug*',
+        source: '/location/https-www-:slug(.*)',
+        destination: '/location/:slug',
         permanent: true,
       },
 
